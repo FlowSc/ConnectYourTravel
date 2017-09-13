@@ -70,8 +70,8 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                     self.dkAssetsList.append(asset)
                     print(self.dkAssetsList)
                     let assetLocation = asset.location?.coordinate
-                    let assetLongitude = assetLocation?.longitude
-                    let assetLatitude = assetLocation?.latitude
+//                    let assetLongitude = assetLocation?.longitude
+//                    let assetLatitude = assetLocation?.latitude
                     
                     self.locationInfo.append(assetLocation!)
                     
