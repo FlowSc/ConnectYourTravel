@@ -86,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             directionRequest.source = startItem
             directionRequest.destination = desItem
-            directionRequest.transportType = .any
+            directionRequest.transportType = .walking
             
             let directions = MKDirections(request: directionRequest)
             

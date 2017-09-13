@@ -6,8 +6,6 @@ target 'ConnectYourDailyTravel' do
   use_frameworks!
 
   # Pods for ConnectYourDailyTravel
-pod 'GoogleMaps'
-pod 'GooglePlaces'
 pod 'Firebase/Core'
 pod 'SwiftyJSON'
 pod 'AlamofireNetworkActivityIndicator', '~> 2.2'

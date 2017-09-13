@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import GoogleMaps
 import SwiftyJSON
 import Alamofire
+import MapKit
 import DKImagePickerController
 
 class Server {
