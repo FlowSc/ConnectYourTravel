@@ -26,12 +26,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var annotations = [MKPointAnnotation]()
+        var annotations = [MKAnnotation]()
         for annotation in dkAssetList {
             let point = MKPointAnnotation()
             
+//            annotation.fetchImageWithSize(CGSize(width: 100, height: 100), options: nil, completeBlock: { (image, _) in
+//                let myPoint = CustomAnnotation(image: image!, customTitle:  String(describing: annotation.originalAsset?.creationDate), customCoordinate: (annotation.originalAsset?.location?.coordinate)!)
+//                annotations.append(myPoint)
+//            })
+            
+            let dateformatter:DateFormatter = DateFormatter()
+            
+            dateformatter.dateFormat = "yyyy-MM-dd"
+            
             point.coordinate = (annotation.originalAsset?.location?.coordinate)!
-            point.title = String(describing: annotation.originalAsset?.creationDate)
+            point.title = dateformatter.string(from: (annotation.originalAsset?.creationDate)!)
             
             annotations.append(point)
         }
