@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="ThumnailImageCollectionViewCell" customModule="ConnectYourDailyTravel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="497" height="529"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="497" height="529"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIe-SE-YtT">
+                        <rect key="frame" x="0.0" y="0.0" width="497" height="529"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C3R-kZ-wda">
+                                <rect key="frame" x="0.0" y="0.0" width="497" height="529"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bkc-pN-Pa3">
+                                        <rect key="frame" x="0.0" y="0.0" width="497" height="423"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YSS-Ym-0UR">
+                                        <rect key="frame" x="0.0" y="423" width="497" height="106"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Bkc-pN-Pa3" firstAttribute="height" secondItem="YSS-Ym-0UR" secondAttribute="height" multiplier="4" id="6DN-2e-rIM"/>
+                                    <constraint firstItem="Bkc-pN-Pa3" firstAttribute="width" secondItem="YSS-Ym-0UR" secondAttribute="width" id="CG3-BP-reR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="C3R-kZ-wda" secondAttribute="trailing" id="N1d-b8-mg9"/>
+                            <constraint firstItem="C3R-kZ-wda" firstAttribute="leading" secondItem="QIe-SE-YtT" secondAttribute="leading" id="XEq-Hf-V2Q"/>
+                            <constraint firstItem="C3R-kZ-wda" firstAttribute="top" secondItem="QIe-SE-YtT" secondAttribute="top" id="jCf-R4-l2s"/>
+                            <constraint firstAttribute="bottom" secondItem="C3R-kZ-wda" secondAttribute="bottom" id="s51-Ul-aQf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="QIe-SE-YtT" secondAttribute="trailing" id="5H7-Jw-qh1"/>
+                <constraint firstAttribute="bottom" secondItem="QIe-SE-YtT" secondAttribute="bottom" id="BVD-rt-4Xo"/>
+                <constraint firstItem="QIe-SE-YtT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UHC-Lc-kSa"/>
+                <constraint firstItem="QIe-SE-YtT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ium-Iz-gqG"/>
+            </constraints>
+            <size key="customSize" width="497" height="529"/>
+            <connections>
+                <outlet property="commentTextView" destination="YSS-Ym-0UR" id="M5V-tY-WkM"/>
+                <outlet property="imageView" destination="Bkc-pN-Pa3" id="GAi-dy-GuQ"/>
+            </connections>
+            <point key="canvasLocation" x="-4.5" y="-10.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
