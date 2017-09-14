@@ -29,7 +29,6 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Polyline (4.1.1)
   - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
   - TimelineTableViewCell (1.0.1)
@@ -40,7 +39,6 @@ DEPENDENCIES:
   - DKImagePickerController
   - Firebase/Core
   - Kingfisher (~> 3.12)
-  - Polyline (~> 4.0)
   - SnapKit
   - SwiftyJSON
   - TimelineTableViewCell
@@ -56,11 +54,10 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   Kingfisher: 7eebf6000ac64401839f10da37f21eefa7d88970
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Polyline: 381d1e699fd12508f97cfc468478dfbab67edf1f
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TimelineTableViewCell: 8e46d96b32caf5a3ca9f9d7d5b8c94e9de30b92a
 
-PODFILE CHECKSUM: 4a33293cf0459ea2dd86293ad29b82f0b5ab871e
+PODFILE CHECKSUM: 5c1bb083426247e98961ccc9e5fb2e14f8a202cf
 
 COCOAPODS: 1.2.1

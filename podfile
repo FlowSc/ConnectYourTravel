@@ -13,7 +13,6 @@ pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
  pod 'Kingfisher', '~> 3.12'
   pod 'SnapKit'
   pod 'DKImagePickerController'
-  pod 'Polyline', '~> 4.0'
 pod "TimelineTableViewCell"
 
 
