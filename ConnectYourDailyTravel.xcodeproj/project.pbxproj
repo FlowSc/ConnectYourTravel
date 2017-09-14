@@ -17,6 +17,8 @@
 		7549D69F1F6979A000EEA8E6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D69E1F6979A000EEA8E6 /* MapViewController.swift */; };
 		7549D6A11F697EE900EEA8E6 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6A01F697EE900EEA8E6 /* Server.swift */; };
 		7549D6A31F699D5900EEA8E6 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6A21F699D5900EEA8E6 /* CustomAnnotation.swift */; };
+		7549D6A51F69C76900EEA8E6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6A41F69C76800EEA8E6 /* pin.png */; };
+		7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */; };
 		A166C674F1FDCD4AB72DB8F9 /* Pods_ConnectYourDailyTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		7549D69E1F6979A000EEA8E6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		7549D6A01F697EE900EEA8E6 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		7549D6A21F699D5900EEA8E6 /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		7549D6A41F69C76800EEA8E6 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectYourDailyTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADDF3E4FFE8BD69E0422638 /* Pods-ConnectYourDailyTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +87,8 @@
 				7549D6821F696E5900EEA8E6 /* AppDelegate.swift */,
 				7549D69C1F69773500EEA8E6 /* ChooseViewController.swift */,
 				7549D6861F696E5900EEA8E6 /* Main.storyboard */,
+				7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */,
+				7549D6A41F69C76800EEA8E6 /* pin.png */,
 				7549D69E1F6979A000EEA8E6 /* MapViewController.swift */,
 				7549D6A21F699D5900EEA8E6 /* CustomAnnotation.swift */,
 				7549D6A01F697EE900EEA8E6 /* Server.swift */,
@@ -169,6 +175,7 @@
 				7549D69B1F6971F400EEA8E6 /* ThumnailImageCollectionViewCell.xib in Resources */,
 				7549D68D1F696E5900EEA8E6 /* LaunchScreen.storyboard in Resources */,
 				7549D68A1F696E5900EEA8E6 /* Assets.xcassets in Resources */,
+				7549D6A51F69C76900EEA8E6 /* pin.png in Resources */,
 				7549D6881F696E5900EEA8E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +239,7 @@
 				7549D69A1F6971F400EEA8E6 /* ThumnailImageCollectionViewCell.swift in Sources */,
 				7549D69D1F69773500EEA8E6 /* ChooseViewController.swift in Sources */,
 				7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */,
+				7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */,
 				7549D69F1F6979A000EEA8E6 /* MapViewController.swift in Sources */,
 				7549D6A31F699D5900EEA8E6 /* CustomAnnotation.swift in Sources */,
 			);

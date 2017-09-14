@@ -32,6 +32,7 @@ PODS:
   - Polyline (4.1.1)
   - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
+  - TimelineTableViewCell (1.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - Polyline (~> 4.0)
   - SnapKit
   - SwiftyJSON
+  - TimelineTableViewCell
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
@@ -57,7 +59,8 @@ SPEC CHECKSUMS:
   Polyline: 381d1e699fd12508f97cfc468478dfbab67edf1f
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TimelineTableViewCell: 8e46d96b32caf5a3ca9f9d7d5b8c94e9de30b92a
 
-PODFILE CHECKSUM: e0519455b38fac678362e6c0d607479efcf4283e
+PODFILE CHECKSUM: 4a33293cf0459ea2dd86293ad29b82f0b5ab871e
 
 COCOAPODS: 1.2.1

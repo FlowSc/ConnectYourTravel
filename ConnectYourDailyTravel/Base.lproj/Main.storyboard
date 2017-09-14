@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Choose View Controller-->
+        <!--여행의 조각-->
         <scene sceneID="rFt-HS-lub">
             <objects>
                 <viewController id="uS2-Vs-IEt" customClass="ChooseViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,7 +76,7 @@
                             <constraint firstItem="KGB-Ji-grR" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="sNM-Pp-DMg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UNh-lc-bkC"/>
+                    <navigationItem key="navigationItem" title="여행의 조각" id="UNh-lc-bkC"/>
                     <connections>
                         <outlet property="imageCollectionView" destination="IkY-gZ-Htl" id="yn7-Xc-RsP"/>
                     </connections>
@@ -100,13 +100,24 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rk5-Ok-fXV">
                                 <rect key="frame" x="0.0" y="20" width="375" height="617"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncd-k1-5ca">
+                                <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="moveToTimeLine:" destination="mlC-Lp-9AP" eventType="touchUpInside" id="UX1-JZ-pzY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rk5-Ok-fXV" firstAttribute="leading" secondItem="Ucs-ZY-BKu" secondAttribute="leading" id="01Z-MH-Z1Q"/>
+                            <constraint firstAttribute="trailing" secondItem="ncd-k1-5ca" secondAttribute="trailing" id="6WD-87-P0h"/>
                             <constraint firstAttribute="trailing" secondItem="rk5-Ok-fXV" secondAttribute="trailing" id="9Nn-9B-qFf"/>
+                            <constraint firstItem="ncd-k1-5ca" firstAttribute="leading" secondItem="Ucs-ZY-BKu" secondAttribute="leading" id="AdP-om-aLm"/>
                             <constraint firstItem="Ofq-I5-Fdi" firstAttribute="top" secondItem="rk5-Ok-fXV" secondAttribute="bottom" constant="30" id="B6V-SO-MMk"/>
+                            <constraint firstAttribute="bottom" secondItem="ncd-k1-5ca" secondAttribute="bottom" id="grs-C2-EhM"/>
                             <constraint firstItem="rk5-Ok-fXV" firstAttribute="top" secondItem="6nN-TL-IBm" secondAttribute="bottom" id="oMv-7K-Rj3"/>
+                            <constraint firstItem="ncd-k1-5ca" firstAttribute="top" secondItem="rk5-Ok-fXV" secondAttribute="bottom" id="uxy-fe-sc8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -117,12 +128,55 @@
             </objects>
             <point key="canvasLocation" x="2934" y="220"/>
         </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="oc0-SM-Cmr">
+            <objects>
+                <viewController storyboardIdentifier="TimelineViewController" id="0i4-Mj-5YV" customClass="TimelineViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Shv-Xs-K2g"/>
+                        <viewControllerLayoutGuide type="bottom" id="3tM-ee-9Sx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lgk-2u-gZC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-Gu-jeh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineTableViewCell" id="Kf4-eR-4sW" customClass="TimelineTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kf4-eR-4sW" id="5lW-Eg-H8q">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fzN-Gu-jeh" firstAttribute="centerY" secondItem="Lgk-2u-gZC" secondAttribute="centerY" id="5w6-dD-g0I"/>
+                            <constraint firstItem="fzN-Gu-jeh" firstAttribute="centerX" secondItem="Lgk-2u-gZC" secondAttribute="centerX" id="SE7-De-LyU"/>
+                            <constraint firstItem="fzN-Gu-jeh" firstAttribute="height" secondItem="Lgk-2u-gZC" secondAttribute="height" id="deF-TI-6Md"/>
+                            <constraint firstItem="fzN-Gu-jeh" firstAttribute="width" secondItem="Lgk-2u-gZC" secondAttribute="width" id="zmQ-MT-FGe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myTableView" destination="fzN-Gu-jeh" id="tCr-rY-Yc3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pl6-td-k0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3881" y="213"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LoP-0c-vMG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cp-F2-AVi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bZ8-Fj-Vr7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bZ8-Fj-Vr7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

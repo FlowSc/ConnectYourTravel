@@ -14,4 +14,7 @@ pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   pod 'SnapKit'
   pod 'DKImagePickerController'
   pod 'Polyline', '~> 4.0'
+pod "TimelineTableViewCell"
+
+
 end

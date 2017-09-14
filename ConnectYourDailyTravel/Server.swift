@@ -15,10 +15,11 @@ import DKImagePickerController
 class Server {
     
     static var locationInfoList:[CLLocationCoordinate2D] = []
-    static var addressList:[String] = []
+    static var serverAdressList:[String] = []
     static var dkAddressList:[DKAsset] = []
+    static var cellAddress:String = ""
     
-    static func getAddressData(_ urlString:String, completion: @escaping (Bool, [DKAsset]) -> Void) {
+    static func getAddressData(_ urlString:String, completion: @escaping (Bool, [String]) -> Void) {
         
         Alamofire.request(urlString).responseJSON { (response) in
             
@@ -27,18 +28,56 @@ class Server {
             if response.result.isSuccess {
                 let myData = JSON(data)
                 
-                print(myData["results"][0]["formatted_address"].stringValue)
-                addressList.append(myData["results"][0]["formatted_address"].stringValue)
-                print("~~~~~~~~")
-                print(self.addressList)
-                print("~~~~~~")
+                serverAdressList.append(myData["results"][1]["formatted_address"].stringValue)
+
                 
                 DispatchQueue.main.async {
-                    completion(true, dkAddressList)
+                    completion(true, serverAdressList)
                 }
             }
         }
         
     }
+    
+    static func getEachAddress(_ urlString:String, completion: @escaping (Bool, String) -> Void) {
+        
+        Alamofire.request(urlString).responseJSON { (response) in
+            
+            guard let data = response.result.value else {return}
+            
+            if response.result.isSuccess {
+                let myData = JSON(data)
+                
+                cellAddress = myData["results"][1]["formatted_address"].stringValue
+                print(cellAddress)
+                
+                
+                DispatchQueue.main.async {
+
+                completion(true, cellAddress)
+                
+                }
+            }
+        }
+
+    }
+    
+    static func cellLocation(myLocation :CLLocation, completionHandler: @escaping (CLPlacemark?) -> Void) {
+        
+        
+        
+        let geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(myLocation) { (placemarks, error) in
+            if error == nil {
+                let firstLocation = placemarks?[0]
+                completionHandler(firstLocation)
+            }else{
+                completionHandler(nil)
+            }
+        }
+        
+    }
+
     
 }

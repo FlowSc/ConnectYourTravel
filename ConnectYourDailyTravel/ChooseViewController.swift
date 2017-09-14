@@ -28,7 +28,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
-            mvc.addressList = addressList
+            mvc.myAddressList = addressList
             mvc.dkAssetList = dkAssetsList
             mvc.locationInfoList = locationInfo
             

@@ -15,34 +15,44 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var locationInfoList:[CLLocationCoordinate2D] = []
     var dkAssetList:[DKAsset] = []
-    var addressList:[String] = []
+    var myAddressList:[String] = []
     var myRoute:MKRoute!
     
     @IBOutlet weak var myMapView: MKMapView!
     
     var locationManager = CLLocationManager()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var annotations = [MKAnnotation]()
+//        self.navigationItem.title = "여행의 흔적"
+        
+        var annotations = [MKPointAnnotation]()
+        
         for annotation in dkAssetList {
-            let point = MKPointAnnotation()
             
-//            annotation.fetchImageWithSize(CGSize(width: 100, height: 100), options: nil, completeBlock: { (image, _) in
-//                let myPoint = CustomAnnotation(image: image!, customTitle:  String(describing: annotation.originalAsset?.creationDate), customCoordinate: (annotation.originalAsset?.location?.coordinate)!)
-//                annotations.append(myPoint)
-//            })
-            
+            let myPoint = MKPointAnnotation()
             let dateformatter:DateFormatter = DateFormatter()
+            let assetLocation = annotation.location?.coordinate
             
             dateformatter.dateFormat = "yyyy-MM-dd"
             
-            point.coordinate = (annotation.originalAsset?.location?.coordinate)!
-            point.title = dateformatter.string(from: (annotation.originalAsset?.creationDate)!)
+            myPoint.coordinate = (annotation.originalAsset?.location?.coordinate)!
             
-            annotations.append(point)
+            annotations.append(myPoint)
+            self.myMapView.addAnnotations(annotations)
+            
+            Server.cellLocation(myLocation: (annotation.originalAsset?.location)!, completionHandler: { (placemark) in
+                
+                print("Placemark")
+                print(placemark?.name)
+                print(placemark?.areasOfInterest)
+               myPoint.title = "\((placemark?.name)!)"
+                print("end")
+
+            })
+
         }
         myMapView.addAnnotations(annotations)
         
@@ -54,9 +64,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         getMultipleLocationRoute()
         
         if CLLocationManager.locationServicesEnabled() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -64,10 +74,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let myLineRenderer = MKPolylineRenderer(polyline: myRoute.polyline)
         myLineRenderer.strokeColor = UIColor.blue
-        myLineRenderer.lineWidth = 3
+        myLineRenderer.lineWidth = 2
         return myLineRenderer
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -80,7 +90,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let startLocation = locationInfoList.removeLast()
             
             print(startLocation)
-
+            
             let endLocation = locationInfoList.last!
             
             print(endLocation)
@@ -114,14 +124,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func moveToTimeLine(_ sender: UIButton) {
+        
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "TimelineViewController") as! TimelineViewController
+        
+        mvc.dkAssetList = dkAssetList
+        mvc.myAddressList = myAddressList
+        
+        self.navigationController?.pushViewController(mvc, animated: true)
+        
     }
-    */
-
+    
+       
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
