@@ -47,8 +47,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 print("Placemark")
                 print(placemark?.name)
+                print(placemark?.locality)
+                print(placemark?.subThoroughfare)
+                print(placemark?.addressDictionary)
+                print(placemark?.subLocality)
                 print(placemark?.areasOfInterest)
-               myPoint.title = "\((placemark?.name)!)"
+               myPoint.title = "\((placemark?.locality)!)"
+                myPoint.subtitle = "\((placemark?.name)!)"
                 print("end")
 
             })
@@ -126,7 +131,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBAction func moveToTimeLine(_ sender: UIButton) {
         
-        let mvc = storyboard?.instantiateViewController(withIdentifier: "TimelineViewController") as! TimelineViewController
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "TimeLineCollectionViewController") as! TimeLineCollectionViewController
         
         mvc.dkAssetList = dkAssetList
         mvc.myAddressList = myAddressList

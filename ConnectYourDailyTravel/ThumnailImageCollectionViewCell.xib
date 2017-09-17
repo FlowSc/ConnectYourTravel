@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,19 +25,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="497" height="529"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bkc-pN-Pa3">
-                                        <rect key="frame" x="0.0" y="0.0" width="497" height="423"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="497" height="529"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YSS-Ym-0UR">
-                                        <rect key="frame" x="0.0" y="423" width="497" height="106"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Bkc-pN-Pa3" firstAttribute="height" secondItem="YSS-Ym-0UR" secondAttribute="height" multiplier="4" id="6DN-2e-rIM"/>
-                                    <constraint firstItem="Bkc-pN-Pa3" firstAttribute="width" secondItem="YSS-Ym-0UR" secondAttribute="width" id="CG3-BP-reR"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,7 +48,6 @@
             </constraints>
             <size key="customSize" width="497" height="529"/>
             <connections>
-                <outlet property="commentTextView" destination="YSS-Ym-0UR" id="M5V-tY-WkM"/>
                 <outlet property="imageView" destination="Bkc-pN-Pa3" id="GAi-dy-GuQ"/>
             </connections>
             <point key="canvasLocation" x="-4.5" y="-10.5"/>

@@ -1,41 +1,37 @@
 //
-//  TimelineViewController.swift
+//  TimeLineCollectionViewController.swift
 //  ConnectYourDailyTravel
 //
-//  Created by Kang Seongchan on 2017. 9. 14..
+//  Created by Kang Seongchan on 2017. 9. 18..
 //  Copyright © 2017년 Kang Seongchan. All rights reserved.
 //
 
 import UIKit
-import TimelineTableViewCell
 import DKImagePickerController
 import MapKit
 import SwiftyJSON
 import Alamofire
 
-class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
-    
+class TimeLineCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
+
     var dkAssetList:[DKAsset] = []
     var myAddressList:[String] = []
 
-    @IBOutlet weak var myTableView: UITableView!
+    
+    @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let notificationCenter = NotificationCenter.default
+        
+        myCollectionView.dataSource = self
+        myCollectionView.delegate = self
+        
+        myCollectionView.register(UINib.init(nibName: "TimeLineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimeLineCollectionViewCell")
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        myTableView.delegate = self
-        myTableView.dataSource = self
+
         
-//        self.navigationItem.title = "여행의 흐름"
         
-        let bundle = Bundle(for: TimelineTableViewCell.self)
-        let nibUrl = bundle.url(forResource: "TimelineTableViewCell", withExtension: "bundle")
-        let timelineTableViewCellNib = UINib(nibName: "TimelineTableViewCell",
-                                             bundle: Bundle(url: nibUrl!)!)
-        myTableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
-        myTableView.register(UINib.init(nibName: "TimeTableViewCell", bundle: nil), forCellReuseIdentifier: "TimeTableViewCell")
-        myTableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
@@ -45,50 +41,42 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dkAssetList.count
+
+    
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-
-        
-        
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TimeTableViewCell",
-                                                 for: indexPath) as! TimeTableViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeLineCollectionViewCell", for: indexPath) as! TimeLineCollectionViewCell
         
         let cellItem = dkAssetList[indexPath.item]
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
         dateFormatter.timeZone = TimeZone.current
-
-
+        
+        
         
         Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { (placemark) in
             print("Placemark")
-            cell.titleLb.text = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!) + "\n\((placemark?.locality)!) \((placemark?.name)!)"
-            cell.titleLb.textColor = .black
+            cell.timeLb.text = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
+            
+            cell.addressLb.text = "\((placemark?.locality)!) \((placemark?.name)!)"
             print("end")
         }
         
         
         cellItem.fetchOriginalImageWithCompleteBlock { (image, _) in
-            cell.thumnailImageView.image = image
+            cell.photiImageView.image = image
         }
-        
+    
         cell.commentTv.delegate = self
 
-    
+        
         return cell
         
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
-    
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -105,7 +93,21 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Compute the dimension of a cell for an NxN layout with space S between
+        // cells.  Take the collection view's width, subtract (N-1)*S points for
+        // the spaces between the cells, and then divide by N to find the final
+        // dimension for the cell's width and height.
         
+        let cellsAcross: CGFloat = 1
+        let spaceBetweenCells: CGFloat = 0
+        let width = view.bounds.width
+        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        return CGSize(width: width, height: width * 1.5)
+    }
+
+    
 
     /*
     // MARK: - Navigation

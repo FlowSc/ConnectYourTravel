@@ -11,7 +11,7 @@ import MapKit
 import DKImagePickerController
 import SwiftyJSON
 
-class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
@@ -85,7 +85,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                         self.imageCollectionView.reloadData()
                     })
                 }else{
-                    let alertC = UIAlertController.init(title: "선택된 사진은 위치정보가 기재되어 있지 않습니다", message: "경로 설정을 위해 위치정보가 저장된 사진을 선택해주세요!", preferredStyle: .alert)
+                    let alertC = UIAlertController.init(title: "선택한 사진 중 위치 정보가 없는 사진은 제외됩니다", message: "경로 설정을 위한 위치정보가 없으면 포함될수가 없습니다..", preferredStyle: .alert)
                     let alertAction = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
                     
                     alertC.addAction(alertAction)
@@ -126,6 +126,22 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Compute the dimension of a cell for an NxN layout with space S between
+        // cells.  Take the collection view's width, subtract (N-1)*S points for
+        // the spaces between the cells, and then divide by N to find the final
+        // dimension for the cell's width and height.
+        
+        let cellsAcross: CGFloat = 1
+        let spaceBetweenCells: CGFloat = 0
+        let width = view.bounds.width
+        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
+        return CGSize(width: width, height: width * 1.5)
+    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    }
+//    
     
 
 
