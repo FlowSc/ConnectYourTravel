@@ -10,6 +10,9 @@ import UIKit
 import FacebookLogin
 import Firebase
 import FirebaseAuth
+import SnapKit
+import SwiftyJSON
+import Alamofire
 
 
 class LaunchViewController: UIViewController {
@@ -40,8 +43,13 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let emailLogin = UIButton.init(type: .system)
+        emailLogin.setTitle("Email Login", for: .normal)
+        emailLogin.backgroundColor = .blue
+        emailLogin.addTarget(self, action: #selector(emailLoginTouched), for: .touchUpInside)
         
-        let myLoginButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 180, height: 40))
+        
+        let myLoginButton = UIButton.init(type: .system)
         myLoginButton.backgroundColor = UIColor.red
         myLoginButton.center = view.center;
         myLoginButton.setTitle("My Login Button", for: .normal)
@@ -50,6 +58,22 @@ class LaunchViewController: UIViewController {
         
         // Add the button to the view
         view.addSubview(myLoginButton)
+        view.addSubview(emailLogin)
+        
+        myLoginButton.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 180, height: 40))
+        }
+        emailLogin.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 180, height: 40))
+            make.bottom.equalTo(myLoginButton).offset(60)
+        }
+        
+       
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -73,16 +97,16 @@ class LaunchViewController: UIViewController {
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
                 
                 // Perform login by calling Firebase APIs
-                
+                let ref = Database.database().reference().root
+
                 Auth.auth().signIn(with: credential, completion: {(user, error) in
                     
-                    DispatchQueue.main.async {
-                        print(user?.displayName)
+                        guard let url = user?.photoURL else {return}
                         print(user?.photoURL)
     
-                        UserDefaults.standard.set(user?.displayName!, forKey: "UserName")
-                        UserDefaults.standard.set(user?.photoURL!, forKey: "UserPhoto")
-                    }
+                        ref.child("users").child((user?.uid)!).child("userName").setValue(user?.displayName)
+                        ref.child("users").child((user?.uid)!).child("photoUrl").setValue(String(describing: url))
+                    
                 })
                 
                 print("Logged in!")
@@ -94,6 +118,13 @@ class LaunchViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func emailLoginTouched() {
+        
+        let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EmailLoginViewController") as! EmailLoginViewController
+        
+        self.present(mvc, animated: true, completion: nil)
     }
 
 

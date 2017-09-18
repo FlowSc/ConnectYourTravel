@@ -31,6 +31,11 @@
 		7549D6BD1F6F2EE900EEA8E6 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6BC1F6F2EE900EEA8E6 /* LaunchViewController.swift */; };
 		7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6C01F6F308E00EEA8E6 /* SideTableViewController.swift */; };
 		7549D6C31F6F34CA00EEA8E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6C21F6F34CA00EEA8E6 /* GoogleService-Info.plist */; };
+		7549D6D11F6F9FCD00EEA8E6 /* EmailLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6D01F6F9FCD00EEA8E6 /* EmailLoginViewController.swift */; };
+		7549D6D41F6FCB4200EEA8E6 /* YeogiBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6D21F6FCB4200EEA8E6 /* YeogiBackground.png */; };
+		7549D6D51F6FCB4200EEA8E6 /* YeogiLaunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6D31F6FCB4200EEA8E6 /* YeogiLaunch.png */; };
+		7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */; };
+		755334701F700A6B00796FAC /* default-user-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7553346F1F700A6B00796FAC /* default-user-image.png */; };
 		A166C674F1FDCD4AB72DB8F9 /* Pods_ConnectYourDailyTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +67,11 @@
 		7549D6BC1F6F2EE900EEA8E6 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		7549D6C01F6F308E00EEA8E6 /* SideTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewController.swift; sourceTree = "<group>"; };
 		7549D6C21F6F34CA00EEA8E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7549D6D01F6F9FCD00EEA8E6 /* EmailLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginViewController.swift; sourceTree = "<group>"; };
+		7549D6D21F6FCB4200EEA8E6 /* YeogiBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YeogiBackground.png; sourceTree = "<group>"; };
+		7549D6D31F6FCB4200EEA8E6 /* YeogiLaunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YeogiLaunch.png; sourceTree = "<group>"; };
+		7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		7553346F1F700A6B00796FAC /* default-user-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-user-image.png"; sourceTree = "<group>"; };
 		7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectYourDailyTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADDF3E4FFE8BD69E0422638 /* Pods-ConnectYourDailyTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +121,8 @@
 				7549D6821F696E5900EEA8E6 /* AppDelegate.swift */,
 				7549D69C1F69773500EEA8E6 /* ChooseViewController.swift */,
 				7549D6861F696E5900EEA8E6 /* Main.storyboard */,
+				7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */,
+				7549D6D01F6F9FCD00EEA8E6 /* EmailLoginViewController.swift */,
 				7549D6BC1F6F2EE900EEA8E6 /* LaunchViewController.swift */,
 				7549D6C01F6F308E00EEA8E6 /* SideTableViewController.swift */,
 				7549D6AC1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift */,
@@ -122,11 +134,14 @@
 				7549D6A91F6AE8AC00EEA8E6 /* TimeTableViewCell.xib */,
 				7549D6A41F69C76800EEA8E6 /* pin.png */,
 				7549D69E1F6979A000EEA8E6 /* MapViewController.swift */,
+				7549D6D21F6FCB4200EEA8E6 /* YeogiBackground.png */,
+				7549D6D31F6FCB4200EEA8E6 /* YeogiLaunch.png */,
 				7549D6A21F699D5900EEA8E6 /* CustomAnnotation.swift */,
 				7549D6A01F697EE900EEA8E6 /* Server.swift */,
 				7549D6891F696E5900EEA8E6 /* Assets.xcassets */,
 				7549D6BA1F6F2DB500EEA8E6 /* LaunchScreen.001.jpeg */,
 				7549D6B61F6F2C1500EEA8E6 /* launchPng.001.png */,
+				7553346F1F700A6B00796FAC /* default-user-image.png */,
 				7549D6B81F6F2C6F00EEA8E6 /* Screen.jpeg */,
 				7549D6C21F6F34CA00EEA8E6 /* GoogleService-Info.plist */,
 				7549D68B1F696E5900EEA8E6 /* LaunchScreen.storyboard */,
@@ -215,9 +230,12 @@
 				7549D6B71F6F2C1500EEA8E6 /* launchPng.001.png in Resources */,
 				7549D68A1F696E5900EEA8E6 /* Assets.xcassets in Resources */,
 				7549D6A51F69C76900EEA8E6 /* pin.png in Resources */,
+				7549D6D51F6FCB4200EEA8E6 /* YeogiLaunch.png in Resources */,
+				7549D6D41F6FCB4200EEA8E6 /* YeogiBackground.png in Resources */,
 				7549D6AB1F6AE8AC00EEA8E6 /* TimeTableViewCell.xib in Resources */,
 				7549D6C31F6F34CA00EEA8E6 /* GoogleService-Info.plist in Resources */,
 				7549D6B91F6F2C6F00EEA8E6 /* Screen.jpeg in Resources */,
+				755334701F700A6B00796FAC /* default-user-image.png in Resources */,
 				7549D6881F696E5900EEA8E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7549D6A11F697EE900EEA8E6 /* Server.swift in Sources */,
+				7549D6D11F6F9FCD00EEA8E6 /* EmailLoginViewController.swift in Sources */,
 				7549D69A1F6971F400EEA8E6 /* ThumnailImageCollectionViewCell.swift in Sources */,
 				7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */,
 				7549D6B31F6EE7BE00EEA8E6 /* DataCenter.swift in Sources */,
@@ -285,6 +304,7 @@
 				7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */,
 				7549D6AA1F6AE8AC00EEA8E6 /* TimeTableViewCell.swift in Sources */,
 				7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */,
+				7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */,
 				7549D6BD1F6F2EE900EEA8E6 /* LaunchViewController.swift in Sources */,
 				7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */,
 				7549D69F1F6979A000EEA8E6 /* MapViewController.swift in Sources */,

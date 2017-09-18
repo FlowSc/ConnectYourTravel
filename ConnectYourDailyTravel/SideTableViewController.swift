@@ -9,25 +9,51 @@
 import UIKit
 import Kingfisher
 import FirebaseAuth
+import FirebaseDatabase
 
 class SideTableViewController: UITableViewController {
+    
+    
+    var ref: DatabaseReference!
 
+    @IBAction func dismissButtonTouched(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     @IBOutlet weak var userInfoView: UserProfileView!
     let settingMenu:[String] = ["저장된 여행 기록 보기", "계정관리", "설정", "개발자에게", "로그아웃"]
-    var photoUrl = UserDefaults.standard.url(forKey: "UserPhoto")
-    var loginUserName =  UserDefaults.standard.string(forKey: "UserName")
+//    var photoUrl = UserDefaults.standard.url(forKey: "UserPhoto")
+//    var loginUserName =  UserDefaults.standard.string(forKey: "UserName")
+    let loginUser = Auth.auth().currentUser?.uid
     
     @IBOutlet var settingTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("LoginInfo")
+        print(loginUser)
+        print("VVVVVVV")
         
+        ref = Database.database().reference()
+        
+        ref.child("users").child(loginUser!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let userName = value?["userName"] as? String ?? ""
+            self.userInfoView.nameLb.text = userName
+            let profileImage = value?["photoUrl"] as? String ?? ""
+            
+            if profileImage != "" {
+                self.userInfoView.profileImageView.kf.setImage(with: URL.init(string: profileImage))
+            }else{
+                self.userInfoView.profileImageView.image = #imageLiteral(resourceName: "default-user-image.png")
+            }
+            
+        })
         
         settingTableView.delegate = self
         settingTableView.dataSource = self
-        userInfoView.nameLb.text = "\(loginUserName ?? "Guest") 님 환영합니다!"
-        userInfoView.profileImageView.kf.setImage(with: photoUrl)
-        userInfoView.profileImageView.layer.cornerRadius = userInfoView.profileImageView.bounds.width / 2
-        userInfoView.profileImageView.clipsToBounds = true
+//        userInfoView.nameLb.text = "\(loginUserName ?? "Guest") 님 환영합니다!"
+//        userInfoView.profileImageView.kf.setImage(with: photoUrl)
+
         
           }
 
@@ -62,10 +88,9 @@ class SideTableViewController: UITableViewController {
         if indexPath.row == 4 {
             
             let fireBaseAuth = Auth.auth()
-            
+        
             do {
                 try fireBaseAuth.signOut()
-                UserDefaults.standard.set("", forKey: "UserName")
                 print("Log Out!")
                 
                 let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LaunchViewController") as! LaunchViewController
@@ -89,5 +114,8 @@ class UserProfileView:UIView {
     @IBOutlet weak var profileImageView:UIImageView!
     @IBOutlet weak var nameLb:UILabel!
     
-    
+    override func awakeFromNib() {
+        self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.width / 2
+        self.profileImageView.clipsToBounds = true
+    }
 }

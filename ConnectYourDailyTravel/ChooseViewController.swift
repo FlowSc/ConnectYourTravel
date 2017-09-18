@@ -10,11 +10,14 @@ import UIKit
 import MapKit
 import DKImagePickerController
 import SwiftyJSON
+import FirebaseAuth
+import Firebase
+import FirebaseDatabase
 
 class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
-    
+    let loginUser = Auth.auth().currentUser
     var imageList:[UIImage] = []
     var addressList:[String] = []
     var dkAssetsList:[DKAsset] = []
