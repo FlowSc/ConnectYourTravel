@@ -18,5 +18,5 @@ class TimeLineCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

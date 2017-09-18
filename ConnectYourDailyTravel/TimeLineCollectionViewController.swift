@@ -16,6 +16,8 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
 
     var dkAssetList:[DKAsset] = []
     var myAddressList:[String] = []
+    var commentList:[String] = []
+    var realCommentList:[String] = ["aa", "bb", "cc", "dd", "ee", "ff", "GG", "qq", "xx" , "ww", "yy", "tt", "o", "p"]
 
     
     @IBOutlet weak var myCollectionView: UICollectionView!
@@ -29,12 +31,14 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
         
+        for _ in dkAssetList {
+            commentList.append("코멘트를 남겨주세요")
+        }
         
-
-        // Do any additional setup after loading the view.
-    }
+        print(commentList.count)
+        
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,27 +47,27 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dkAssetList.count
-
     
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeLineCollectionViewCell", for: indexPath) as! TimeLineCollectionViewCell
         
         let cellItem = dkAssetList[indexPath.item]
         let dateFormatter = DateFormatter()
+        print("cellforRowAt")
+        print(cellItem)
+        print("~~~~~~")
         
         dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
         dateFormatter.timeZone = TimeZone.current
         
-        
-        
         Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { (placemark) in
-            print("Placemark")
-            cell.timeLb.text = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             
-            cell.addressLb.text = "\((placemark?.locality)!) \((placemark?.name)!)"
-            print("end")
+            cell.timeLb.text = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
+            cell.addressLb.text = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
+            
         }
         
         
@@ -72,11 +76,32 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         }
     
         cell.commentTv.delegate = self
+        cell.commentTv.text = realCommentList[indexPath.item]
+        print("~~~~~~")
+        print(realCommentList[indexPath.item])
+        print(cell.commentTv.text)
+        print("~~~~~~~~")
+        realCommentList[indexPath.item] = cell.commentTv.text
+        print(realCommentList[indexPath.item])
 
         
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeLineCollectionViewCell", for: indexPath) as! TimeLineCollectionViewCell
+        
+        if cell.commentTv.isFocused == true {
+            print(indexPath.item)
+
+        }
+        
+    
+    }
+    
+ 
+  
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -103,7 +128,6 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         let cellsAcross: CGFloat = 1
         let spaceBetweenCells: CGFloat = 0
         let width = view.bounds.width
-        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: width, height: width * 1.5)
     }
 

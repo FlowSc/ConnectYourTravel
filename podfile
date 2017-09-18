@@ -9,11 +9,15 @@ target 'ConnectYourDailyTravel' do
 pod 'Firebase/Core'
 pod 'SwiftyJSON'
 pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
- pod 'Alamofire', '~> 4.5'
- pod 'Kingfisher', '~> 3.12'
-  pod 'SnapKit'
-  pod 'DKImagePickerController'
+pod 'Alamofire', '~> 4.5'
+pod 'Kingfisher', '~> 3.12'
+pod 'SnapKit'
+pod 'DKImagePickerController'
 pod "TimelineTableViewCell"
-
+pod 'SideMenu', '~> 2.3'
+pod 'FacebookCore'
+pod 'FacebookLogin'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
 
 end

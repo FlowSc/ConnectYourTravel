@@ -79,6 +79,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         cell.commentTv.delegate = self
+        cell.commentTv.text = ""
 
     
         return cell

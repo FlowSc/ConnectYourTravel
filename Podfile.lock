@@ -2,33 +2,75 @@ PODS:
   - Alamofire (4.5.1)
   - AlamofireNetworkActivityIndicator (2.2.0):
     - Alamofire (~> 4.5)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - DKImagePickerController (3.6.1):
     - DKImagePickerController/Camera (= 3.6.1)
     - DKImagePickerController/ImageManager (= 3.6.1)
   - DKImagePickerController/Camera (3.6.1)
   - DKImagePickerController/ImageManager (3.6.1)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.26.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.26.0):
+    - FBSDKCoreKit
+  - Firebase/Auth (4.1.1):
+    - Firebase/Core
+    - FirebaseAuth (= 4.1.1)
   - Firebase/Core (4.1.1):
     - FirebaseAnalytics (= 4.0.3)
     - FirebaseCore (= 4.0.6)
+  - Firebase/Database (4.1.1):
+    - Firebase/Core
+    - FirebaseDatabase (= 4.0.2)
   - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
+  - FirebaseAuth (4.1.1):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.6):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
+  - FirebaseDatabase (4.0.2):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.2):
     - FirebaseCore (~> 4.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMSessionFetcher/Core (1.1.11)
   - Kingfisher (3.13.0)
+  - leveldb-library (1.18.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SideMenu (2.3.3)
   - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
   - TimelineTableViewCell (1.0.1)
@@ -37,8 +79,13 @@ DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - DKImagePickerController
+  - FacebookCore
+  - FacebookLogin
+  - Firebase/Auth
   - Firebase/Core
+  - Firebase/Database
   - Kingfisher (~> 3.12)
+  - SideMenu (~> 2.3)
   - SnapKit
   - SwiftyJSON
   - TimelineTableViewCell
@@ -46,18 +93,28 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DKImagePickerController: 4f8072aed44119a33955c9583273ea7c8739c0f4
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: c8b8582311ec11b145451d8b9717dc6cc2ae5a76
+  FBSDKLoginKit: f3f03b94c21eb834af243c0a881d48641f47ca60
   Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
   FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
+  FirebaseAuth: f8b07aa83de60d606b4eadd81484b3ac2097ea3e
   FirebaseCore: 28def3c643989c97ea5a69ea5000f5fa9902b9fd
+  FirebaseDatabase: 4d1a10639a42cae26e094296951b53c689e5e191
   FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
   Kingfisher: 7eebf6000ac64401839f10da37f21eefa7d88970
+  leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SideMenu: a447554ae5c982e8077666389e1c8b0c8656e065
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TimelineTableViewCell: 8e46d96b32caf5a3ca9f9d7d5b8c94e9de30b92a
 
-PODFILE CHECKSUM: 5c1bb083426247e98961ccc9e5fb2e14f8a202cf
+PODFILE CHECKSUM: 9c56973be674e1910650106084031338034fd9c3
 
 COCOAPODS: 1.2.1

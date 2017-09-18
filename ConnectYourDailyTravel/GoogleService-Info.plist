@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>266248331464-6eackh373l3n0tvbupruhpsp4tmc2733.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.266248331464-6eackh373l3n0tvbupruhpsp4tmc2733</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCsYEnD2rBn474FzNa9Hd7b6lP_rDelxoU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>266248331464</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.seongchan.ConnectYourDailyTravel</string>
+	<key>PROJECT_ID</key>
+	<string>connectyourtravel</string>
+	<key>STORAGE_BUCKET</key>
+	<string>connectyourtravel.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:266248331464:ios:1f959537af5bf984</string>
+	<key>DATABASE_URL</key>
+	<string>https://connectyourtravel.firebaseio.com</string>
+</dict>
+</plist>

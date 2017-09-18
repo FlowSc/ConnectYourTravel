@@ -70,10 +70,12 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                     self.dkAssetsList.append(asset)
                     print(self.dkAssetsList)
                     let assetLocation = asset.location?.coordinate
-//                    let assetLongitude = assetLocation?.longitude
-//                    let assetLatitude = assetLocation?.latitude
                     
                     self.locationInfo.append(assetLocation!)
+                    
+                    print("~~~~~~~~~~~~")
+                    print(assetLocation!)
+                    print("~~~~~~~~~~~~~")
                     
                     self.dateList.append((asset.originalAsset?.creationDate)!)
                     
@@ -136,7 +138,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cellsAcross: CGFloat = 1
         let spaceBetweenCells: CGFloat = 0
         let width = view.bounds.width
-        let dim = (collectionView.bounds.width - (cellsAcross - 1) * spaceBetweenCells) / cellsAcross
         return CGSize(width: width, height: width * 1.5)
     }
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

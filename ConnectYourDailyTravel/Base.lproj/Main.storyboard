@@ -1,15 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8cp-F2-AVi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mBk-wM-aCG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--여행의 조각-->
+        <!--여행의 기록, 여기-->
+        <scene sceneID="PzI-TJ-ba1">
+            <objects>
+                <tableViewController id="ZBg-OZ-hio" customClass="SideTableViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dG6-Mt-NOb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="DRB-QF-SSc" customClass="UserProfileView" customModule="ConnectYourDailyTravel" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSO-Ja-QaV">
+                                    <rect key="frame" x="10" y="180" width="355" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="teA-Uz-Bpe">
+                                    <rect key="frame" x="123.5" y="43.5" width="128.5" height="128.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="teA-Uz-Bpe" secondAttribute="height" multiplier="1:1" id="P2s-eK-fcZ"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="teA-Uz-Bpe" firstAttribute="centerY" secondItem="DRB-QF-SSc" secondAttribute="centerY" id="LeO-tY-DbT"/>
+                                <constraint firstAttribute="bottom" secondItem="MSO-Ja-QaV" secondAttribute="bottom" constant="10" id="PLI-K6-6ul"/>
+                                <constraint firstAttribute="trailing" secondItem="MSO-Ja-QaV" secondAttribute="trailing" constant="10" id="aHD-Yj-anY"/>
+                                <constraint firstItem="teA-Uz-Bpe" firstAttribute="height" secondItem="DRB-QF-SSc" secondAttribute="height" multiplier="0.6" id="kDH-h9-9f9"/>
+                                <constraint firstItem="teA-Uz-Bpe" firstAttribute="centerX" secondItem="DRB-QF-SSc" secondAttribute="centerX" id="mTG-x2-fuX"/>
+                                <constraint firstItem="MSO-Ja-QaV" firstAttribute="leading" secondItem="DRB-QF-SSc" secondAttribute="leading" constant="10" id="oYr-ze-KCy"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="nameLb" destination="MSO-Ja-QaV" id="vDR-tW-Vu2"/>
+                                <outlet property="profileImageView" destination="teA-Uz-Bpe" id="qoU-wB-NYn"/>
+                            </connections>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingCell" id="XBs-CF-pu8">
+                                <rect key="frame" x="0.0" y="242" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XBs-CF-pu8" id="2Xt-VF-2B4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="ZBg-OZ-hio" id="bhe-Zg-Ipc"/>
+                            <outlet property="delegate" destination="ZBg-OZ-hio" id="BJK-im-F2G"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="여행의 기록, 여기" id="Obu-ZT-fGR"/>
+                    <connections>
+                        <outlet property="settingTableView" destination="dG6-Mt-NOb" id="pel-H2-ENQ"/>
+                        <outlet property="userInfoView" destination="DRB-QF-SSc" id="8wX-kk-Iue"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="amf-kQ-cTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3053.5999999999999" y="-462.8185907046477"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="uLw-sN-HwS">
+            <objects>
+                <navigationController id="Onf-4g-RMJ" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eH3-Ku-vFt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="leftSide" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="ZBg-OZ-hio" kind="relationship" relationship="rootViewController" id="NaN-CY-5ah"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NLP-e5-yCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2102" y="-462"/>
+        </scene>
+        <!--사진을 선택하세요-->
         <scene sceneID="rFt-HS-lub">
             <objects>
                 <viewController id="uS2-Vs-IEt" customClass="ChooseViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,14 +164,20 @@
                             <constraint firstItem="KGB-Ji-grR" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="sNM-Pp-DMg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="여행의 조각" id="UNh-lc-bkC"/>
+                    <navigationItem key="navigationItem" title="사진을 선택하세요" id="UNh-lc-bkC">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="compose" id="I2I-8b-l9S">
+                            <connections>
+                                <segue destination="Onf-4g-RMJ" kind="presentation" id="dW8-Br-9JW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageCollectionView" destination="IkY-gZ-Htl" id="yn7-Xc-RsP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyB-FY-iW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2024.6376811594205" y="219.29347826086959"/>
+            <point key="canvasLocation" x="1308" y="206"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="QvP-F3-2rk">
@@ -129,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09k-85-YGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2934" y="220"/>
+            <point key="canvasLocation" x="2102" y="206"/>
         </scene>
         <!--Time Line Collection View Controller-->
         <scene sceneID="bAm-Fn-as4">
@@ -143,7 +235,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-0G-eeC">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="W7d-0G-eeC">
                                 <rect key="frame" x="0.0" y="15" width="375" height="637"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Fbn-ct-bad">
@@ -189,7 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LX5-RE-a5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3879.1999999999998" y="-461.91904047976016"/>
+            <point key="canvasLocation" x="3841" y="220"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="oc0-SM-Cmr">
@@ -211,7 +303,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kf4-eR-4sW" id="5lW-Eg-H8q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -233,12 +325,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pl6-td-k0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3881" y="213"/>
+            <point key="canvasLocation" x="4703" y="219"/>
+        </scene>
+        <!--Launch View Controller-->
+        <scene sceneID="alA-nV-A9e">
+            <objects>
+                <viewController storyboardIdentifier="LaunchViewController" id="mBk-wM-aCG" customClass="LaunchViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="obE-en-Qav"/>
+                        <viewControllerLayoutGuide type="bottom" id="aJl-7n-NA8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="foB-gD-hJy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GHe-hw-PUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-417" y="206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LoP-0c-vMG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8cp-F2-AVi" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="FirstNavController" automaticallyAdjustsScrollViewInsets="NO" id="8cp-F2-AVi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bZ8-Fj-Vr7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -251,7 +361,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv6-K1-quQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085.5999999999999" y="219.94002998500753"/>
+            <point key="canvasLocation" x="367" y="206"/>
         </scene>
     </scenes>
 </document>

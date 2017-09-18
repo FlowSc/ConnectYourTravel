@@ -16,3 +16,5 @@
 - Alamofire
 - DKImagePickerController
 - Kingfisher
+- Firebase
+- SideMenu

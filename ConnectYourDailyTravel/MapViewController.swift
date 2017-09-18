@@ -36,6 +36,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let dateformatter:DateFormatter = DateFormatter()
             let assetLocation = annotation.location?.coordinate
             
+            
+            if assetLocation != nil {
             dateformatter.dateFormat = "yyyy-MM-dd"
             
             myPoint.coordinate = (annotation.originalAsset?.location?.coordinate)!
@@ -52,11 +54,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 print(placemark?.addressDictionary)
                 print(placemark?.subLocality)
                 print(placemark?.areasOfInterest)
-               myPoint.title = "\((placemark?.locality)!)"
-                myPoint.subtitle = "\((placemark?.name)!)"
+               myPoint.title = "\((placemark?.locality) ?? "")"
+                myPoint.subtitle = "\((placemark?.name) ?? "")"
                 print("end")
 
             })
+            }
 
         }
         myMapView.addAnnotations(annotations)
