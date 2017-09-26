@@ -17,7 +17,7 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     var dkAssetList:[DKAsset] = []
     var myAddressList:[String] = []
     var commentList:[String] = []
-    var realCommentList:[String] = ["aa", "bb", "cc", "dd", "ee", "ff", "GG", "qq", "xx" , "ww", "yy", "tt", "o", "p"]
+//    var realCommentList:[String] = ["aa", "bb", "cc", "dd", "ee", "ff", "GG", "qq", "xx" , "ww", "yy", "tt", "o", "p"]
 
     
     @IBOutlet weak var myCollectionView: UICollectionView!
@@ -76,13 +76,13 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         }
     
         cell.commentTv.delegate = self
-        cell.commentTv.text = realCommentList[indexPath.item]
+//        cell.commentTv.text = realCommentList[indexPath.item]
         print("~~~~~~")
-        print(realCommentList[indexPath.item])
+//        print(realCommentList[indexPath.item])
         print(cell.commentTv.text)
         print("~~~~~~~~")
-        realCommentList[indexPath.item] = cell.commentTv.text
-        print(realCommentList[indexPath.item])
+//        realCommentList[indexPath.item] = cell.commentTv.text
+//        print(realCommentList[indexPath.item])
 
         
         return cell
