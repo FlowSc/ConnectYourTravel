@@ -20,30 +20,15 @@ class SideTableViewController: UITableViewController {
     let settingMenu:[String] = ["저장된 여행 기록 보기", "계정관리", "설정", "개발자에게", "로그아웃"]
 //    var photoUrl = UserDefaults.standard.url(forKey: "UserPhoto")
 //    var loginUserName =  UserDefaults.standard.string(forKey: "UserName")
-    let loginUser = Auth.auth().currentUser?.uid
     
     @IBOutlet var settingTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("LoginInfo")
-        print(loginUser)
-        print("VVVVVVV")
         
         ref = Database.database().reference()
-        
-        ref.child("users").child(loginUser!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let userName = value?["userName"] as? String ?? ""
-            self.userInfoView.nameLb.text = userName
-            let profileImage = value?["photoUrl"] as? String ?? ""
-            
-            if profileImage != "" {
-                self.userInfoView.profileImageView.kf.setImage(with: URL.init(string: profileImage))
-            }else{
-                self.userInfoView.profileImageView.image = #imageLiteral(resourceName: "default-user-image.png")
-            }
-            
-        })
+        self.userInfoView.profileImageView.image = #imageLiteral(resourceName: "default-user-image.png")
+        self.userInfoView.nameLb.text = "User"
+
         
         settingTableView.delegate = self
         settingTableView.dataSource = self
@@ -54,6 +39,29 @@ class SideTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let loginUser = Auth.auth().currentUser?.uid
+        print(loginUser)
+
+        guard let loginUser1 = loginUser else {return}
+        
+        ref.child("users").child(loginUser1).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let userName = value?["userName"] as? String ?? ""
+            self.userInfoView.nameLb.text = userName
+            let profileImage = value?["photoUrl"] as? String ?? ""
+            self.userInfoView.profileImageView.image = #imageLiteral(resourceName: "default-user-image.png")
+            
+            
+            if profileImage != "" {
+                self.userInfoView.profileImageView.kf.setImage(with: URL.init(string: profileImage))
+            }
+            
+        })
     }
 
     // MARK: - Table view data source

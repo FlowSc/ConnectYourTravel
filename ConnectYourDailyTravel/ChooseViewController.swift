@@ -13,10 +13,12 @@ import SwiftyJSON
 import FirebaseAuth
 import Firebase
 import FirebaseDatabase
+import Photos
 
 class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    
     let loginUser = Auth.auth().currentUser
     var imageList:[UIImage] = []
     var addressList:[String] = []
@@ -24,6 +26,9 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     var locationInfo:[CLLocationCoordinate2D] = []
     var dateList:[Date] = []
     var locationManager:CLLocationManager = CLLocationManager()
+    var thumnailDate:String?
+    let dateFormatter = DateFormatter()
+
     
     @IBAction func moveToMapView(_ sender: UIButton) {
         
@@ -57,10 +62,21 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         locationInfo = []
         dateList = []
         
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        
+        print(thumnailDate!)
+        print(dateFormatter.date(from: thumnailDate!))
+        
+        let filterDate = dateFormatter.date(from: thumnailDate!)
+        let filterPridicate = NSPredicate(format: "creationDate == %@", dateFormatter.date(from: thumnailDate!) as! CVarArg)
         let pickerController = DKImagePickerController()
         
+        pickerController.imageFetchPredicate = filterPridicate
+        
+        
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
-            
+          
+ 
             
             for asset in assets {
                 
@@ -109,6 +125,8 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(thumnailDate)
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         self.imageCollectionView.register(UINib.init(nibName: "ThumnailImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
@@ -133,13 +151,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // Compute the dimension of a cell for an NxN layout with space S between
-        // cells.  Take the collection view's width, subtract (N-1)*S points for
-        // the spaces between the cells, and then divide by N to find the final
-        // dimension for the cell's width and height.
-        
-        let cellsAcross: CGFloat = 1
-        let spaceBetweenCells: CGFloat = 0
         let width = view.bounds.width
         return CGSize(width: width, height: width * 1.5)
     }

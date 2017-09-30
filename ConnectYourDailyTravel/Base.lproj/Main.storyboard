@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="242" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XBs-CF-pu8" id="2Xt-VF-2B4">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -66,7 +66,6 @@
                             <outlet property="delegate" destination="ZBg-OZ-hio" id="BJK-im-F2G"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="계정" id="RYm-eW-Vf7"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="여행의 기록, 여기" id="Obu-ZT-fGR">
                         <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="gff-qA-CbQ"/>
@@ -79,12 +78,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amf-kQ-cTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673.91304347826087" y="1050.8152173913045"/>
+            <point key="canvasLocation" x="1651" y="1051"/>
         </scene>
         <!--사진을 선택하세요-->
         <scene sceneID="rFt-HS-lub">
             <objects>
-                <viewController id="uS2-Vs-IEt" customClass="ChooseViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseViewController" id="uS2-Vs-IEt" customClass="ChooseViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cwk-ol-Qdm"/>
                         <viewControllerLayoutGuide type="bottom" id="yEm-al-wIe"/>
@@ -94,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IkY-gZ-Htl">
-                                <rect key="frame" x="0.0" y="64" width="414" height="493"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="586"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2Kw-Cv-x1a">
                                     <size key="itemSize" width="416" height="439"/>
@@ -104,7 +103,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="j4O-3r-dcK">
-                                        <rect key="frame" x="0.0" y="27" width="416" height="439"/>
+                                        <rect key="frame" x="0.0" y="73.666666666666671" width="416" height="439"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="416" height="439"/>
@@ -114,7 +113,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hc-JS-Azy">
-                                <rect key="frame" x="0.0" y="567" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="616" width="414" height="60"/>
                                 <color key="backgroundColor" red="0.96497545259999995" green="1" blue="0.83467156639999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Q3K-b3-qqx"/>
@@ -125,7 +124,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-Ji-grR">
-                                <rect key="frame" x="0.0" y="627" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="pQ5-3u-W6U"/>
@@ -157,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyB-FY-iW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="188"/>
+            <point key="canvasLocation" x="2414" y="219"/>
         </scene>
         <!--Item-->
         <scene sceneID="QvP-F3-2rk">
@@ -203,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09k-85-YGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="188"/>
+            <point key="canvasLocation" x="3351" y="219"/>
         </scene>
         <!--Time Line Collection View Controller-->
         <scene sceneID="bAm-Fn-as4">
@@ -285,7 +284,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kf4-eR-4sW" id="5lW-Eg-H8q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -671,6 +670,64 @@
             </objects>
             <point key="canvasLocation" x="671" y="-515"/>
         </scene>
+        <!--Thumnail Select View Controller-->
+        <scene sceneID="Sg9-W0-7We">
+            <objects>
+                <viewController id="hrp-9G-gJJ" customClass="ThumnailSelectViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="O7B-WW-I55"/>
+                        <viewControllerLayoutGuide type="bottom" id="78c-3d-i2b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Es5-Bc-vod">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzO-TA-BGf">
+                                <rect key="frame" x="0.0" y="637" width="414" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.32448619090000003" blue="0.42025007120000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7bh-uM-Kf0"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="moveToSelectTouched:" destination="hrp-9G-gJJ" eventType="touchUpInside" id="FnY-UN-xUa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X43-jP-wD5">
+                                <rect key="frame" x="0.0" y="577" width="414" height="60"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Hwd-Uz-Y6W"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="thumnailPickerTouched:" destination="hrp-9G-gJJ" eventType="touchUpInside" id="U3u-ny-RUF"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XUS-nP-kpU">
+                                <rect key="frame" x="87" y="142" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="X43-jP-wD5" secondAttribute="trailing" id="Sae-Au-5un"/>
+                            <constraint firstItem="PzO-TA-BGf" firstAttribute="top" secondItem="X43-jP-wD5" secondAttribute="bottom" id="T0I-AS-fA4"/>
+                            <constraint firstItem="PzO-TA-BGf" firstAttribute="leading" secondItem="Es5-Bc-vod" secondAttribute="leading" id="WWZ-96-4J6"/>
+                            <constraint firstItem="X43-jP-wD5" firstAttribute="leading" secondItem="Es5-Bc-vod" secondAttribute="leading" id="aR7-mz-1qR"/>
+                            <constraint firstItem="78c-3d-i2b" firstAttribute="top" secondItem="PzO-TA-BGf" secondAttribute="bottom" id="xE3-vk-9Mu"/>
+                            <constraint firstAttribute="trailing" secondItem="PzO-TA-BGf" secondAttribute="trailing" id="zix-QK-CLu"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="65D-lz-fj2"/>
+                    <connections>
+                        <outlet property="thumnailImage" destination="XUS-nP-kpU" id="FLs-qH-CO4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bmC-R1-ZwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1541" y="218"/>
+        </scene>
         <!--여기-->
         <scene sceneID="LoP-0c-vMG">
             <objects>
@@ -684,7 +741,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uS2-Vs-IEt" kind="relationship" relationship="rootViewController" id="bwL-4S-3ct"/>
+                        <segue destination="hrp-9G-gJJ" kind="relationship" relationship="rootViewController" id="J6K-hX-EhO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hv6-K1-quQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -697,18 +754,38 @@
                 <tabBarController storyboardIdentifier="MainTabbar" automaticallyAdjustsScrollViewInsets="NO" id="m3N-UT-xCD" customClass="MyTabbarViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="JDH-Rt-r9W">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="nm7-Ev-VEe" kind="relationship" relationship="viewControllers" id="Qax-Gj-1Cb"/>
                         <segue destination="8cp-F2-AVi" kind="relationship" relationship="viewControllers" id="C3m-gK-NEK"/>
-                        <segue destination="ZBg-OZ-hio" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
+                        <segue destination="mg8-pn-4hq" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTx-JH-WfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-493" y="188"/>
+        </scene>
+        <!--계정-->
+        <scene sceneID="fgN-yF-pil">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mg8-pn-4hq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="계정" id="RYm-eW-Vf7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="in0-AO-Wrl">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZBg-OZ-hio" kind="relationship" relationship="rootViewController" id="04n-7A-RDz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MiN-rn-sET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672.46376811594212" y="1050.8152173913045"/>
         </scene>
     </scenes>
     <resources>

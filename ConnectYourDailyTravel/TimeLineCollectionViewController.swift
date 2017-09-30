@@ -124,9 +124,7 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         // cells.  Take the collection view's width, subtract (N-1)*S points for
         // the spaces between the cells, and then divide by N to find the final
         // dimension for the cell's width and height.
-        
-        let cellsAcross: CGFloat = 1
-        let spaceBetweenCells: CGFloat = 0
+
         let width = view.bounds.width
         return CGSize(width: width, height: width * 1.5)
     }
