@@ -16,10 +16,6 @@ class SideTableViewController: UITableViewController {
     
     var ref: DatabaseReference!
 
-    @IBAction func dismissButtonTouched(_ sender: UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
-    }
     @IBOutlet weak var userInfoView: UserProfileView!
     let settingMenu:[String] = ["저장된 여행 기록 보기", "계정관리", "설정", "개발자에게", "로그아웃"]
 //    var photoUrl = UserDefaults.standard.url(forKey: "UserPhoto")
@@ -51,8 +47,6 @@ class SideTableViewController: UITableViewController {
         
         settingTableView.delegate = self
         settingTableView.dataSource = self
-//        userInfoView.nameLb.text = "\(loginUserName ?? "Guest") 님 환영합니다!"
-//        userInfoView.profileImageView.kf.setImage(with: photoUrl)
 
         
           }

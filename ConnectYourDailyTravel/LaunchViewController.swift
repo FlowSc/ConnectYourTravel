@@ -24,7 +24,7 @@ class LaunchViewController: UIViewController {
             
             print(alreadySignedIn)
             
-            let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstNavController") as! UINavigationController
+            let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
             
             self.present(mvc, animated: false, completion: nil)
             
@@ -34,47 +34,16 @@ class LaunchViewController: UIViewController {
         }
 
     }
-        
+    @IBAction func facebookLoginTouched(_ sender: UIButton) {
+        loginButtonClicked()
+    }
     
-        
-    
-    
-
+    @IBAction func emailLoginTouched(_ sender: Any) {
+        emailLoginTouched()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let emailLogin = UIButton.init(type: .system)
-        emailLogin.setTitle("Email Login", for: .normal)
-        emailLogin.backgroundColor = .blue
-        emailLogin.addTarget(self, action: #selector(emailLoginTouched), for: .touchUpInside)
-        
-        
-        let myLoginButton = UIButton.init(type: .system)
-        myLoginButton.backgroundColor = UIColor.red
-        myLoginButton.center = view.center;
-        myLoginButton.setTitle("My Login Button", for: .normal)
-        // Handle clicks on the button
-        myLoginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
-        
-        // Add the button to the view
-        view.addSubview(myLoginButton)
-        view.addSubview(emailLogin)
-        
-        myLoginButton.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: 180, height: 40))
-        }
-        emailLogin.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 180, height: 40))
-            make.bottom.equalTo(myLoginButton).offset(60)
-        }
-        
-       
-        
-        
-        
-
+    
         // Do any additional setup after loading the view.
     }
 
@@ -92,7 +61,7 @@ class LaunchViewController: UIViewController {
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success(let grantedPermissions, let _, let accessToken):
                 
                 let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
                 
@@ -112,7 +81,7 @@ class LaunchViewController: UIViewController {
                 print("Logged in!")
                 
                 
-                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstNavController") as! UINavigationController
+                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
                 
                 self.present(mvc, animated: true, completion: nil)
                 

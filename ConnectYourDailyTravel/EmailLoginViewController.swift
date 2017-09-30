@@ -68,7 +68,7 @@ class EmailLoginViewController: UIViewController, UITextFieldDelegate {
                 print(error.localizedDescription)
             }else if let user = Auth.auth().currentUser {
                 print(user)
-                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FirstNavController") as! UINavigationController
+                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
                 
                 self.present(mvc, animated: true, completion: nil)
 

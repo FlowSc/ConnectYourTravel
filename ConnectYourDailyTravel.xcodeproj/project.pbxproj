@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752880411F7F917F0071F089 /* Tabbar1ViewController.swift */; };
+		752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752880431F7F92C20071F089 /* MyTabbarViewController.swift */; };
 		7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6821F696E5900EEA8E6 /* AppDelegate.swift */; };
 		7549D6881F696E5900EEA8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6861F696E5900EEA8E6 /* Main.storyboard */; };
 		7549D68A1F696E5900EEA8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6891F696E5900EEA8E6 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		36F61F984D4B6560CED05ABA /* Pods-ConnectYourDailyTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.release.xcconfig"; sourceTree = "<group>"; };
+		752880411F7F917F0071F089 /* Tabbar1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar1ViewController.swift; sourceTree = "<group>"; };
+		752880431F7F92C20071F089 /* MyTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabbarViewController.swift; sourceTree = "<group>"; };
 		7549D67F1F696E5900EEA8E6 /* ConnectYourDailyTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectYourDailyTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7549D6821F696E5900EEA8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7549D6871F696E5900EEA8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				7549D6821F696E5900EEA8E6 /* AppDelegate.swift */,
 				7549D69C1F69773500EEA8E6 /* ChooseViewController.swift */,
 				7549D6861F696E5900EEA8E6 /* Main.storyboard */,
+				752880431F7F92C20071F089 /* MyTabbarViewController.swift */,
+				752880411F7F917F0071F089 /* Tabbar1ViewController.swift */,
 				7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */,
 				7549D6D01F6F9FCD00EEA8E6 /* EmailLoginViewController.swift */,
 				7549D6BC1F6F2EE900EEA8E6 /* LaunchViewController.swift */,
@@ -297,6 +303,7 @@
 			files = (
 				7549D6A11F697EE900EEA8E6 /* Server.swift in Sources */,
 				7549D6D11F6F9FCD00EEA8E6 /* EmailLoginViewController.swift in Sources */,
+				752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */,
 				7549D69A1F6971F400EEA8E6 /* ThumnailImageCollectionViewCell.swift in Sources */,
 				7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */,
 				7549D6B31F6EE7BE00EEA8E6 /* DataCenter.swift in Sources */,
@@ -304,6 +311,7 @@
 				7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */,
 				7549D6AA1F6AE8AC00EEA8E6 /* TimeTableViewCell.swift in Sources */,
 				7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */,
+				752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */,
 				7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */,
 				7549D6BD1F6F2EE900EEA8E6 /* LaunchViewController.swift in Sources */,
 				7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */,
