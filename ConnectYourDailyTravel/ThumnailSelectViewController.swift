@@ -10,6 +10,9 @@ import UIKit
 import DKImagePickerController
 import MapKit
 
+
+var dataParameter:[String:Any] = [:]
+
 class ThumnailSelectViewController: UIViewController {
 
     @IBOutlet weak var thumnailImage: UIImageView!
@@ -55,10 +58,6 @@ class ThumnailSelectViewController: UIViewController {
             
         }
         
-//        picker.selectedAssets[0].fetchOriginalImage(true) { (image, _) in
-//            self.thumnailImage.image = image
-//        }
-        
     }
     
     @IBAction func moveToSelectTouched(_ sender: Any) {
@@ -68,7 +67,7 @@ class ThumnailSelectViewController: UIViewController {
         let mv = storyboard?.instantiateViewController(withIdentifier: "ChooseViewController") as! ChooseViewController
         
         mv.thumnailDate = thumnailDate
-        
+
             
             self.navigationController?.pushViewController(mv, animated: true)
         

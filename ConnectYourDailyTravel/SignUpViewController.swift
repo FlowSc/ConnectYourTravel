@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         emailTf.delegate = self
         passwordTf.delegate = self
         confirmTf.delegate = self

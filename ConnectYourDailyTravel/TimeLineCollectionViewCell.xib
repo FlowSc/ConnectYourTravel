@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,21 +40,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eca-ZF-oNj">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="285"/>
+                                        <rect key="frame" x="0.0" y="60" width="375" height="356"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="코멘트를 남겨주세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dUr-gA-hOZ">
-                                        <rect key="frame" x="0.0" y="345" width="375" height="71"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Eca-ZF-oNj" firstAttribute="height" secondItem="dUr-gA-hOZ" secondAttribute="height" multiplier="4" id="BhR-1o-Hzz"/>
                                     <constraint firstItem="fHL-GE-8sw" firstAttribute="width" secondItem="1B3-hj-Gam" secondAttribute="width" id="H79-Vl-S5A"/>
                                     <constraint firstItem="as0-I0-Juh" firstAttribute="height" secondItem="fHL-GE-8sw" secondAttribute="height" id="Yqj-ci-c9D"/>
-                                    <constraint firstItem="dUr-gA-hOZ" firstAttribute="width" secondItem="Eca-ZF-oNj" secondAttribute="width" id="qsX-gI-Pjw"/>
                                     <constraint firstItem="as0-I0-Juh" firstAttribute="width" secondItem="1B3-hj-Gam" secondAttribute="width" id="vtS-Qr-3CL"/>
                                 </constraints>
                             </stackView>
@@ -79,7 +70,6 @@
             <size key="customSize" width="375" height="416"/>
             <connections>
                 <outlet property="addressLb" destination="fHL-GE-8sw" id="oS2-Vw-z0h"/>
-                <outlet property="commentTv" destination="dUr-gA-hOZ" id="LFW-6g-cSm"/>
                 <outlet property="photiImageView" destination="Eca-ZF-oNj" id="2ZH-DI-KMT"/>
                 <outlet property="timeLb" destination="as0-I0-Juh" id="V5h-E7-2Ua"/>
             </connections>

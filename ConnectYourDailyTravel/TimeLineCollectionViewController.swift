@@ -17,9 +17,7 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     var dkAssetList:[DKAsset] = []
     var myAddressList:[String] = []
     var commentList:[String] = []
-//    var realCommentList:[String] = ["aa", "bb", "cc", "dd", "ee", "ff", "GG", "qq", "xx" , "ww", "yy", "tt", "o", "p"]
 
-    
     @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         
         myCollectionView.register(UINib.init(nibName: "TimeLineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimeLineCollectionViewCell")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         for _ in dkAssetList {
@@ -75,15 +73,6 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
             cell.photiImageView.image = image
         }
     
-        cell.commentTv.delegate = self
-//        cell.commentTv.text = realCommentList[indexPath.item]
-        print("~~~~~~")
-//        print(realCommentList[indexPath.item])
-        print(cell.commentTv.text)
-        print("~~~~~~~~")
-//        realCommentList[indexPath.item] = cell.commentTv.text
-//        print(realCommentList[indexPath.item])
-
         
         return cell
         
@@ -92,12 +81,8 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeLineCollectionViewCell", for: indexPath) as! TimeLineCollectionViewCell
         
-        if cell.commentTv.isFocused == true {
-            print(indexPath.item)
-
-        }
-        
     
+        print(indexPath.item)
     }
     
  
@@ -126,7 +111,7 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         // dimension for the cell's width and height.
 
         let width = view.bounds.width
-        return CGSize(width: width, height: width * 1.5)
+        return CGSize(width: width, height: width)
     }
 
     

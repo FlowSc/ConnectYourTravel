@@ -28,7 +28,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     var locationManager:CLLocationManager = CLLocationManager()
     var thumnailDate:String?
     let dateFormatter = DateFormatter()
-
     
     @IBAction func moveToMapView(_ sender: UIButton) {
         
@@ -61,17 +60,17 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         dkAssetsList = []
         locationInfo = []
         dateList = []
-        
-        dateFormatter.dateFormat = "MM-dd-yyyy"
-        
-        print(thumnailDate!)
-        print(dateFormatter.date(from: thumnailDate!))
-        
-        let filterDate = dateFormatter.date(from: thumnailDate!)
-        let filterPridicate = NSPredicate(format: "creationDate == %@", dateFormatter.date(from: thumnailDate!) as! CVarArg)
+//
+//        dateFormatter.dateFormat = "MM-dd-yyyy"
+//
+//        print(thumnailDate!)
+//        print(dateFormatter.date(from: thumnailDate!))
+//
+//        let filterDate = dateFormatter.date(from: thumnailDate!)
+//        let filterPridicate = NSPredicate(format: "creationDate == %@", dateFormatter.date(from: thumnailDate!) as! CVarArg)
         let pickerController = DKImagePickerController()
         
-        pickerController.imageFetchPredicate = filterPridicate
+//        pickerController.imageFetchPredicate = filterPridicate
         
         
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
