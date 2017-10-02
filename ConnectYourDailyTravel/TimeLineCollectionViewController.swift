@@ -21,6 +21,8 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        commentTv.delegate = self
+        commentTv.placeholder = "당신의 여행을 기록하세요"
         
         myCollectionView.dataSource = self
         myCollectionView.delegate = self

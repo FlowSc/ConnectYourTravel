@@ -38,6 +38,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             mvc.myAddressList = addressList
             mvc.dkAssetList = dkAssetsList
             mvc.locationInfoList = locationInfo
+            mvc.imageList = imageList
             
             self.navigationController?.pushViewController(mvc, animated: true)}
         else{
@@ -65,6 +66,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         let pickerController = DKImagePickerController()
         
         pickerController.imageFetchPredicate = filterPridicate
+        pickerController.assetType = .allPhotos
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
           
             for asset in assets {

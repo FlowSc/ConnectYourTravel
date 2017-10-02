@@ -10,6 +10,7 @@
 		752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752880411F7F917F0071F089 /* Tabbar1ViewController.swift */; };
 		752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752880431F7F92C20071F089 /* MyTabbarViewController.swift */; };
 		7528B1B61F7FC91F00893EC5 /* ThumnailSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */; };
+		7528B1D61F8284CD00893EC5 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7528B1D51F8284CC00893EC5 /* UITextViewPlaceholder.swift */; };
 		7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6821F696E5900EEA8E6 /* AppDelegate.swift */; };
 		7549D6881F696E5900EEA8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6861F696E5900EEA8E6 /* Main.storyboard */; };
 		7549D68A1F696E5900EEA8E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6891F696E5900EEA8E6 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		752880411F7F917F0071F089 /* Tabbar1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar1ViewController.swift; sourceTree = "<group>"; };
 		752880431F7F92C20071F089 /* MyTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabbarViewController.swift; sourceTree = "<group>"; };
 		7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumnailSelectViewController.swift; sourceTree = "<group>"; };
+		7528B1D51F8284CC00893EC5 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		7549D67F1F696E5900EEA8E6 /* ConnectYourDailyTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectYourDailyTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7549D6821F696E5900EEA8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7549D6871F696E5900EEA8E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				7549D69E1F6979A000EEA8E6 /* MapViewController.swift */,
 				7549D6D21F6FCB4200EEA8E6 /* YeogiBackground.png */,
 				7549D6D31F6FCB4200EEA8E6 /* YeogiLaunch.png */,
+				7528B1D51F8284CC00893EC5 /* UITextViewPlaceholder.swift */,
 				7549D6A21F699D5900EEA8E6 /* CustomAnnotation.swift */,
 				7549D6A01F697EE900EEA8E6 /* Server.swift */,
 				7549D6891F696E5900EEA8E6 /* Assets.xcassets */,
@@ -310,6 +313,7 @@
 				752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */,
 				7549D69A1F6971F400EEA8E6 /* ThumnailImageCollectionViewCell.swift in Sources */,
 				7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */,
+				7528B1D61F8284CD00893EC5 /* UITextViewPlaceholder.swift in Sources */,
 				7549D6B31F6EE7BE00EEA8E6 /* DataCenter.swift in Sources */,
 				7549D69D1F69773500EEA8E6 /* ChooseViewController.swift in Sources */,
 				7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */,

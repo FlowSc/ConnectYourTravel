@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var dkAssetList:[DKAsset] = []
     var myAddressList:[String] = []
     var myRoute:MKRoute!
+    var imageList:[UIImage] = []
     
     @IBOutlet weak var myMapView: MKMapView!
     
@@ -28,11 +29,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var annotations = [MKPointAnnotation]()
+        
+        var annotations = [CustomAnnotation]()
         
         for annotation in dkAssetList {
             
-            let myPoint = MKPointAnnotation()
+            let myPoint = CustomAnnotation()
             let dateformatter:DateFormatter = DateFormatter()
             let assetLocation = annotation.location?.coordinate
             
@@ -43,21 +45,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             myPoint.coordinate = (annotation.originalAsset?.location?.coordinate)!
             
             annotations.append(myPoint)
-            self.myMapView.addAnnotations(annotations)
+                
+               
             
             Server.cellLocation(myLocation: (annotation.originalAsset?.location)!, completionHandler: { (placemark) in
                 
                 print("Placemark")
-                myPoint.title = "\((placemark?.locality) ?? "")"
-                myPoint.subtitle = "\((placemark?.name) ?? "")"
+                myPoint.customtitle = "\((placemark?.locality) ?? "")"
+                myPoint.customsubtitle = "\((placemark?.name) ?? "")"
+                myPoint.image = #imageLiteral(resourceName: "YeogiLaunch.png")
                 print("end")
-
+                
+                DispatchQueue.main.async {
+                    self.myMapView.addAnnotation(myPoint)
+                }
             })
             }
 
         }
-        myMapView.addAnnotations(annotations)
-        
         locationManager.requestAlwaysAuthorization()
         myMapView.showsUserLocation = true
         myMapView.showsCompass = true
@@ -78,6 +83,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         myLineRenderer.strokeColor = UIColor.blue
         myLineRenderer.lineWidth = 1
         return myLineRenderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKind(of: MKUserLocation.self) {  //Handle user location annotation..
+            return nil  //Default is to let the system handle it.
+        }
+        
+        if !annotation.isKind(of: CustomAnnotation.self) {  //Handle non-ImageAnnotations..
+            var pinAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "DefaultPinView")
+            if pinAnnotationView == nil {
+                pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DefaultPinView")
+            }
+            return pinAnnotationView
+        }
+        
+        //Handle ImageAnnotations..
+        var view: ImageAnnotationView? = myMapView.dequeueReusableAnnotationView(withIdentifier: "imageAnnotation") as? ImageAnnotationView
+        if view == nil {
+            view = ImageAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
+        }
+        
+        let annotation = annotation as! CustomAnnotation
+        view?.image = annotation.image
+        view?.annotation = annotation
+        
+        return view
     }
     
     override func didReceiveMemoryWarning() {
