@@ -28,16 +28,24 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     var locationManager:CLLocationManager = CLLocationManager()
     var thumnailDate:String?
     let dateFormatter = DateFormatter()
+    var arrangeDK:[DKAsset]!
     
     @IBAction func moveToMapView(_ sender: UIButton) {
+        
+        arrangeDK = dkAssetsList.sorted { (aa, bb) -> Bool in
+            
+            let aaDate = aa.originalAsset?.creationDate!
+            let bbDate = bb.originalAsset?.creationDate!
+            
+            return aaDate! > bbDate!
+        }
         
         if locationInfo.count >= 2 {
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
             mvc.myAddressList = addressList
-            mvc.dkAssetList = dkAssetsList
-            mvc.locationInfoList = locationInfo
+            mvc.dkAssetsList = arrangeDK
             mvc.imageList = imageList
             
             self.navigationController?.pushViewController(mvc, animated: true)}
@@ -78,7 +86,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if asset.location?.coordinate != nil {
                     
                     self.dkAssetsList.append(asset)
-                    savedArray.append(asset)
                     
                     let assetLocation = asset.location?.coordinate
                     

@@ -21,6 +21,8 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(dkAssetList.count)
         commentTv.delegate = self
         commentTv.placeholder = "당신의 여행을 기록하세요"
         
@@ -29,8 +31,6 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         myCollectionView.register(UINib.init(nibName: "TimeLineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimeLineCollectionViewCell")
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
-        
         }
 
     override func didReceiveMemoryWarning() {

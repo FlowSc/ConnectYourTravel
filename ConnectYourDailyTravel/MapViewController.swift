@@ -15,11 +15,12 @@ var myTransportType:MKDirectionsTransportType = MKDirectionsTransportType.automo
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    var locationInfoList:[CLLocationCoordinate2D] = []
-    var dkAssetList:[DKAsset] = []
+    var dkAssetsList:[DKAsset] = []
     var myAddressList:[String] = []
     var myRoute:MKRoute!
     var imageList:[UIImage] = []
+    var currentIndex:Int = 0
+    var tossList:[DKAsset] = []
     
     @IBOutlet weak var myMapView: MKMapView!
     
@@ -29,40 +30,46 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        tossList = dkAssetsList
         
-        var annotations = [CustomAnnotation]()
+        var myIndex = 0
         
-        for annotation in dkAssetList {
+        while myIndex < dkAssetsList.count {
+            
+            
+            var currentAsset = dkAssetsList[myIndex]
             
             let myPoint = CustomAnnotation()
             let dateformatter:DateFormatter = DateFormatter()
-            let assetLocation = annotation.location?.coordinate
+            let assetLocation = currentAsset.location?.coordinate
+            
             
             
             if assetLocation != nil {
             dateformatter.dateFormat = "yyyy-MM-dd"
             
-            myPoint.coordinate = (annotation.originalAsset?.location?.coordinate)!
-            
-            annotations.append(myPoint)
+            myPoint.coordinate = (currentAsset.originalAsset?.location?.coordinate)!
                 
-               
-            
-            Server.cellLocation(myLocation: (annotation.originalAsset?.location)!, completionHandler: { (placemark) in
+            Server.cellLocation(myLocation: (currentAsset.originalAsset?.location)!, completionHandler: { (placemark) in
                 
                 print("Placemark")
                 myPoint.customtitle = "\((placemark?.locality) ?? "")"
                 myPoint.customsubtitle = "\((placemark?.name) ?? "")"
-                myPoint.image = #imageLiteral(resourceName: "YeogiLaunch.png")
+                myPoint.image = self.imageList[myIndex]
                 print("end")
-                
+
                 DispatchQueue.main.async {
                     self.myMapView.addAnnotation(myPoint)
                 }
+
+
             })
             }
-
+            myIndex += 1
+            
         }
+        
         locationManager.requestAlwaysAuthorization()
         myMapView.showsUserLocation = true
         myMapView.showsCompass = true
@@ -102,6 +109,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var view: ImageAnnotationView? = myMapView.dequeueReusableAnnotationView(withIdentifier: "imageAnnotation") as? ImageAnnotationView
         if view == nil {
             view = ImageAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
+            view?.canShowCallout = false
         }
         
         let annotation = annotation as! CustomAnnotation
@@ -118,18 +126,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func getMultipleLocationRoute(){
         
-        while locationInfoList.count > 1 {
+        while dkAssetsList.count > 1 {
             
-            let startLocation = locationInfoList.removeLast()
+            let startLocation = dkAssetsList.removeLast().originalAsset?.location?.coordinate
             
             print(startLocation)
             
-            let endLocation = locationInfoList.last!
+            let endLocation = dkAssetsList.last!.originalAsset?.location?.coordinate
             
             print(endLocation)
             
-            let startPlacemark = MKPlacemark(coordinate: startLocation)
-            let endPlacemark = MKPlacemark(coordinate: endLocation)
+            let startPlacemark = MKPlacemark(coordinate: startLocation!)
+            let endPlacemark = MKPlacemark(coordinate: endLocation!)
             
             let startItem = MKMapItem(placemark: startPlacemark)
             let desItem = MKMapItem(placemark: endPlacemark)
@@ -162,7 +170,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let mvc = storyboard?.instantiateViewController(withIdentifier: "TimeLineCollectionViewController") as! TimeLineCollectionViewController
         
-        mvc.dkAssetList = dkAssetList
+        mvc.dkAssetList = tossList
         mvc.myAddressList = myAddressList
         
         self.navigationController?.pushViewController(mvc, animated: true)
