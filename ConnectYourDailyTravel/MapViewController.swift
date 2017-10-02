@@ -11,6 +11,8 @@ import MapKit
 import SwiftyJSON
 import DKImagePickerController
 
+var myTransportType:MKDirectionsTransportType = MKDirectionsTransportType.automobile
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var locationInfoList:[CLLocationCoordinate2D] = []
@@ -25,8 +27,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.navigationItem.title = "여행의 흔적"
         
         var annotations = [MKPointAnnotation]()
         
@@ -48,13 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             Server.cellLocation(myLocation: (annotation.originalAsset?.location)!, completionHandler: { (placemark) in
                 
                 print("Placemark")
-                print(placemark?.name)
-                print(placemark?.locality)
-                print(placemark?.subThoroughfare)
-                print(placemark?.addressDictionary)
-                print(placemark?.subLocality)
-                print(placemark?.areasOfInterest)
-               myPoint.title = "\((placemark?.locality) ?? "")"
+                myPoint.title = "\((placemark?.locality) ?? "")"
                 myPoint.subtitle = "\((placemark?.name) ?? "")"
                 print("end")
 
@@ -82,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         let myLineRenderer = MKPolylineRenderer(polyline: myRoute.polyline)
         myLineRenderer.strokeColor = UIColor.blue
-        myLineRenderer.lineWidth = 2
+        myLineRenderer.lineWidth = 1
         return myLineRenderer
     }
     
@@ -110,10 +104,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let desItem = MKMapItem(placemark: endPlacemark)
             
             let directionRequest = MKDirectionsRequest()
+            print(myTransportType)
             
             directionRequest.source = startItem
             directionRequest.destination = desItem
-            directionRequest.transportType = .walking
+            directionRequest.transportType = myTransportType
             
             let directions = MKDirections(request: directionRequest)
             

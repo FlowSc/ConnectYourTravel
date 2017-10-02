@@ -72,7 +72,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
 //        pickerController.imageFetchPredicate = filterPridicate
         
-        
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
           
  
@@ -86,14 +85,11 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if asset.location?.coordinate != nil {
                     
                     self.dkAssetsList.append(asset)
-                    print(self.dkAssetsList)
+                    savedArray.append(asset)
+                    
                     let assetLocation = asset.location?.coordinate
                     
                     self.locationInfo.append(assetLocation!)
-                    
-                    print("~~~~~~~~~~~~")
-                    print(assetLocation!)
-                    print("~~~~~~~~~~~~~")
                     
                     self.dateList.append((asset.originalAsset?.creationDate)!)
                     
@@ -125,12 +121,13 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(thumnailDate)
+        print("DATE!!!")
+        print(selectedDate)
+        print("AAAAA")
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         self.imageCollectionView.register(UINib.init(nibName: "ThumnailImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -153,11 +150,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         let width = view.bounds.width
         return CGSize(width: width, height: width * 1.5)
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    }
-//    
-    
-
 
     /*
     // MARK: - Navigation

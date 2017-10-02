@@ -64,8 +64,6 @@ class Server {
     
     static func cellLocation(myLocation :CLLocation, completionHandler: @escaping (CLPlacemark?) -> Void) {
         
-        
-        
         let geocoder = CLGeocoder()
         
         geocoder.reverseGeocodeLocation(myLocation) { (placemarks, error) in
@@ -76,8 +74,5 @@ class Server {
                 completionHandler(nil)
             }
         }
-        
     }
-
-    
 }

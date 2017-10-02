@@ -11,11 +11,16 @@ import DKImagePickerController
 import MapKit
 
 
-var dataParameter:[String:Any] = [:]
+var savedArray:[DKAsset] = []
+var selectedDate:Date = Date()
+
 
 class ThumnailSelectViewController: UIViewController {
 
-    @IBOutlet weak var thumnailImage: UIImageView!
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        
+        sender.date = selectedDate
+    }
     var thumnailDK:DKAsset?
     var thumnailDate:String?
     let dateFormatter = DateFormatter()
@@ -31,47 +36,24 @@ class ThumnailSelectViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    @IBAction func thumnailPickerTouched(_ sender: Any) {
+    @IBAction func selectWayToMoveSegment(_ sender: UISegmentedControl) {
         
-        let picker = DKImagePickerController()
-        picker.autoCloseOnSingleSelect = true
-        picker.singleSelect = true
-        
-        
-        self.present(picker, animated: true, completion: nil)
-        
-        picker.didSelectAssets = {[unowned self](assets: [DKAsset]) in
-            
-            let thumnailImage = assets[0]
-            
-            self.dateFormatter.dateFormat = "MM-dd-yyyy"
-            
-            self.thumnailDate = self.dateFormatter.string(from: (thumnailImage.originalAsset?.creationDate)!)
-            
-            thumnailImage.fetchOriginalImageWithCompleteBlock({ (image, _) in
-                self.thumnailImage.image = image
-            })
-            self.thumnailDK = thumnailImage
-            self.thumnailDateData = thumnailImage.originalAsset?.creationDate
-            
+        if sender.selectedSegmentIndex == 0 {
+            myTransportType = MKDirectionsTransportType.automobile
+        }else if sender.selectedSegmentIndex == 1 {
+            myTransportType = MKDirectionsTransportType.walking
+        }else if sender.selectedSegmentIndex == 2 {
+            myTransportType = MKDirectionsTransportType.transit
         }
-        
     }
     
     @IBAction func moveToSelectTouched(_ sender: Any) {
         
-        if thumnailDK != nil {
-        
         let mv = storyboard?.instantiateViewController(withIdentifier: "ChooseViewController") as! ChooseViewController
         
-        mv.thumnailDate = thumnailDate
-
             
             self.navigationController?.pushViewController(mv, animated: true)
         
-        }
 
     }
     /*

@@ -14,9 +14,9 @@ import Alamofire
 
 class TimeLineCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITextViewDelegate, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var commentTv: UITextView!
     var dkAssetList:[DKAsset] = []
     var myAddressList:[String] = []
-    var commentList:[String] = []
 
     @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
@@ -24,17 +24,10 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
-        
         myCollectionView.register(UINib.init(nibName: "TimeLineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimeLineCollectionViewCell")
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        for _ in dkAssetList {
-            commentList.append("코멘트를 남겨주세요")
-        }
-        
-        print(commentList.count)
+
         
         }
 
@@ -115,7 +108,9 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
     }
 
     
-
+    @IBAction func saveButtonTouched(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 
