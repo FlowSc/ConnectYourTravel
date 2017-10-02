@@ -39,7 +39,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             mvc.dkAssetList = dkAssetsList
             mvc.locationInfoList = locationInfo
             
-            
             self.navigationController?.pushViewController(mvc, animated: true)}
         else{
             let alertC = UIAlertController.init(title: "사진이 선택되지 않았습니다", message: "경로 설정을 위해 두개 이상의 사진을 선택해주세요!", preferredStyle: .alert)
@@ -52,7 +51,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
     }
 
-    
     @IBAction func imageSelectButton(_ sender: UIButton) {
         
         imageList = []
@@ -60,22 +58,15 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         dkAssetsList = []
         locationInfo = []
         dateList = []
-//
-//        dateFormatter.dateFormat = "MM-dd-yyyy"
-//
-//        print(thumnailDate!)
-//        print(dateFormatter.date(from: thumnailDate!))
-//
-//        let filterDate = dateFormatter.date(from: thumnailDate!)
-//        let filterPridicate = NSPredicate(format: "creationDate == %@", dateFormatter.date(from: thumnailDate!) as! CVarArg)
+        
+        let filterDate1 = selectedDate.addingTimeInterval(-86400)
+        let filterDate2 = selectedDate.addingTimeInterval(86400)
+        let filterPridicate = NSPredicate(format: "creationDate > %@ && creationDate < %@", filterDate1 as CVarArg, filterDate2 as CVarArg)
         let pickerController = DKImagePickerController()
         
-//        pickerController.imageFetchPredicate = filterPridicate
-        
+        pickerController.imageFetchPredicate = filterPridicate
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
           
- 
-            
             for asset in assets {
                 
                 print("ASSET START")
@@ -120,6 +111,10 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if selectedDate == nil {
+            selectedDate = Date()
+        }
         
         print("DATE!!!")
         print(selectedDate)

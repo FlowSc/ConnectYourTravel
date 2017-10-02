@@ -727,6 +727,7 @@
                                 <date key="date" timeIntervalSinceReferenceDate="528642641.605349">
                                     <!--2017-10-02 13:10:41 +0000-->
                                 </date>
+                                <locale key="locale" localeIdentifier="ko_KR"/>
                                 <connections>
                                     <action selector="datePickerChanged:" destination="hrp-9G-gJJ" eventType="valueChanged" id="bl7-WG-vdu"/>
                                 </connections>

@@ -12,14 +12,15 @@ import MapKit
 
 
 var savedArray:[DKAsset] = []
-var selectedDate:Date = Date()
+var selectedDate:Date!
 
 
 class ThumnailSelectViewController: UIViewController {
 
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
         
-        sender.date = selectedDate
+        selectedDate = sender.date
+        
     }
     var thumnailDK:DKAsset?
     var thumnailDate:String?
