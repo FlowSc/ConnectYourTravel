@@ -29,20 +29,15 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     var thumnailDate:String?
     let dateFormatter = DateFormatter()
     var arrangeDK:[DKAsset]!
+    var arragnedImage:[UIImage]!
     
     @IBAction func moveToMapView(_ sender: UIButton) {
         
-        arrangeDK = dkAssetsList.sorted { (aa, bb) -> Bool in
-            
-            let aaDate = aa.originalAsset?.creationDate!
-            let bbDate = bb.originalAsset?.creationDate!
-            
-            return aaDate! > bbDate!
-        }
         
         if locationInfo.count >= 2 {
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            
             
             mvc.myAddressList = addressList
             mvc.dkAssetsList = arrangeDK
@@ -76,8 +71,16 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         pickerController.imageFetchPredicate = filterPridicate
         pickerController.assetType = .allPhotos
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
+            
+            self.arrangeDK = assets.sorted { (aa, bb) -> Bool in
+                
+                let aaDate = aa.originalAsset?.creationDate!
+                let bbDate = bb.originalAsset?.creationDate!
+                
+                return aaDate! < bbDate!
+            }
           
-            for asset in assets {
+            for asset in self.arrangeDK {
                 
                 print("ASSET START")
                 print(asset)
@@ -121,6 +124,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if selectedDate == nil {
             selectedDate = Date()
         }
@@ -131,6 +135,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         self.imageCollectionView.register(UINib.init(nibName: "ThumnailImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        self.imageCollectionView.register(UINib.init(nibName: "TimeLineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimeLineCollectionViewCell")
 
     }
 
@@ -143,17 +148,36 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         return imageList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ThumnailImageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeLineCollectionViewCell", for: indexPath) as! TimeLineCollectionViewCell
         
-        cell.imageView.image = imageList[indexPath.item]
+        let cellItem = self.arrangeDK[indexPath.item]
+        let dateFormatter = DateFormatter()
+        print("cellforRowAt")
+        print(cellItem)
+        print("~~~~~~")
+        
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
+        dateFormatter.timeZone = TimeZone.current
+        
+        Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { (placemark) in
+            
+            cell.timeLb.text = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
+            cell.addressLb.text = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
+            
+        }
+        
+        cellItem.fetchOriginalImageWithCompleteBlock { (image, _) in
+            cell.photiImageView.image = image
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.width
-        return CGSize(width: width, height: width * 1.5)
+        return CGSize(width: width, height: width)
     }
+    
 
     /*
     // MARK: - Navigation

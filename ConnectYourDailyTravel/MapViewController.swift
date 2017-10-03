@@ -32,42 +32,42 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
 
         tossList = dkAssetsList
+        print("CCCCC")
+        print(tossList.count)
+        print("B")
         
-        var myIndex = 0
-        
-        while myIndex < dkAssetsList.count {
+        while currentIndex < tossList.count {
             
+            print("Problem?")
+            print(currentIndex)
+            print("_____")
             
-            var currentAsset = dkAssetsList[myIndex]
+            var currentAsset = dkAssetsList[currentIndex]
             
             let myPoint = CustomAnnotation()
             let dateformatter:DateFormatter = DateFormatter()
             let assetLocation = currentAsset.location?.coordinate
             
-            
-            
             if assetLocation != nil {
             dateformatter.dateFormat = "yyyy-MM-dd"
             
             myPoint.coordinate = (currentAsset.originalAsset?.location?.coordinate)!
-                
-            Server.cellLocation(myLocation: (currentAsset.originalAsset?.location)!, completionHandler: { (placemark) in
-                
-                print("Placemark")
-                myPoint.customtitle = "\((placemark?.locality) ?? "")"
-                myPoint.customsubtitle = "\((placemark?.name) ?? "")"
-                myPoint.image = self.imageList[myIndex]
-                print("end")
+            myPoint.image = self.imageList[self.currentIndex]
+
+            currentIndex += 1
 
                 DispatchQueue.main.async {
                     self.myMapView.addAnnotation(myPoint)
                 }
+                
+            Server.cellLocation(myLocation: (currentAsset.originalAsset?.location)!, completionHandler: { (placemark) in
 
-
+                print("Placemark")
+                myPoint.customtitle = "\((placemark?.locality) ?? "")"
+                myPoint.customsubtitle = "\((placemark?.name) ?? "")"
+                print("end")
             })
             }
-            myIndex += 1
-            
         }
         
         locationManager.requestAlwaysAuthorization()
