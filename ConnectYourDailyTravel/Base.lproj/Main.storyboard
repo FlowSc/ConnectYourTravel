@@ -222,6 +222,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="사진을 선택하세요" id="UNh-lc-bkC"/>
                     <connections>
+                        <outlet property="buttonOutlet" destination="KGB-Ji-grR" id="uuJ-Xf-crS"/>
                         <outlet property="imageCollectionView" destination="IkY-gZ-Htl" id="yn7-Xc-RsP"/>
                     </connections>
                 </viewController>

@@ -19,6 +19,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    @IBOutlet weak var buttonOutlet: UIButton!
     let loginUser = Auth.auth().currentUser
     var imageList:[UIImage] = []
     var addressList:[String] = []
@@ -34,6 +35,12 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBAction func moveToMapView(_ sender: UIButton) {
         
+        if addressList.count != dkAssetsList.count {
+            buttonOutlet.isEnabled = false
+        }else{
+            buttonOutlet.isSelected = true
+        }
+        
         if locationInfo.count >= 2 {
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
@@ -42,6 +49,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             mvc.dkAssetsList = dkAssetsList //arrangeDk
             mvc.imageList = imageList
             mvc.locationInfo = locationInfo
+            mvc.timeList = actualTime
             
             print("XXXXXXX")
             print(addressList)
@@ -90,33 +98,22 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
           
             for asset in self.arrangeDK {
                 
-                print("ASSET START")
-                print(asset)
-                print("ASSET END")
-                
                 if asset.location?.coordinate != nil {
                     
                     self.dkAssetsList.append(asset)
-//
-//                    print("~~~~")
-//                    print(self.dkAssetsList)
-//                    print(self.dkAssetsList.count)
-                    
-                    print(self.arrangeDK)
                     
                     let assetLocation = asset.location?.coordinate
                     
-                    self.locationInfo.append(assetLocation!)
-                    
-                    self.dateList.append((asset.originalAsset?.creationDate)!)
-                    
-                    print(self.dateList)
-                    print(self.locationInfo)
-                    
                     asset.fetchFullScreenImage(true, completeBlock: { [unowned self](image, info) in
+                        
                         self.imageList.append(image!)
+
                         self.imageCollectionView.reloadData()
                     })
+                    
+                        self.locationInfo.append(assetLocation!)
+                        self.dateList.append((asset.originalAsset?.creationDate)!)
+                    
                 }else{
                    
                     let alertC = UIAlertController.init(title: "선택한 사진 중 위치 정보가 없는 사진은 제외됩니다", message: "경로 설정을 위한 위치정보가 없으면 포함될수가 없습니다..", preferredStyle: .alert)
@@ -145,9 +142,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             selectedDate = Date()
         }
         
-        print("DATE!!!")
-        print(selectedDate)
-        print("AAAAA")
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         self.imageCollectionView.register(UINib.init(nibName: "ThumnailImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
@@ -166,7 +160,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TimeLineCollectionViewCell", for: indexPath) as! TimeLineCollectionViewCell
         
-        let cellItem = self.arrangeDK[indexPath.item]
+        let cellItem = self.dkAssetsList[indexPath.item]
         let dateFormatter = DateFormatter()
         print("cellforRowAt")
         print(cellItem)
@@ -175,7 +169,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
         dateFormatter.timeZone = TimeZone.current
         
-        Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { (placemark) in
+        Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { [unowned self](placemark) in
             
             let realTime = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             let realAddress = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"

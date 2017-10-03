@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 import SwiftyJSON
 import DKImagePickerController
+import Photos
 
+var totalData:[String:Any] = [:]
 var myTransportType:MKDirectionsTransportType = MKDirectionsTransportType.automobile
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
@@ -22,6 +24,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var currentIndex:Int = 0
     var tossList:[DKAsset] = []
     var locationInfo:[CLLocationCoordinate2D] = []
+    var timeList:[String] = []
+    var imageUrlList:[String] = []
+    var sortedImageUrlList:[String] = []
     
     @IBOutlet weak var myMapView: MKMapView!
     
@@ -32,17 +37,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         
         tossList = dkAssetsList
-        print("CCCCC")
-        print("B")
+   
+        for asset in tossList {
+            
+            asset.originalAsset?.requestContentEditingInput(with: PHContentEditingInputRequestOptions(), completionHandler: { (input, _) in
+                
+                guard let input = input else {return}
+                
+                self.imageUrlList.append(String(describing: input.fullSizeImageURL))
+                self.sortedImageUrlList = self.imageUrlList.sorted()
+            })
+            
+        }
+        
         
         while currentIndex < locationInfo.count {
             
-            print("Problem?")
-            print(currentIndex)
-            print("_____")
-            
-            var currentAsset = dkAssetsList[currentIndex]
-            
+            let currentAsset = dkAssetsList[currentIndex]
             let myPoint = CustomAnnotation()
             let dateformatter:DateFormatter = DateFormatter()
             let assetLocation = currentAsset.location?.coordinate
@@ -183,14 +194,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
          
          */
         
-        let totalData:[String:Any] = ["imagesList":imageList, "time":[], "location":[], "address":[], "comments":commentList]
+        totalData.updateValue(sortedImageUrlList, forKey: "imageList")
+        totalData.updateValue(timeList, forKey: "timeList")
+        totalData.updateValue(locationInfo, forKey: "locationList")
+        totalData.updateValue(myAddressList, forKey: "addressList")
+        totalData.updateValue(commentList, forKey: "commentList")
         
-        let mvc = storyboard?.instantiateViewController(withIdentifier: "TimeLineCollectionViewController") as! TimeLineCollectionViewController
+        print("SendDatA")
+        print(totalData)
+        print("~~~~~~")
         
-        mvc.dkAssetList = tossList
-        mvc.myAddressList = myAddressList
         
-        self.navigationController?.pushViewController(mvc, animated: true)
+
+        
+       
+//        let mvc = storyboard?.instantiateViewController(withIdentifier: "TimeLineCollectionViewController") as! TimeLineCollectionViewController
+//
+//        mvc.dkAssetList = tossList
+//        mvc.myAddressList = myAddressList
+//
+//        self.navigationController?.pushViewController(mvc, animated: true)
         
     }
     
