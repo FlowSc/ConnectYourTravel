@@ -30,6 +30,7 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         myCollectionView.delegate = self
         myCollectionView.register(UINib.init(nibName: "TimeLineCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TimeLineCollectionViewCell")
 
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         }
 
@@ -108,7 +109,6 @@ class TimeLineCollectionViewController: UIViewController, UICollectionViewDelega
         let width = view.bounds.width
         return CGSize(width: width, height: width)
     }
-
     
     @IBAction func saveButtonTouched(_ sender: UIButton) {
     }

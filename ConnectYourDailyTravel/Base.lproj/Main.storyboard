@@ -80,6 +80,68 @@
             </objects>
             <point key="canvasLocation" x="1651" y="1051"/>
         </scene>
+        <!--Comment Add View Controller-->
+        <scene sceneID="Jhm-UO-4qp">
+            <objects>
+                <viewController storyboardIdentifier="CommentAddViewController" id="7vj-Ww-95M" customClass="CommentAddViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FHB-4z-9dV"/>
+                        <viewControllerLayoutGuide type="bottom" id="tJw-Hc-Sgm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bVY-4h-A44">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRC-LG-dSc">
+                                <rect key="frame" x="87" y="242" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="m6I-Xw-tel">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-vW-Myh">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="60"/>
+                                        <state key="normal" title="취소"/>
+                                        <connections>
+                                            <action selector="cancelActionTouched:" destination="7vj-Ww-95M" eventType="touchUpInside" id="agz-pT-sBO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUp-pJ-hL3">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="60"/>
+                                        <state key="normal" title="저장"/>
+                                        <connections>
+                                            <action selector="savedActionTouched:" destination="7vj-Ww-95M" eventType="touchUpInside" id="Yvv-fC-fgh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="wBE-cg-Ta0"/>
+                                </constraints>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hki-Iv-M0I">
+                                <rect key="frame" x="87" y="51" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="m6I-Xw-tel" secondAttribute="trailing" id="4XI-J6-txv"/>
+                            <constraint firstItem="tJw-Hc-Sgm" firstAttribute="top" secondItem="m6I-Xw-tel" secondAttribute="bottom" id="Zga-i3-yGt"/>
+                            <constraint firstItem="m6I-Xw-tel" firstAttribute="leading" secondItem="bVY-4h-A44" secondAttribute="leading" id="hPq-Q1-uii"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTv" destination="hki-Iv-M0I" id="GfW-lQ-jYh"/>
+                        <outlet property="myImageView" destination="BRC-LG-dSc" id="MYt-Vp-6lq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWI-8v-ffW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2413" y="1051"/>
+        </scene>
         <!--사진을 선택하세요-->
         <scene sceneID="rFt-HS-lub">
             <objects>

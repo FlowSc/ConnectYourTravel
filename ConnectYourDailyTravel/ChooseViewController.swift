@@ -38,7 +38,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
-            
             mvc.myAddressList = addressList
             mvc.dkAssetsList = arrangeDK
             mvc.imageList = imageList
@@ -178,15 +177,17 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         return CGSize(width: width, height: width)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
 
-    /*
-    // MARK: - Navigation
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "CommentAddViewController") as! CommentAddViewController
+        
+        print(imageList[indexPath.item])
+        
+        mvc.myImage = imageList[indexPath.item]
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+        self.present(mvc, animated: true, completion: nil)
+        
     }
-    */
-
 }
