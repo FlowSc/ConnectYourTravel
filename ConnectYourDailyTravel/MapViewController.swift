@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var imageList:[UIImage] = []
     var currentIndex:Int = 0
     var tossList:[DKAsset] = []
+    var locationInfo:[CLLocationCoordinate2D] = []
     
     @IBOutlet weak var myMapView: MKMapView!
     
@@ -30,13 +31,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         tossList = dkAssetsList
         print("CCCCC")
-        print(tossList.count)
         print("B")
         
-        while currentIndex < tossList.count {
+        while currentIndex < locationInfo.count {
             
             print("Problem?")
             print(currentIndex)
@@ -127,7 +126,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func getMultipleLocationRoute(){
         
         while dkAssetsList.count > 1 {
-            
+            print("MYDK")
+            print(dkAssetsList)
+            print("MYDK1")
             let startLocation = dkAssetsList.removeLast().originalAsset?.location?.coordinate
             
             print(startLocation)
@@ -167,6 +168,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func moveToTimeLine(_ sender: UIButton) {
+
+        /*
+
+         저장해야할 것
+         이미지데이터(개인적으로만 사용시에는 파이어베이스 대신 이미지 url 만 보내는걸로, 공유 시에는 이미지 업로드 이후 데이터베이스 url list 가 필요)
+         촬영시간
+         위치정보(위경도)
+         주소(역지오코딩 완료된 건들)
+         코멘트리스트
+         별점(추가예정)
+         
+         전부 다 내림차순으로 정렬된 건으로 함께 올라가야함!
+         
+         */
+        
+        let totalData:[String:Any] = ["imagesList":imageList, "time":[], "location":[], "address":[], "comments":commentList]
         
         let mvc = storyboard?.instantiateViewController(withIdentifier: "TimeLineCollectionViewController") as! TimeLineCollectionViewController
         

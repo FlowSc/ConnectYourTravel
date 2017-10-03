@@ -127,11 +127,15 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="m6I-Xw-tel" secondAttribute="trailing" id="4XI-J6-txv"/>
                             <constraint firstItem="tJw-Hc-Sgm" firstAttribute="top" secondItem="m6I-Xw-tel" secondAttribute="bottom" id="Zga-i3-yGt"/>
                             <constraint firstItem="m6I-Xw-tel" firstAttribute="leading" secondItem="bVY-4h-A44" secondAttribute="leading" id="hPq-Q1-uii"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="u3x-3A-q3R" appends="YES" id="Tzp-Kj-m2P"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="commentTv" destination="hki-Iv-M0I" id="GfW-lQ-jYh"/>
@@ -139,6 +143,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vWI-8v-ffW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="u3x-3A-q3R">
+                    <connections>
+                        <action selector="ScreenTouched:" destination="7vj-Ww-95M" id="GZL-Ac-pDc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2413" y="1051"/>
         </scene>

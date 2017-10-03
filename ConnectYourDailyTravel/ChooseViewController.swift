@@ -30,17 +30,25 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     let dateFormatter = DateFormatter()
     var arrangeDK:[DKAsset]!
     var arragnedImage:[UIImage]!
+    var actualTime:[String] = []
     
     @IBAction func moveToMapView(_ sender: UIButton) {
-        
         
         if locationInfo.count >= 2 {
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
             mvc.myAddressList = addressList
-            mvc.dkAssetsList = arrangeDK
+            mvc.dkAssetsList = dkAssetsList //arrangeDk
             mvc.imageList = imageList
+            mvc.locationInfo = locationInfo
+            
+            print("XXXXXXX")
+            print(addressList)
+            print(imageList)
+            print(locationInfo)
+            print(actualTime)
+            print("VVVVVVV")
             
             self.navigationController?.pushViewController(mvc, animated: true)}
         else{
@@ -61,6 +69,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         dkAssetsList = []
         locationInfo = []
         dateList = []
+        commentList = []
         
         let filterDate1 = selectedDate.addingTimeInterval(-86400)
         let filterDate2 = selectedDate.addingTimeInterval(86400)
@@ -88,6 +97,12 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                 if asset.location?.coordinate != nil {
                     
                     self.dkAssetsList.append(asset)
+//
+//                    print("~~~~")
+//                    print(self.dkAssetsList)
+//                    print(self.dkAssetsList.count)
+                    
+                    print(self.arrangeDK)
                     
                     let assetLocation = asset.location?.coordinate
                     
@@ -103,6 +118,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                         self.imageCollectionView.reloadData()
                     })
                 }else{
+                   
                     let alertC = UIAlertController.init(title: "선택한 사진 중 위치 정보가 없는 사진은 제외됩니다", message: "경로 설정을 위한 위치정보가 없으면 포함될수가 없습니다..", preferredStyle: .alert)
                     let alertAction = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
                     
@@ -114,7 +130,9 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
             
         }
+        
         self.present(pickerController, animated: true, completion: nil)
+        
         self.imageCollectionView.reloadData()
 
     }
@@ -122,7 +140,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if selectedDate == nil {
             selectedDate = Date()
@@ -160,9 +177,15 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { (placemark) in
             
-            cell.timeLb.text = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
-            cell.addressLb.text = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
+            let realTime = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
+            let realAddress = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
             
+            
+            cell.timeLb.text = realTime
+            cell.addressLb.text = realAddress
+            
+            self.actualTime.append(realTime)
+            self.addressList.append(realAddress)
         }
         
         cellItem.fetchOriginalImageWithCompleteBlock { (image, _) in
@@ -185,6 +208,13 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         print(imageList[indexPath.item])
         
         mvc.myImage = imageList[indexPath.item]
+        mvc.commentIndex = indexPath.item
+        
+        if commentList == [] {
+            for _ in dkAssetsList {
+                commentList.append("")
+            }
+        }
 
     
         self.present(mvc, animated: true, completion: nil)
