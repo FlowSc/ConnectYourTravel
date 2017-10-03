@@ -44,7 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 guard let input = input else {return}
                 
-                self.imageUrlList.append(String(describing: input.fullSizeImageURL))
+                self.imageUrlList.append((input.fullSizeImageURL?.absoluteString)!)
                 self.sortedImageUrlList = self.imageUrlList.sorted()
             })
             
@@ -183,22 +183,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         /*
 
          저장해야할 것
-         이미지데이터(개인적으로만 사용시에는 파이어베이스 대신 이미지 url 만 보내는걸로, 공유 시에는 이미지 업로드 이후 데이터베이스 url list 가 필요)
-         촬영시간
-         위치정보(위경도)
-         주소(역지오코딩 완료된 건들)
-         코멘트리스트
+         이미지데이터(개인적으로만 사용시에는 파이어베이스 대신 이미지 url 만 보내는걸로, 공유 시에는 이미지 업로드 이후 데이터베이스 url list 가 필요) 이미지 url 추출 완료
+         촬영시간 ok
+         위치정보(위경도) ok
+         주소(역지오코딩 완료된 건들) ok
+         코멘트리스트 ok
          별점(추가예정)
          
-         전부 다 내림차순으로 정렬된 건으로 함께 올라가야함!
+         전부 다 오름차순으로 정렬된 건으로 함께 올라가야함!
          
          */
         
-        totalData.updateValue(sortedImageUrlList, forKey: "imageList")
-        totalData.updateValue(timeList, forKey: "timeList")
-        totalData.updateValue(locationInfo, forKey: "locationList")
-        totalData.updateValue(myAddressList, forKey: "addressList")
-        totalData.updateValue(commentList, forKey: "commentList")
+        totalData.updateValue(sortedImageUrlList, forKey: "imageList") // string
+        totalData.updateValue(timeList, forKey: "timeList") // string
+        totalData.updateValue(locationInfo, forKey: "locationList") // longitude
+        totalData.updateValue(myAddressList, forKey: "addressList") // string
+        totalData.updateValue(commentList, forKey: "commentList") // string
         
         print("SendDatA")
         print(totalData)

@@ -24,7 +24,6 @@
 		7549D6A51F69C76900EEA8E6 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6A41F69C76800EEA8E6 /* pin.png */; };
 		7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */; };
 		7549D6AA1F6AE8AC00EEA8E6 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6A81F6AE8AC00EEA8E6 /* TimeTableViewCell.swift */; };
-		7549D6AB1F6AE8AC00EEA8E6 /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6A91F6AE8AC00EEA8E6 /* TimeTableViewCell.xib */; };
 		7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6AC1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift */; };
 		7549D6B01F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6AE1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift */; };
 		7549D6B11F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6AF1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib */; };
@@ -65,7 +64,6 @@
 		7549D6A41F69C76800EEA8E6 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		7549D6A81F6AE8AC00EEA8E6 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
-		7549D6A91F6AE8AC00EEA8E6 /* TimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
 		7549D6AC1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCollectionViewController.swift; sourceTree = "<group>"; };
 		7549D6AE1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCollectionViewCell.swift; sourceTree = "<group>"; };
 		7549D6AF1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */,
 				7549D6A81F6AE8AC00EEA8E6 /* TimeTableViewCell.swift */,
 				7549D6B21F6EE7BE00EEA8E6 /* DataCenter.swift */,
-				7549D6A91F6AE8AC00EEA8E6 /* TimeTableViewCell.xib */,
 				7549D6A41F69C76800EEA8E6 /* pin.png */,
 				7549D69E1F6979A000EEA8E6 /* MapViewController.swift */,
 				7549D6D21F6FCB4200EEA8E6 /* YeogiBackground.png */,
@@ -247,7 +244,6 @@
 				7549D6A51F69C76900EEA8E6 /* pin.png in Resources */,
 				7549D6D51F6FCB4200EEA8E6 /* YeogiLaunch.png in Resources */,
 				7549D6D41F6FCB4200EEA8E6 /* YeogiBackground.png in Resources */,
-				7549D6AB1F6AE8AC00EEA8E6 /* TimeTableViewCell.xib in Resources */,
 				7549D6C31F6F34CA00EEA8E6 /* GoogleService-Info.plist in Resources */,
 				7549D6B91F6F2C6F00EEA8E6 /* Screen.jpeg in Resources */,
 				755334701F700A6B00796FAC /* default-user-image.png in Resources */,

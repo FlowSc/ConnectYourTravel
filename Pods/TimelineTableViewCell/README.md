@@ -1,8 +1,8 @@
 # TimelineTableViewCell
 
-TimelineTableViewCell is a simple timeline view implemented by UITableViewCell written in Swift 3.0. The UI design of TimelineTableViewCell is inspired by [ISTimeline](https://github.com/instant-solutions/ISTimeline).
+TimelineTableViewCell is a simple timeline view implemented by UITableViewCell. The UI design of TimelineTableViewCell is inspired by [ISTimeline](https://github.com/instant-solutions/ISTimeline).
 
-[![Language Swift 3.0](https://img.shields.io/badge/Language-Swift%203.0-orange.svg?style=flat)](https://swift.org)
+[![Language Swift](https://img.shields.io/badge/Language-Swift%203.0-orange.svg?style=flat)](https://swift.org)
 [![CocoaPods](https://img.shields.io/cocoapods/v/TimelineTableViewCell.svg)](#cocoapods)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/github/license/kf99916/TimelineTableViewCell.svg)](LICENSE)
@@ -12,20 +12,12 @@ TimelineTableViewCell is a simple timeline view implemented by UITableViewCell w
 ## Requirements
 
 - iOS 8.0 or higher
-- Swift 3.0
+- Swift 3.0 or higher
 
 ## Installation
 
-- [CocoaPods](http://cocoapods.org/):
-
 ```ruby
 pod "TimelineTableViewCell"
-```
-
-- [Swift Package Manager](https://swift.org/package-manager/):
-
-```
-.Package(url: "https://github.com/kf99916/TimelineTableViewCell.git", majorVersion: 1.0)
 ```
 
 ## Usage
@@ -116,7 +108,9 @@ The cell is represented by a TimelineTableViewCell object.
 
 ## Apps using TimelineTableViewCell
 
-If you are using TimelineTableViewCell in your app and want to be listed here, simply create a pull request or let me know via github. I am always curious who is using my projects :)
+If you are using TimelineTableViewCell in your app and want to be listed here, simply create a pull request.
+
+I am always curious who is using my projects :)
 
 [Hikingbook](https://itunes.apple.com/app/id1067838748) - by Zheng-Xiang Ke
 
