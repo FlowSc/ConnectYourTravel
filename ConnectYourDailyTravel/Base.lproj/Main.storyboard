@@ -92,8 +92,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRC-LG-dSc">
-                                <rect key="frame" x="87" y="242" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BRC-LG-dSc">
+                                <rect key="frame" x="39" y="242" width="336" height="292"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="m6I-Xw-tel">
@@ -119,7 +119,7 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hki-Iv-M0I">
-                                <rect key="frame" x="87" y="51" width="240" height="128"/>
+                                <rect key="frame" x="39" y="51" width="336" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -149,7 +149,63 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2413" y="1051"/>
+            <point key="canvasLocation" x="2411.594202898551" y="1050.8152173913045"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="DPe-4y-Qb6">
+            <objects>
+                <viewController storyboardIdentifier="ResultViewController" id="hfI-xz-kEx" customClass="ResultViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qtr-nk-nY6"/>
+                        <viewControllerLayoutGuide type="bottom" id="7ia-27-x6P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iLb-hd-wZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G0D-7d-EXy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="08V-Ls-nhM">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="08V-Ls-nhM" id="fB9-7g-BKW">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-Sr-xHb">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vUV-JL-P4p"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="resultButtonTouched:" destination="hfI-xz-kEx" eventType="touchUpInside" id="GTW-I8-KoK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G0D-7d-EXy" firstAttribute="height" secondItem="iLb-hd-wZQ" secondAttribute="height" id="2FH-8B-uW4"/>
+                            <constraint firstAttribute="trailing" secondItem="qQh-Sr-xHb" secondAttribute="trailing" id="5Q4-H8-L2O"/>
+                            <constraint firstItem="G0D-7d-EXy" firstAttribute="width" secondItem="iLb-hd-wZQ" secondAttribute="width" id="H2G-Mh-pWj"/>
+                            <constraint firstItem="qQh-Sr-xHb" firstAttribute="leading" secondItem="iLb-hd-wZQ" secondAttribute="leading" id="JJd-KE-2uS"/>
+                            <constraint firstItem="G0D-7d-EXy" firstAttribute="centerX" secondItem="iLb-hd-wZQ" secondAttribute="centerX" id="fQc-NV-Gbl"/>
+                            <constraint firstItem="G0D-7d-EXy" firstAttribute="centerY" secondItem="iLb-hd-wZQ" secondAttribute="centerY" id="oAs-B9-3MO"/>
+                            <constraint firstItem="7ia-27-x6P" firstAttribute="top" secondItem="qQh-Sr-xHb" secondAttribute="bottom" id="ytg-fY-J9h"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myTableView" destination="G0D-7d-EXy" id="FK5-tu-3M9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dK9-Zi-Ne3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3373" y="1044"/>
         </scene>
         <!--사진을 선택하세요-->
         <scene sceneID="rFt-HS-lub">
@@ -739,10 +795,10 @@
             </objects>
             <point key="canvasLocation" x="-2017" y="930"/>
         </scene>
-        <!--모아보기-->
+        <!--Show View Controller-->
         <scene sceneID="3dG-J8-Gln">
             <objects>
-                <viewController id="nm7-Ev-VEe" sceneMemberID="viewController">
+                <viewController id="nm7-Ev-VEe" customClass="ShowViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8mj-fV-syy"/>
                         <viewControllerLayoutGuide type="bottom" id="45J-hb-Irq"/>
@@ -752,11 +808,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="모아보기" id="4KP-gn-n2f"/>
+                    <navigationItem key="navigationItem" id="QVf-hl-64d"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ka1-Qt-1Rr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671" y="-515"/>
+            <point key="canvasLocation" x="1541" y="-515"/>
         </scene>
         <!--Thumnail Select View Controller-->
         <scene sceneID="Sg9-W0-7We">
@@ -849,7 +905,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="nm7-Ev-VEe" kind="relationship" relationship="viewControllers" id="Qax-Gj-1Cb"/>
+                        <segue destination="5K5-cB-vIO" kind="relationship" relationship="viewControllers" id="Qax-Gj-1Cb"/>
                         <segue destination="8cp-F2-AVi" kind="relationship" relationship="viewControllers" id="C3m-gK-NEK"/>
                         <segue destination="mg8-pn-4hq" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
                     </connections>
@@ -876,6 +932,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MiN-rn-sET" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="672.46376811594212" y="1050.8152173913045"/>
+        </scene>
+        <!--모아보기-->
+        <scene sceneID="BbI-7O-z3s">
+            <objects>
+                <navigationController storyboardIdentifier="ShowNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="5K5-cB-vIO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="모아보기" id="4KP-gn-n2f"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dY8-lz-8Oz">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nm7-Ev-VEe" kind="relationship" relationship="rootViewController" id="4Hr-fQ-tWG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acQ-ex-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="669.56521739130437" y="-515.21739130434787"/>
         </scene>
     </scenes>
     <resources>

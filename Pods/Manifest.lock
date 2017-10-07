@@ -8,11 +8,11 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - DKImagePickerController (3.8.0):
-    - DKImagePickerController/Camera (= 3.8.0)
-    - DKImagePickerController/ImageManager (= 3.8.0)
-  - DKImagePickerController/Camera (3.8.0)
-  - DKImagePickerController/ImageManager (3.8.0)
+  - DKImagePickerController (3.6.1):
+    - DKImagePickerController/Camera (= 3.6.1)
+    - DKImagePickerController/ImageManager (= 3.6.1)
+  - DKImagePickerController/Camera (3.6.1)
+  - DKImagePickerController/ImageManager (3.6.1)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -70,14 +70,14 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - SideMenu (2.3.4)
-  - SnapKit (4.0.0)
+  - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
   - TimelineTableViewCell (1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - AlamofireNetworkActivityIndicator (~> 2.2)
-  - DKImagePickerController
+  - DKImagePickerController (~> 3.6.1)
   - FacebookCore
   - FacebookLogin
   - Firebase/Auth
@@ -85,7 +85,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Kingfisher (~> 3.12)
   - SideMenu (~> 2.3)
-  - SnapKit
+  - SnapKit (~> 3.2.0)
   - SwiftyJSON
   - TimelineTableViewCell
 
@@ -93,7 +93,7 @@ SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  DKImagePickerController: 6eea9f1ba2e2ca0ba0317b81d68152d07d9e877f
+  DKImagePickerController: 4f8072aed44119a33955c9583273ea7c8739c0f4
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FBSDKCoreKit: ebc6c5f5b3f0e72396041050e2266781a38ac587
@@ -110,10 +110,10 @@ SPEC CHECKSUMS:
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SideMenu: 2ea1a015d14ffb96110af43fe3232d995943e726
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TimelineTableViewCell: aac657b7e7b576a2806404a7f0ba9c56ecd5af76
 
-PODFILE CHECKSUM: 9c56973be674e1910650106084031338034fd9c3
+PODFILE CHECKSUM: cda63aca61c03955b4c576a73d1713761c5215e1
 
 COCOAPODS: 1.2.1

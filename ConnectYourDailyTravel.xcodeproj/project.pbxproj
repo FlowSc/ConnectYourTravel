@@ -40,6 +40,8 @@
 		7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */; };
 		755334701F700A6B00796FAC /* default-user-image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7553346F1F700A6B00796FAC /* default-user-image.png */; };
 		7582359C1F8314BE00ACB064 /* CommentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */; };
+		7582359E1F83BE0A00ACB064 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359D1F83BE0A00ACB064 /* ResultViewController.swift */; };
+		75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB34731F8925320065DA69 /* ShowViewController.swift */; };
 		A166C674F1FDCD4AB72DB8F9 /* Pods_ConnectYourDailyTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7553346F1F700A6B00796FAC /* default-user-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-user-image.png"; sourceTree = "<group>"; };
 		7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddViewController.swift; sourceTree = "<group>"; };
+		7582359D1F83BE0A00ACB064 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		75AB34731F8925320065DA69 /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectYourDailyTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADDF3E4FFE8BD69E0422638 /* Pods-ConnectYourDailyTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,8 @@
 				7549D6821F696E5900EEA8E6 /* AppDelegate.swift */,
 				7549D69C1F69773500EEA8E6 /* ChooseViewController.swift */,
 				7549D6861F696E5900EEA8E6 /* Main.storyboard */,
+				75AB34731F8925320065DA69 /* ShowViewController.swift */,
+				7582359D1F83BE0A00ACB064 /* ResultViewController.swift */,
 				7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */,
 				7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */,
 				752880431F7F92C20071F089 /* MyTabbarViewController.swift */,
@@ -308,6 +314,7 @@
 			files = (
 				7549D6A11F697EE900EEA8E6 /* Server.swift in Sources */,
 				7549D6D11F6F9FCD00EEA8E6 /* EmailLoginViewController.swift in Sources */,
+				7582359E1F83BE0A00ACB064 /* ResultViewController.swift in Sources */,
 				7528B1B61F7FC91F00893EC5 /* ThumnailSelectViewController.swift in Sources */,
 				752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */,
 				7549D69A1F6971F400EEA8E6 /* ThumnailImageCollectionViewCell.swift in Sources */,
@@ -320,6 +327,7 @@
 				7549D6AA1F6AE8AC00EEA8E6 /* TimeTableViewCell.swift in Sources */,
 				7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */,
 				752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */,
+				75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */,
 				7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */,
 				7549D6BD1F6F2EE900EEA8E6 /* LaunchViewController.swift in Sources */,
 				7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */,

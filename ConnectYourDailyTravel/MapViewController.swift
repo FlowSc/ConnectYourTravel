@@ -14,6 +14,7 @@ import Photos
 
 var totalData:[String:Any] = [:]
 var myTransportType:MKDirectionsTransportType = MKDirectionsTransportType.automobile
+var individualData:[[String:Any]] = [[:]]
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -185,7 +186,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
          저장해야할 것
          이미지데이터(개인적으로만 사용시에는 파이어베이스 대신 이미지 url 만 보내는걸로, 공유 시에는 이미지 업로드 이후 데이터베이스 url list 가 필요) 이미지 url 추출 완료
          촬영시간 ok
-         위치정보(위경도) ok
+         위치정보(위경도) ok 
          주소(역지오코딩 완료된 건들) ok
          코멘트리스트 ok
          별점(추가예정)
@@ -196,7 +197,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         totalData.updateValue(sortedImageUrlList, forKey: "imageList") // string
         totalData.updateValue(timeList, forKey: "timeList") // string
-        totalData.updateValue(locationInfo, forKey: "locationList") // longitude
+//        totalData.updateValue(locationInfo, forKey: "locationList") // longitude
         totalData.updateValue(myAddressList, forKey: "addressList") // string
         totalData.updateValue(commentList, forKey: "commentList") // string
         
@@ -204,16 +205,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print(totalData)
         print("~~~~~~")
         
-        
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
 
-        
-       
-//        let mvc = storyboard?.instantiateViewController(withIdentifier: "TimeLineCollectionViewController") as! TimeLineCollectionViewController
-//
-//        mvc.dkAssetList = tossList
-//        mvc.myAddressList = myAddressList
-//
-//        self.navigationController?.pushViewController(mvc, animated: true)
+        self.navigationController?.pushViewController(mvc, animated: true)
         
     }
     
