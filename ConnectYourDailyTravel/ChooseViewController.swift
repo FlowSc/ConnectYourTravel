@@ -15,6 +15,10 @@ import Firebase
 import FirebaseDatabase
 import Photos
 
+
+var totalArray = UserDefaults.standard.array(forKey: "IndividualData") ?? [[:]]
+
+
 class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
@@ -107,12 +111,10 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                     asset.fetchFullScreenImage(true, completeBlock: { [unowned self](image, info) in
                         
                         self.imageList.append(image!)
-
-                        self.imageCollectionView.reloadData()
-                    })
-                    
                         self.locationInfo.append(assetLocation!)
                         self.dateList.append((asset.originalAsset?.creationDate)!)
+                        self.imageCollectionView.reloadData()
+                    })
                     
                 }else{
                    
@@ -137,6 +139,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         if selectedDate == nil {
             selectedDate = Date()

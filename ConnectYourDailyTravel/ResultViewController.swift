@@ -8,6 +8,7 @@
 
 import UIKit
 import TimelineTableViewCell
+import Kingfisher
 
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -26,6 +27,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         
         myTableView.delegate = self
         myTableView.dataSource = self
+        myTableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
@@ -43,9 +45,16 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell", for: indexPath) as! TimelineTableViewCell
         
 
-        cell.textLabel?.text = timeList[indexPath.row]
+
+        let sortedTimeList = timeList.sorted()
+        let sortedImageList = imageList.sorted()
         
+        let resourse = URL(string: sortedImageList[indexPath.row])!
         
+        print(resourse)
+        
+        cell.descriptionLabel.text = sortedTimeList[indexPath.row]
+        cell.thumbnailImageView.kf.setImage(with: resourse)
         return cell
     }
     
@@ -56,11 +65,15 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         
         UserDefaults.standard.set(totalData, forKey: "IndividualData")
         
-        let mvc = storyboard?.instantiateViewController(withIdentifier: "ShowNavViewController") as! UINavigationController
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
         
         self.present(mvc, animated: true, completion: nil)
         
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
     /*
     // MARK: - Navigation
