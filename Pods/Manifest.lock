@@ -34,6 +34,9 @@ PODS:
   - Firebase/Database (4.2.0):
     - Firebase/Core
     - FirebaseDatabase (= 4.0.3)
+  - Firebase/Storage (4.2.0):
+    - Firebase/Core
+    - FirebaseStorage (= 2.0.2)
   - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
@@ -51,6 +54,10 @@ PODS:
     - FirebaseCore (~> 4.0)
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (2.0.3)
+  - FirebaseStorage (2.0.2):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -83,6 +90,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Storage
   - Kingfisher (~> 3.12)
   - SideMenu (~> 2.3)
   - SnapKit (~> 3.2.0)
@@ -104,6 +112,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 9a6cc1e3eaf75905390f9220596ad4fd8f92faee
   FirebaseDatabase: '03940adcac54ce30db06f1fc2136f8581734ce2c'
   FirebaseInstanceID: a4fc702b5a026f7322964376047f1a3f1f7cc6ff
+  FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
@@ -114,6 +123,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TimelineTableViewCell: aac657b7e7b576a2806404a7f0ba9c56ecd5af76
 
-PODFILE CHECKSUM: cda63aca61c03955b4c576a73d1713761c5215e1
+PODFILE CHECKSUM: 7de3c3bd1098fa77160848750755f09ebec20c80
 
 COCOAPODS: 1.2.1

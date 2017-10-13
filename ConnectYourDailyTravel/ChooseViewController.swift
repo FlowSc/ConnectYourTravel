@@ -17,14 +17,13 @@ import Photos
 
 
 var totalArray = UserDefaults.standard.array(forKey: "IndividualData") ?? [[:]]
-
+let loginUser = Auth.auth().currentUser
 
 class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
     @IBOutlet weak var buttonOutlet: UIButton!
-    let loginUser = Auth.auth().currentUser
     var imageList:[UIImage] = []
     var addressList:[String] = []
     var dkAssetsList:[DKAsset] = []

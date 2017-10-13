@@ -7,18 +7,44 @@
 //
 
 import UIKit
+import SnapKit
 
-class ShowViewController: UIViewController {
+class ShowViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        var myTableView = UITableView()
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        view.addSubview(myTableView)
 
+        myTableView.snp.makeConstraints { (con) in
+            con.width.equalToSuperview()
+            con.height.equalToSuperview()
+            con.centerX.equalToSuperview()
+            con.centerY.equalToSuperview()
+        }
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        return cell
     }
     
 

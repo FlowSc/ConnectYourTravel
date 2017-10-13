@@ -81,7 +81,7 @@ class LaunchViewController: UIViewController {
                 print("Logged in!")
                 
                 
-                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
+                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTabbarViewController") as! MyTabbarViewController
                 
                 self.present(mvc, animated: true, completion: nil)
                 

@@ -45,6 +45,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 guard let input = input else {return}
                 
+                print("~~~~~")
+                print(input.fullSizeImageURL?.absoluteURL)
+                print("XXXXX")
+                print(input.fullSizeImageURL?.absoluteString)
+                print("VVVVV")
                 self.imageUrlList.append((input.fullSizeImageURL?.absoluteString)!)
                 self.sortedImageUrlList = self.imageUrlList.sorted()
             })
@@ -138,25 +143,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func getMultipleLocationRoute(){
         
         while dkAssetsList.count > 1 {
-            print("MYDK")
-            print(dkAssetsList)
-            print("MYDK1")
+   
             let startLocation = dkAssetsList.removeLast().originalAsset?.location?.coordinate
-            
-            print(startLocation)
-            
             let endLocation = dkAssetsList.last!.originalAsset?.location?.coordinate
-            
-            print(endLocation)
-            
             let startPlacemark = MKPlacemark(coordinate: startLocation!)
             let endPlacemark = MKPlacemark(coordinate: endLocation!)
-            
             let startItem = MKMapItem(placemark: startPlacemark)
             let desItem = MKMapItem(placemark: endPlacemark)
-            
             let directionRequest = MKDirectionsRequest()
-            print(myTransportType)
             
             directionRequest.source = startItem
             directionRequest.destination = desItem
@@ -174,9 +168,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let rekt = route.polyline.boundingMapRect
                 self.myMapView.setRegion(MKCoordinateRegionForMapRect(rekt), animated: true)
             }
-            
         }
-        
     }
     
     @IBAction func moveToTimeLine(_ sender: UIButton) {
@@ -206,21 +198,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("~~~~~~")
         
         let mvc = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
-
+        mvc.uiImageList = imageList
         self.navigationController?.pushViewController(mvc, animated: true)
         
     }
-    
-       
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
