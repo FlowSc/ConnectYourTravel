@@ -76,6 +76,17 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - PromiseKit (4.4.0):
+    - PromiseKit/Foundation (= 4.4.0)
+    - PromiseKit/QuartzCore (= 4.4.0)
+    - PromiseKit/UIKit (= 4.4.0)
+  - PromiseKit/CorePromise (4.4.0)
+  - PromiseKit/Foundation (4.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.4.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.4.0):
+    - PromiseKit/CorePromise
   - SideMenu (2.3.4)
   - SnapKit (3.2.0)
   - SwiftyJSON (3.1.4)
@@ -92,6 +103,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - Kingfisher (~> 3.12)
+  - PromiseKit (~> 4.4)
   - SideMenu (~> 2.3)
   - SnapKit (~> 3.2.0)
   - SwiftyJSON
@@ -118,11 +130,12 @@ SPEC CHECKSUMS:
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   SideMenu: 2ea1a015d14ffb96110af43fe3232d995943e726
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TimelineTableViewCell: aac657b7e7b576a2806404a7f0ba9c56ecd5af76
 
-PODFILE CHECKSUM: 7de3c3bd1098fa77160848750755f09ebec20c80
+PODFILE CHECKSUM: 145cf9eba9eaff9e6bf8a603f375bc50051324dc
 
 COCOAPODS: 1.2.1

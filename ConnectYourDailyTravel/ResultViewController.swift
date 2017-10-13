@@ -10,7 +10,7 @@ import UIKit
 import TimelineTableViewCell
 import Kingfisher
 import Firebase
-
+import PromiseKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -22,18 +22,12 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        let bundle = Bundle(for: TimelineTableViewCell.self)
-        //        let nibUrl = bundle.url(forResource: "TimelineTableViewCell", withExtension: "bundle")
-        //        let timelineTableViewCellNib = UINib(nibName: "TimelineTableViewCell",
-        //                                             bundle: Bundle(url: nibUrl!)!)
-        //        myTableView.register(timelineTableViewCellNib, forCellReuseIdentifier: "TimelineTableViewCell")
         
         myTableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.reloadData()
         
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,22 +54,53 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     @IBAction func resultButtonTouched(_ sender: UIButton) {
+
+        savedImages(imagrArray: uiImageList)
         
+        let mvc = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
+        
+        self.present(mvc, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func savedImages(imagrArray:[UIImage]){
+        
+        let currentTime = Date()
+        let scDateformatter = DateFormatter()
+        scDateformatter.dateFormat = "YYYYMMddhhmm"
+        let timeString = scDateformatter.string(from: currentTime)
         let userUid:String = (loginUser?.uid)!
+
+        uploadMyImage(userUid: userUid, imageArray: imagrArray) { (urlArray) in
+            
+            for url in urlArray {
+                
+                print(url)
+                Database.database().reference().child("users").child(userUid).child("travelList").child(timeString).child("image\((urlArray.count - 1))").setValue(url)
+            }
+        }
+    }
+    
+    func uploadMyImage(userUid:String, imageArray:[UIImage], completionHandler: @escaping ([String]) -> ()){
         var urlArray:[String] = []
-        
+
         var count = 0
+        
         while uiImageList.count > count {
             
             let currentTime = Date()
             let scDateformatter = DateFormatter()
-            scDateformatter.dateFormat = "YYYYMMddhhmm"
+            scDateformatter.dateFormat = "YYYYMMddHHmm"
             let timeString = scDateformatter.string(from: currentTime)
+            
             let scStorage = Storage.storage().reference().child(userUid).child("travelList").child(timeString).child("image\(count).png")
             
-            let uploadData = UIImageJPEGRepresentation(uiImageList[count], 0.8)
+            let uploadData = UIImagePNGRepresentation(imageArray[count])
             
-            scStorage.putData(uploadData!, metadata: nil) { (metaData, error) in
+            scStorage.putData(uploadData!, metadata: nil){ (metaData, error) in
                 
                 if error != nil {
                     print(error as Any)
@@ -86,43 +111,21 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
                 }
                 
                 let uploadImage = (metaData.downloadURL()?.absoluteString)!
-        
+                
                 urlArray.append(uploadImage)
                 
                 print("~~~~~")
                 print(uploadImage)
                 print("XXXXX")
-            Database.database().reference().child("users").child(userUid).child("travelList").child(timeString).child("image\(count)").setValue(uploadImage)
+                
+                completionHandler(urlArray)
+                //
                 
             }
             count += 1
-        }
-        
-        UserDefaults.standard.set(totalData, forKey: "IndividualData")
-        
-        DispatchQueue.main.async {
-            let mvc = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
             
-            mvc.urlArray = urlArray
-            
-            self.present(mvc, animated: true, completion: nil)
         }
-        
-        
-        
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
