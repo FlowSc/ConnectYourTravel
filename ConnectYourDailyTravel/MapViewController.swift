@@ -187,18 +187,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
          
          */
         
-        totalData.updateValue(sortedImageUrlList, forKey: "imageList") // string
-        totalData.updateValue(timeList, forKey: "timeList") // string
-//        totalData.updateValue(locationInfo, forKey: "locationList") // longitude
-        totalData.updateValue(myAddressList, forKey: "addressList") // string
-        totalData.updateValue(commentList, forKey: "commentList") // string
+//        totalData.updateValue(sortedImageUrlList, forKey: "imageList") // string
+//        totalData.updateValue(timeList, forKey: "timeList") // string
+////        totalData.updateValue(locationInfo, forKey: "locationList") // longitude
+//        totalData.updateValue(myAddressList, forKey: "addressList") // string
+//        totalData.updateValue(commentList, forKey: "commentList") // string
         
         print("SendDatA")
-        print(totalData)
+
+        print(myAddressList)
+        print(timeList)
+        print(locationInfo)
+        
         print("~~~~~~")
         
         let mvc = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
         mvc.uiImageList = imageList
+        mvc.addressLst = myAddressList
+        mvc.timeList = timeList
+        
         self.navigationController?.pushViewController(mvc, animated: true)
         
     }

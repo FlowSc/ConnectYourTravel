@@ -82,6 +82,9 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         dateList = []
         commentList = []
         
+        print(addressList)
+        print(dateList)
+        
         let filterDate1 = selectedDate.addingTimeInterval(-86400)
         let filterDate2 = selectedDate.addingTimeInterval(86400)
         let filterPridicate = NSPredicate(format: "creationDate > %@ && creationDate < %@", filterDate1 as CVarArg, filterDate2 as CVarArg)

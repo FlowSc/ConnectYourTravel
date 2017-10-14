@@ -14,14 +14,17 @@ import PromiseKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var uploadIndicator: UIActivityIndicatorView!
     
-    let imageList = totalData["imageList"] as! [String]
-    let timeList = totalData["timeList"] as! [String]
+    var timeList:[String] = []
+    var addressLst:[String] = []
     var uiImageList:[UIImage] = []
     
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        uploadIndicator.isHidden = true
         
         myTableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         myTableView.delegate = self
@@ -36,18 +39,17 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageList.count
+        return uiImageList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
         
         let sortedTimeList = timeList.sorted()
-        let sortedImageList = imageList.sorted()
-        
+
         cell.timeLb.text = sortedTimeList[indexPath.row]
         cell.resultImageView.image = uiImageList[indexPath.row]
-//        cell.commentLb.text = commentList[indexPath.row] ?? ""
+        cell.commentLb.text = commentList[indexPath.row]
         
         return cell
     }
@@ -55,11 +57,12 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func resultButtonTouched(_ sender: UIButton) {
 
+        uploadIndicator.isHidden = false
+        uploadIndicator.startAnimating()
+        myTableView.isHidden = true
+        
         savedImages(imagrArray: uiImageList)
         
-        let mvc = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
-        
-        self.present(mvc, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,17 +73,34 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         
         let currentTime = Date()
         let scDateformatter = DateFormatter()
-        scDateformatter.dateFormat = "YYYYMMddhhmm"
+        scDateformatter.dateFormat = "YYYYMMddHHmm"
         let timeString = scDateformatter.string(from: currentTime)
         let userUid:String = (loginUser?.uid)!
 
         uploadMyImage(userUid: userUid, imageArray: imagrArray) { (urlArray) in
             
-            for url in urlArray {
+            let uploadChild = Database.database().reference().child("users").child(userUid).child("travelList").child(timeString)
+            
+            uploadChild.child("images").setValue(urlArray.sorted())
+            uploadChild.child("timeList").setValue(self.timeList.sorted())
+            uploadChild.child("addressList").setValue(self.addressLst)
+            uploadChild.child("commentList").setValue(commentList)
+            
+            
+            if self.uiImageList.count == urlArray.count {
                 
-                print(url)
-                Database.database().reference().child("users").child(userUid).child("travelList").child(timeString).child("image\((urlArray.count - 1))").setValue(url)
+                self.uploadIndicator.stopAnimating()
+            
+            let mvc = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
+            
+            self.present(mvc, animated: true, completion: nil)
+//
             }
+//            for url in urlArray {
+//
+//                print(url)
+//                Database.database().reference().child("users").child(userUid).child("travelList").child(timeString).child("\((urlArray.count - 1))").setValue(url)
+//            }
         }
     }
     
@@ -126,6 +146,5 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
             
         }
     }
-
     
 }

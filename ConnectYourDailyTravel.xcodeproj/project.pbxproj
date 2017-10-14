@@ -43,6 +43,8 @@
 		7582359C1F8314BE00ACB064 /* CommentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */; };
 		7582359E1F83BE0A00ACB064 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359D1F83BE0A00ACB064 /* ResultViewController.swift */; };
 		75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB34731F8925320065DA69 /* ShowViewController.swift */; };
+		75CC744C1F9210DE0063690A /* SHTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC744A1F9210DE0063690A /* SHTableViewCell.swift */; };
+		75CC744D1F9210DE0063690A /* SHTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75CC744B1F9210DE0063690A /* SHTableViewCell.xib */; };
 		A166C674F1FDCD4AB72DB8F9 /* Pods_ConnectYourDailyTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,8 @@
 		7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddViewController.swift; sourceTree = "<group>"; };
 		7582359D1F83BE0A00ACB064 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		75AB34731F8925320065DA69 /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
+		75CC744A1F9210DE0063690A /* SHTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTableViewCell.swift; sourceTree = "<group>"; };
+		75CC744B1F9210DE0063690A /* SHTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTableViewCell.xib; sourceTree = "<group>"; };
 		7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectYourDailyTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADDF3E4FFE8BD69E0422638 /* Pods-ConnectYourDailyTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +143,8 @@
 				756323671F8A13E60024DCA7 /* ResultTableViewCell.swift */,
 				756323681F8A13E60024DCA7 /* ResultTableViewCell.xib */,
 				75AB34731F8925320065DA69 /* ShowViewController.swift */,
+				75CC744A1F9210DE0063690A /* SHTableViewCell.swift */,
+				75CC744B1F9210DE0063690A /* SHTableViewCell.xib */,
 				7582359D1F83BE0A00ACB064 /* ResultViewController.swift */,
 				7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */,
 				7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */,
@@ -250,6 +256,7 @@
 				7549D6B71F6F2C1500EEA8E6 /* launchPng.001.png in Resources */,
 				7549D68A1F696E5900EEA8E6 /* Assets.xcassets in Resources */,
 				7549D6A51F69C76900EEA8E6 /* pin.png in Resources */,
+				75CC744D1F9210DE0063690A /* SHTableViewCell.xib in Resources */,
 				7549D6D51F6FCB4200EEA8E6 /* YeogiLaunch.png in Resources */,
 				7549D6D41F6FCB4200EEA8E6 /* YeogiBackground.png in Resources */,
 				7549D6C31F6F34CA00EEA8E6 /* GoogleService-Info.plist in Resources */,
@@ -329,6 +336,7 @@
 				7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */,
 				7549D6AA1F6AE8AC00EEA8E6 /* TimeTableViewCell.swift in Sources */,
 				7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */,
+				75CC744C1F9210DE0063690A /* SHTableViewCell.swift in Sources */,
 				752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */,
 				75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */,
 				7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */,

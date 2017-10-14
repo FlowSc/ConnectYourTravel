@@ -177,6 +177,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a8V-al-cBS">
+                                <rect key="frame" x="107" y="238" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="a8V-al-cBS" secondAttribute="height" multiplier="1:1" id="kzN-rq-U3I"/>
+                                    <constraint firstAttribute="width" constant="200" id="nmI-rG-R8p"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-Sr-xHb">
                                 <rect key="frame" x="0.0" y="676" width="414" height="60"/>
                                 <constraints>
@@ -195,12 +202,15 @@
                             <constraint firstItem="G0D-7d-EXy" firstAttribute="leading" secondItem="iLb-hd-wZQ" secondAttribute="leading" id="A1t-OF-KUH"/>
                             <constraint firstItem="qQh-Sr-xHb" firstAttribute="leading" secondItem="iLb-hd-wZQ" secondAttribute="leading" id="JJd-KE-2uS"/>
                             <constraint firstItem="G0D-7d-EXy" firstAttribute="top" secondItem="iLb-hd-wZQ" secondAttribute="top" id="Kz0-An-9nV"/>
+                            <constraint firstItem="a8V-al-cBS" firstAttribute="centerY" secondItem="G0D-7d-EXy" secondAttribute="centerY" id="PaZ-VR-zlR"/>
+                            <constraint firstItem="a8V-al-cBS" firstAttribute="centerX" secondItem="iLb-hd-wZQ" secondAttribute="centerX" id="aUj-LP-xwo"/>
                             <constraint firstItem="qQh-Sr-xHb" firstAttribute="top" secondItem="G0D-7d-EXy" secondAttribute="bottom" id="tEA-5u-wuA"/>
                             <constraint firstItem="7ia-27-x6P" firstAttribute="top" secondItem="qQh-Sr-xHb" secondAttribute="bottom" id="ytg-fY-J9h"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="myTableView" destination="G0D-7d-EXy" id="FK5-tu-3M9"/>
+                        <outlet property="uploadIndicator" destination="a8V-al-cBS" id="Ztq-gV-LEF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK9-Zi-Ne3" userLabel="First Responder" sceneMemberID="firstResponder"/>
