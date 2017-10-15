@@ -26,8 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var tossList:[DKAsset] = []
     var locationInfo:[CLLocationCoordinate2D] = []
     var timeList:[String] = []
-    var imageUrlList:[String] = []
-    var sortedImageUrlList:[String] = []
+
     
     @IBOutlet weak var myMapView: MKMapView!
     
@@ -39,22 +38,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         tossList = dkAssetsList
    
-        for asset in tossList {
-            
-            asset.originalAsset?.requestContentEditingInput(with: PHContentEditingInputRequestOptions(), completionHandler: { (input, _) in
-                
-                guard let input = input else {return}
-                
-                print("~~~~~")
-                print(input.fullSizeImageURL?.absoluteURL)
-                print("XXXXX")
-                print(input.fullSizeImageURL?.absoluteString)
-                print("VVVVV")
-                self.imageUrlList.append((input.fullSizeImageURL?.absoluteString)!)
-                self.sortedImageUrlList = self.imageUrlList.sorted()
-            })
-            
-        }
+//        for asset in tossList {
+//
+//            asset.originalAsset?.requestContentEditingInput(with: PHContentEditingInputRequestOptions(), completionHandler: { (input, _) in
+//
+//                guard let input = input else {return}
+//
+//                print("~~~~~")
+//                print(input.fullSizeImageURL?.absoluteURL)
+//                print("XXXXX")
+//                print(input.fullSizeImageURL?.absoluteString)
+//                print("VVVVV")
+//                self.imageUrlList.append((input.fullSizeImageURL?.absoluteString)!)
+//                self.sortedImageUrlList = self.imageUrlList.sorted()
+//            })
+//
+//        }
         
         
         while currentIndex < locationInfo.count {
@@ -102,9 +101,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-        let myLineRenderer = MKPolylineRenderer(polyline: myRoute.polyline)
+        let myLineRenderer = MKPolylineRenderer(polyline: (myRoute?.polyline)!)
         myLineRenderer.strokeColor = UIColor.blue
-        myLineRenderer.lineWidth = 1
+        myLineRenderer.lineWidth = 2
         return myLineRenderer
     }
     
@@ -187,24 +186,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
          
          */
         
-//        totalData.updateValue(sortedImageUrlList, forKey: "imageList") // string
-//        totalData.updateValue(timeList, forKey: "timeList") // string
-////        totalData.updateValue(locationInfo, forKey: "locationList") // longitude
-//        totalData.updateValue(myAddressList, forKey: "addressList") // string
-//        totalData.updateValue(commentList, forKey: "commentList") // string
-        
-        print("SendDatA")
-
-        print(myAddressList)
-        print(timeList)
-        print(locationInfo)
-        
-        print("~~~~~~")
-        
+     
         let mvc = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
         mvc.uiImageList = imageList
         mvc.addressLst = myAddressList
         mvc.timeList = timeList
+        mvc.locationList = locationInfo
         
         self.navigationController?.pushViewController(mvc, animated: true)
         

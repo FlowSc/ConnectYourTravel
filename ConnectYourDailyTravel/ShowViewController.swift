@@ -98,6 +98,12 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         print(data)
         
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        mvc.detailData = data
+        
+        self.navigationController?.pushViewController(mvc, animated: true)
+        
     }
 
     /*

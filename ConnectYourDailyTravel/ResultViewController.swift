@@ -11,6 +11,7 @@ import TimelineTableViewCell
 import Kingfisher
 import Firebase
 import PromiseKit
+import MapKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,13 +20,14 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     var timeList:[String] = []
     var addressLst:[String] = []
     var uiImageList:[UIImage] = []
+    var locationList:[CLLocationCoordinate2D] = []
+    var locationStringList:[String] = []
     
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         uploadIndicator.isHidden = true
-        
         myTableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         myTableView.delegate = self
         myTableView.dataSource = self

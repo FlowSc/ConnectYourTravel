@@ -25,7 +25,6 @@
 		7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6AC1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift */; };
 		7549D6B01F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6AE1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift */; };
 		7549D6B11F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6AF1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib */; };
-		7549D6B31F6EE7BE00EEA8E6 /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6B21F6EE7BE00EEA8E6 /* DataCenter.swift */; };
 		7549D6B71F6F2C1500EEA8E6 /* launchPng.001.png in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6B61F6F2C1500EEA8E6 /* launchPng.001.png */; };
 		7549D6B91F6F2C6F00EEA8E6 /* Screen.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6B81F6F2C6F00EEA8E6 /* Screen.jpeg */; };
 		7549D6BB1F6F2DB500EEA8E6 /* LaunchScreen.001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6BA1F6F2DB500EEA8E6 /* LaunchScreen.001.jpeg */; };
@@ -40,6 +39,7 @@
 		756323691F8A13E60024DCA7 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756323671F8A13E60024DCA7 /* ResultTableViewCell.swift */; };
 		7563236A1F8A13E60024DCA7 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 756323681F8A13E60024DCA7 /* ResultTableViewCell.xib */; };
 		7563236C1F8FBDF60024DCA7 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7563236B1F8FBDF60024DCA7 /* CompleteViewController.swift */; };
+		7564AE651F938ED300EF085C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564AE641F938ED300EF085C /* DetailViewController.swift */; };
 		7582359C1F8314BE00ACB064 /* CommentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */; };
 		7582359E1F83BE0A00ACB064 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359D1F83BE0A00ACB064 /* ResultViewController.swift */; };
 		75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB34731F8925320065DA69 /* ShowViewController.swift */; };
@@ -70,7 +70,6 @@
 		7549D6AC1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCollectionViewController.swift; sourceTree = "<group>"; };
 		7549D6AE1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCollectionViewCell.swift; sourceTree = "<group>"; };
 		7549D6AF1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeLineCollectionViewCell.xib; sourceTree = "<group>"; };
-		7549D6B21F6EE7BE00EEA8E6 /* DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		7549D6B61F6F2C1500EEA8E6 /* launchPng.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchPng.001.png; sourceTree = "<group>"; };
 		7549D6B81F6F2C6F00EEA8E6 /* Screen.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Screen.jpeg; sourceTree = "<group>"; };
 		7549D6BA1F6F2DB500EEA8E6 /* LaunchScreen.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LaunchScreen.001.jpeg; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		756323671F8A13E60024DCA7 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		756323681F8A13E60024DCA7 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		7563236B1F8FBDF60024DCA7 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		7564AE641F938ED300EF085C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddViewController.swift; sourceTree = "<group>"; };
 		7582359D1F83BE0A00ACB064 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		75AB34731F8925320065DA69 /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +139,7 @@
 				7549D6821F696E5900EEA8E6 /* AppDelegate.swift */,
 				7549D69C1F69773500EEA8E6 /* ChooseViewController.swift */,
 				7549D6861F696E5900EEA8E6 /* Main.storyboard */,
+				7564AE641F938ED300EF085C /* DetailViewController.swift */,
 				7563236B1F8FBDF60024DCA7 /* CompleteViewController.swift */,
 				756323671F8A13E60024DCA7 /* ResultTableViewCell.swift */,
 				756323681F8A13E60024DCA7 /* ResultTableViewCell.xib */,
@@ -159,7 +160,6 @@
 				7549D6AF1F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.xib */,
 				7549D6A61F69CC9B00EEA8E6 /* TimelineViewController.swift */,
 				7549D6A81F6AE8AC00EEA8E6 /* TimeTableViewCell.swift */,
-				7549D6B21F6EE7BE00EEA8E6 /* DataCenter.swift */,
 				7549D6A41F69C76800EEA8E6 /* pin.png */,
 				7549D69E1F6979A000EEA8E6 /* MapViewController.swift */,
 				7549D6D21F6FCB4200EEA8E6 /* YeogiBackground.png */,
@@ -330,7 +330,6 @@
 				752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */,
 				7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */,
 				7528B1D61F8284CD00893EC5 /* UITextViewPlaceholder.swift in Sources */,
-				7549D6B31F6EE7BE00EEA8E6 /* DataCenter.swift in Sources */,
 				7582359C1F8314BE00ACB064 /* CommentAddViewController.swift in Sources */,
 				7549D69D1F69773500EEA8E6 /* ChooseViewController.swift in Sources */,
 				7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */,
@@ -346,6 +345,7 @@
 				7549D69F1F6979A000EEA8E6 /* MapViewController.swift in Sources */,
 				7549D6B01F6ECCC800EEA8E6 /* TimeLineCollectionViewCell.swift in Sources */,
 				7549D6A31F699D5900EEA8E6 /* CustomAnnotation.swift in Sources */,
+				7564AE651F938ED300EF085C /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

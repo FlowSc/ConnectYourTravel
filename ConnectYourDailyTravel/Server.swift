@@ -75,4 +75,39 @@ class Server {
             }
         }
     }
+
+    static func getMultipleLocationRoute(assetList:[DKAsset], myMapView:MKMapView){
+        
+        var myAssetLst = assetList
+        var myRoute:MKRoute!
+
+        
+        while myAssetLst.count > 1 {
+            
+            let startLocation = myAssetLst.removeLast().originalAsset?.location?.coordinate
+            let endLocation = myAssetLst.last!.originalAsset?.location?.coordinate
+            let startPlacemark = MKPlacemark(coordinate: startLocation!)
+            let endPlacemark = MKPlacemark(coordinate: endLocation!)
+            let startItem = MKMapItem(placemark: startPlacemark)
+            let desItem = MKMapItem(placemark: endPlacemark)
+            let directionRequest = MKDirectionsRequest()
+            
+            directionRequest.source = startItem
+            directionRequest.destination = desItem
+            directionRequest.transportType = myTransportType
+            
+            let directions = MKDirections(request: directionRequest)
+            
+            directions.calculate { (response, error) in
+                
+                guard let response = response else {return}
+                
+                let route = response.routes[0]
+                myRoute = route
+                myMapView.add((route.polyline), level: .aboveRoads)
+                let rekt = route.polyline.boundingMapRect
+                myMapView.setRegion(MKCoordinateRegionForMapRect(rekt), animated: true)
+            }
+        }
+    }
 }

@@ -33,6 +33,8 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     var arrangeDK:[DKAsset]!
     var arragnedImage:[UIImage]!
     var actualTime:[String] = []
+    var secondTimeList:[String] = []
+
     
     @IBAction func moveToMapView(_ sender: UIButton) {
         
@@ -81,7 +83,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         let filterPridicate = NSPredicate(format: "creationDate > %@ && creationDate < %@", filterDate1 as CVarArg, filterDate2 as CVarArg)
         let pickerController = DKImagePickerController()
         
-        pickerController.imageFetchPredicate = filterPridicate
+//        pickerController.imageFetchPredicate = filterPridicate
         pickerController.assetType = .allPhotos
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
             
@@ -157,17 +159,20 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let cellItem = self.dkAssetsList[indexPath.item]
         let dateFormatter = DateFormatter()
+        let timeFormatter = DateFormatter()
         print("cellforRowAt")
         print(cellItem)
         print("~~~~~~")
         
         dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
+        timeFormatter.dateFormat = "yyyyMMddHHmmss"
         dateFormatter.timeZone = TimeZone.current
         
         Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) {(placemark) in
             
             let realTime = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             let realAddress = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
+            let recogTime = timeFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             
             print(realAddress)
             
@@ -175,10 +180,27 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             cell.timeLb.text = realTime
             cell.addressLb.text = realAddress
             
-            self.actualTime.append(realTime)
-            self.addressList.append(realAddress)
             
+            print(self.secondTimeList)
+            
+            if !(self.secondTimeList.contains(recogTime)) {
+                self.actualTime.append(realTime)
+                self.addressList.append(realAddress)
+                self.secondTimeList.append(recogTime)
+
+            }
+            
+//            while self.dkAssetsList.count == self.actualTime.count {
+//
+//            }
+            
+            print("XXXXXX")
             print(self.addressList)
+            print(self.actualTime)
+            print(self.addressList.count)
+            print("VVVVVV")
+
+          
         }
         
         cellItem.fetchOriginalImageWithCompleteBlock { (image, _) in
