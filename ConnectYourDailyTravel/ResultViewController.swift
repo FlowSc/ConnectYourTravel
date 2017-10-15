@@ -78,6 +78,14 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         scDateformatter.dateFormat = "YYYYMMddHHmm"
         let timeString = scDateformatter.string(from: currentTime)
         let userUid:String = (loginUser?.uid)!
+        var latitudes:[Double] = []
+        var longitude:[Double] = []
+        
+        for location in self.locationList {
+            
+            latitudes.append(Double(location.latitude))
+            longitude.append(Double(location.longitude))
+        }
 
         uploadMyImage(userUid: userUid, imageArray: imagrArray) { (urlArray) in
             
@@ -87,7 +95,10 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
             uploadChild.child("timeList").setValue(self.timeList.sorted())
             uploadChild.child("addressList").setValue(self.addressLst)
             uploadChild.child("commentList").setValue(commentList)
+            uploadChild.child("latitudes").setValue(latitudes)
+            uploadChild.child("longitudes").setValue(longitude)
             
+           
             
             if self.uiImageList.count == urlArray.count {
                 

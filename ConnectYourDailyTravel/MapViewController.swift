@@ -37,25 +37,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         
         tossList = dkAssetsList
-   
-//        for asset in tossList {
-//
-//            asset.originalAsset?.requestContentEditingInput(with: PHContentEditingInputRequestOptions(), completionHandler: { (input, _) in
-//
-//                guard let input = input else {return}
-//
-//                print("~~~~~")
-//                print(input.fullSizeImageURL?.absoluteURL)
-//                print("XXXXX")
-//                print(input.fullSizeImageURL?.absoluteString)
-//                print("VVVVV")
-//                self.imageUrlList.append((input.fullSizeImageURL?.absoluteString)!)
-//                self.sortedImageUrlList = self.imageUrlList.sorted()
-//            })
-//
-//        }
-        
-        
+
         while currentIndex < locationInfo.count {
             
             let currentAsset = dkAssetsList[currentIndex]
