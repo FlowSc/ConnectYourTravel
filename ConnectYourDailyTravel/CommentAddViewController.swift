@@ -69,9 +69,7 @@ class CommentAddViewController: UIViewController, UITextViewDelegate {
     @IBAction func savedActionTouched(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         
-        if commentList[commentIndex!] != "" {
             commentList.remove(at: commentIndex!)
-        }
         
         commentList.insert(commentTv.text, at: commentIndex!)
         

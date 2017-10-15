@@ -32,7 +32,7 @@ class LaunchViewController: UIViewController {
             
             print("User Login Required")
         }
-
+        
     }
     @IBAction func facebookLoginTouched(_ sender: UIButton) {
         loginButtonClicked()
@@ -43,10 +43,10 @@ class LaunchViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,23 +67,29 @@ class LaunchViewController: UIViewController {
                 
                 // Perform login by calling Firebase APIs
                 let ref = Database.database().reference().root
-
+                
                 Auth.auth().signIn(with: credential, completion: {(user, error) in
                     
-                        guard let url = user?.photoURL else {return}
-                        print(user?.photoURL)
-    
-                        ref.child("users").child((user?.uid)!).child("userName").setValue(user?.displayName)
-                        ref.child("users").child((user?.uid)!).child("photoUrl").setValue(String(describing: url))
+                    guard let url = user?.photoURL else {return}
+                    print(user?.photoURL)
                     
+                    ref.child("users").child((user?.uid)!).child("userName").setValue(user?.displayName)
+                    ref.child("users").child((user?.uid)!).child("photoUrl").setValue(String(describing: url))
+                    
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }else if let user = Auth.auth().currentUser {
+                        print(user)
+                        
+                        
+                        let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
+                        
+                        self.present(mvc, animated: true, completion: nil)
+                        
+                    }
                 })
                 
                 print("Logged in!")
-                
-                
-                let mvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyTabbarViewController") as! MyTabbarViewController
-                
-                self.present(mvc, animated: true, completion: nil)
                 
             }
         }
@@ -95,16 +101,16 @@ class LaunchViewController: UIViewController {
         
         self.present(mvc, animated: true, completion: nil)
     }
-
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

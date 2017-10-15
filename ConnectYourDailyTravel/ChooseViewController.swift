@@ -15,8 +15,6 @@ import Firebase
 import FirebaseDatabase
 import Photos
 
-
-var totalArray = UserDefaults.standard.array(forKey: "IndividualData") ?? [[:]]
 let loginUser = Auth.auth().currentUser
 
 class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -38,13 +36,8 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBAction func moveToMapView(_ sender: UIButton) {
         
-        if addressList.count != dkAssetsList.count {
-            buttonOutlet.isEnabled = false
-        }else{
-            buttonOutlet.isSelected = true
-        }
         
-        if locationInfo.count >= 2 {
+        if locationInfo.count >= 2 && commentList.count != 0 {
             
             let mvc = storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
@@ -81,9 +74,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         locationInfo = []
         dateList = []
         commentList = []
-        
-        print(addressList)
-        print(dateList)
+        actualTime = []
         
         let filterDate1 = selectedDate.addingTimeInterval(-86400)
         let filterDate2 = selectedDate.addingTimeInterval(86400)
@@ -120,7 +111,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                     
                 }else{
                    
-                    let alertC = UIAlertController.init(title: "선택한 사진 중 위치 정보가 없는 사진은 제외됩니다", message: "경로 설정을 위한 위치정보가 없으면 포함될수가 없습니다..", preferredStyle: .alert)
+                    let alertC = UIAlertController.init(title: "선택한 사진 중 위치 정보가 없는 사진은 제외됩니다", message: "경로 설정을 위한 위치정보가 없으면 포함될수가 없습니다.", preferredStyle: .alert)
                     let alertAction = UIAlertAction.init(title: "확인", style: .cancel, handler: nil)
                     
                     alertC.addAction(alertAction)
@@ -138,7 +129,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     }
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -174,10 +164,12 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
         dateFormatter.timeZone = TimeZone.current
         
-        Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) { [unowned self](placemark) in
+        Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) {(placemark) in
             
             let realTime = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             let realAddress = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
+            
+            print(realAddress)
             
             
             cell.timeLb.text = realTime
@@ -185,6 +177,8 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             self.actualTime.append(realTime)
             self.addressList.append(realAddress)
+            
+            print(self.addressList)
         }
         
         cellItem.fetchOriginalImageWithCompleteBlock { (image, _) in

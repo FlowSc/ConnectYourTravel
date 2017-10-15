@@ -116,9 +116,9 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
             scDateformatter.dateFormat = "YYYYMMddHHmm"
             let timeString = scDateformatter.string(from: currentTime)
             
-            let scStorage = Storage.storage().reference().child(userUid).child("travelList").child(timeString).child("image\(count).png")
+            let scStorage = Storage.storage().reference().child(userUid).child("travelList").child(timeString).child("image\(count).jpg")
             
-            let uploadData = UIImagePNGRepresentation(imageArray[count])
+            let uploadData = UIImageJPEGRepresentation(uiImageList[count], 0.8)
             
             scStorage.putData(uploadData!, metadata: nil){ (metaData, error) in
                 

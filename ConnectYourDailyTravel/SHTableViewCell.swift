@@ -10,6 +10,8 @@ import UIKit
 
 class SHTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var timeLb: UILabel!
+    @IBOutlet weak var routeLb: UILabel!
     @IBOutlet weak var thumnailImage: UIImageView!
     @IBOutlet weak var textLb: UILabel!
     override func awakeFromNib() {

@@ -16,6 +16,7 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     var ref: DatabaseReference!
     var showingData:[JSON] = []
     var uploadTimeList:[String] = []
+    var tupleArray:[(String,JSON)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +42,13 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(jsonData.count)
             
             for i in jsonData {
-                self.uploadTimeList.append(i.0)
-                self.showingData.append(i.1)
                 
+                self.tupleArray.append(i)
+
             }
-            
             myTableView.reloadData()
-            
         })
         
-      
-
         myTableView.snp.makeConstraints { (con) in
             con.width.equalToSuperview()
             con.height.equalToSuperview()
@@ -67,23 +64,40 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return uploadTimeList.count
+        return tupleArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SHTableViewCell
         
-        let data = showingData[indexPath.row]
+        let sortedArray = tupleArray.sorted { (a, b) -> Bool in
+            a.0 > b.0
+        }
         
+        let data = sortedArray[indexPath.row]
         
-        cell.textLb.text = uploadTimeList.sorted()[indexPath.row]
-        cell.thumnailImage.kf.setImage(with: URL.init(string: data["images"][0].stringValue))
-        
+        cell.textLb.text = data.0
+        cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지"
+        cell.thumnailImage.kf.setImage(with: URL.init(string: (data.1)["images"][0].stringValue))
+        cell.timeLb.text = "\(((data.1)["timeList"].array?.first?.stringValue)!) 부터 " + "\(((data.1)["timeList"].array?.last?.stringValue)!) 까지"
+        cell.tag = indexPath.row
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sortedArray = tupleArray.sorted { (a, b) -> Bool in
+            a.0 > b.0
+        }
+        
+        let data = sortedArray[indexPath.row]
+        
+        print(data)
+        
     }
 
     /*

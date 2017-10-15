@@ -6,38 +6,68 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="152" id="KGk-i7-Jjw" customClass="SHTableViewCell" customModule="ConnectYourDailyTravel" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="152"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="163" id="KGk-i7-Jjw" customClass="SHTableViewCell" customModule="ConnectYourDailyTravel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="163"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="368" height="151.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="399" height="162.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QE5-95-mLB">
-                        <rect key="frame" x="0.0" y="11" width="138" height="128"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QE5-95-mLB">
+                        <rect key="frame" x="0.0" y="0.0" width="162.5" height="162.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="QE5-95-mLB" secondAttribute="height" multiplier="1:1" id="Spw-1x-3Fx"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDp-qX-Bwh">
-                        <rect key="frame" x="177" y="37" width="146" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-Ib-52G">
+                        <rect key="frame" x="172.5" y="41" width="226.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDp-qX-Bwh">
+                        <rect key="frame" x="172.5" y="10" width="226.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK0-Xt-8eG">
+                        <rect key="frame" x="172.5" y="79" width="226.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="QE5-95-mLB" secondAttribute="bottom" id="42r-6O-rl8"/>
+                    <constraint firstItem="QE5-95-mLB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DpL-3z-WeT"/>
+                    <constraint firstItem="HgA-Ib-52G" firstAttribute="trailing" secondItem="RDp-qX-Bwh" secondAttribute="trailing" id="FSH-5A-DSi"/>
+                    <constraint firstAttribute="trailing" secondItem="RDp-qX-Bwh" secondAttribute="trailing" id="H7a-K3-cQz"/>
+                    <constraint firstItem="yK0-Xt-8eG" firstAttribute="width" secondItem="HgA-Ib-52G" secondAttribute="width" id="M0J-XU-msT"/>
+                    <constraint firstItem="RDp-qX-Bwh" firstAttribute="leading" secondItem="QE5-95-mLB" secondAttribute="trailing" constant="10" id="Vz1-aG-07l"/>
+                    <constraint firstItem="QE5-95-mLB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Wxo-ik-DqW"/>
+                    <constraint firstItem="HgA-Ib-52G" firstAttribute="top" secondItem="RDp-qX-Bwh" secondAttribute="bottom" constant="10" id="XRi-TW-0NB"/>
+                    <constraint firstItem="RDp-qX-Bwh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="de6-FG-lg6"/>
+                    <constraint firstItem="yK0-Xt-8eG" firstAttribute="leading" secondItem="HgA-Ib-52G" secondAttribute="leading" id="f3a-SV-GmU"/>
+                    <constraint firstItem="HgA-Ib-52G" firstAttribute="leading" secondItem="RDp-qX-Bwh" secondAttribute="leading" id="nt9-XQ-1H3"/>
+                    <constraint firstItem="yK0-Xt-8eG" firstAttribute="top" secondItem="HgA-Ib-52G" secondAttribute="bottom" constant="21" id="zxO-Fs-y3c"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="routeLb" destination="HgA-Ib-52G" id="jAp-Py-TDC"/>
                 <outlet property="textLb" destination="RDp-qX-Bwh" id="Vx8-xU-wZT"/>
                 <outlet property="thumnailImage" destination="QE5-95-mLB" id="Hu5-0t-Rrc"/>
+                <outlet property="timeLb" destination="yK0-Xt-8eG" id="LsN-Ef-OTB"/>
             </connections>
-            <point key="canvasLocation" x="84" y="203"/>
+            <point key="canvasLocation" x="99.5" y="208.5"/>
         </tableViewCell>
     </objects>
 </document>
