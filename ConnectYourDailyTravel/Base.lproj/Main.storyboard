@@ -884,10 +884,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="nrp-CD-auO" kind="show" id="C33-NA-GYl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AjB-21-AUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2371" y="-515"/>
+            <point key="canvasLocation" x="2369.5652173913045" y="-515.21739130434787"/>
+        </scene>
+        <!--Detail Map View Controller-->
+        <scene sceneID="ncB-ye-Ym5">
+            <objects>
+                <viewController storyboardIdentifier="DetailMapViewController" id="nrp-CD-auO" customClass="DetailMapViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VeL-gr-OOS"/>
+                        <viewControllerLayoutGuide type="bottom" id="AXC-kV-ZNh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b9M-bD-JvW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0C-g9-D7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="-515"/>
         </scene>
         <!--Thumnail Select View Controller-->
         <scene sceneID="Sg9-W0-7We">

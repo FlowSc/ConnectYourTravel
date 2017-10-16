@@ -20,30 +20,50 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var clLocationList:[CLLocationCoordinate2D] = []
     var detailData:(String, JSON)?
     var locationManager = CLLocationManager()
-
+    var myMapView = MKMapView()
+    var currentIndex:Int = 0
+    var myRoute:MKRoute!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    let button1:UIButton = {
         
-        rowCount = source["images"].count
-
-    }
+        let btn:UIButton = UIButton(type: UIButtonType.system)
+        
+        return btn
+    }()
+    
+    let scMapView:MKMapView = {
+        
+        let mapView = MKMapView()
+        
+        return mapView
+        
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-        }
         
+        
+        locationManager.requestWhenInUseAuthorization()
+        scMapView.showsUserLocation = true
+        scMapView.showsCompass = true
+        scMapView.delegate = self
         myTableVIew.delegate = self
         myTableVIew.dataSource = self
-        myTableVIew.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//        myTableVIew.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        myTableVIew.register(UINib.init(nibName: "DetailShowTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        button1.frame = view.frame
+        scMapView.frame = view.frame
+        myTableVIew.tableFooterView = scMapView
+        
+        button1.setTitle("지도보기", for: UIControlState.normal)
+        button1.addTarget(self, action: #selector(moveToDetailMap), for: UIControlEvents.touchUpInside)
         
         view.addSubview(myTableVIew)
-        myTableVIew.reloadData()
         
         myTableVIew.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -60,22 +80,32 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         source = detail.1
         
-        
-        for myIndex in 0...(source["longitudes"].count - 1) {
+        for myIndex in 0..<source["longitudes"].count {
             
             print(myIndex)
         
-            let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(source["longitudes"][myIndex].doubleValue), CLLocationDegrees(source["latitudes"][myIndex].doubleValue))
+            let myLocation:CLLocationCoordinate2D =
+                
+                CLLocationCoordinate2DMake(CLLocationDegrees(source["latitudes"][myIndex].doubleValue), CLLocationDegrees(source["longitudes"][myIndex].doubleValue))
             
             clLocationList.append(myLocation)
         
             print(myLocation)
+            
+            let point = MKPointAnnotation()
+            
+            point.coordinate = myLocation
+            
+            scMapView.addAnnotation(point)
 
         }
         
+        myTableVIew.reloadData()
+        getMultipleLocationRoute()
+
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,52 +116,101 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DetailShowTableViewCell
         
         let address = source["addressList"][indexPath.row]
         let image = source["images"][indexPath.row]
         let comment = source["commentList"][indexPath.row]
         let time = source["timeList"][indexPath.row]
         
+        cell.locationLb.text = address.stringValue
+        cell.myImageView.kf.setImage(with: URL(string: image.stringValue))
+        cell.commentLb.text = comment.stringValue
+        cell.timeLb.text = time.stringValue
         
-        cell.textLabel?.text = address.stringValue
-        cell.imageView?.kf.setImage(with: URL(string: image.stringValue))
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let mapView = MKMapView()
-        let point = MKPointAnnotation()
-        var annoations:[MKPointAnnotation] = []
-        
-        mapView.delegate = self
-        mapView.showsCompass = true
-        mapView.showsBuildings = true
-        mapView.showsUserLocation = true
-        mapView.showsPointsOfInterest = true
-        
-        for annotation in clLocationList {
-            
-            
-            print(annotation)
-            
-            point.coordinate = annotation
-            
-            DispatchQueue.main.async {
-                mapView.addAnnotation(point)
-            }
-        }
-        
-        
-    
-        
-        return mapView
-    }
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 300
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        let myLineRenderer = MKPolylineRenderer(polyline: (myRoute?.polyline)!)
+        myLineRenderer.strokeColor = UIColor.blue
+        myLineRenderer.lineWidth = 2
+        return myLineRenderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKind(of: MKUserLocation.self) {  //Handle user location annotation..
+            return nil  //Default is to let the system handle it.
+        }
+        
+        if !annotation.isKind(of: CustomAnnotation.self) {  //Handle non-ImageAnnotations..
+            var pinAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "DefaultPinView")
+            if pinAnnotationView == nil {
+                pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DefaultPinView")
+            }
+            return pinAnnotationView
+        }
+        
+        //Handle ImageAnnotations..
+        var view: ImageAnnotationView? = scMapView.dequeueReusableAnnotationView(withIdentifier: "imageAnnotation") as? ImageAnnotationView
+        if view == nil {
+            view = ImageAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
+            view?.canShowCallout = false
+        }
+        
+        let annotation = annotation as! CustomAnnotation
+        view?.image = annotation.image
+        view?.annotation = annotation
+        
+        return view
+    }
+    
+    func getMultipleLocationRoute(){
+        
+        var locations = clLocationList
+        
+        while locations.count > 1 {
+            
+            let startLocation = locations.removeLast()
+            let endLocation = locations.last!
+            let startPlacemark = MKPlacemark(coordinate: startLocation)
+            let endPlacemark = MKPlacemark(coordinate: endLocation)
+            let startItem = MKMapItem(placemark: startPlacemark)
+            let desItem = MKMapItem(placemark: endPlacemark)
+            let directionRequest = MKDirectionsRequest()
+            
+            directionRequest.source = startItem
+            directionRequest.destination = desItem
+            directionRequest.transportType = myTransportType
+            
+            let directions = MKDirections(request: directionRequest)
+            
+            directions.calculate { (response, error) in
+                
+                guard let response = response else {return}
+                
+                let route = response.routes[0]
+                self.myRoute = route
+                self.scMapView.add((route.polyline), level: .aboveRoads)
+                let rekt = route.polyline.boundingMapRect
+                self.scMapView.setRegion(MKCoordinateRegionForMapRect(rekt), animated: true)
+            }
+        }
+    }
+    
+    func moveToDetailMap(){
+        
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "DetailMapViewController") as! DetailMapViewController
+        
+        mvc.locationList = clLocationList
+        
+        self.navigationController?.pushViewController(mvc, animated: true)
     }
     
 

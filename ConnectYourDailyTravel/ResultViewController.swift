@@ -75,11 +75,15 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         
         let currentTime = Date()
         let scDateformatter = DateFormatter()
+        let myDateformatter = DateFormatter()
         scDateformatter.dateFormat = "YYYYMMddHHmm"
         let timeString = scDateformatter.string(from: currentTime)
         let userUid:String = (loginUser?.uid)!
         var latitudes:[Double] = []
         var longitude:[Double] = []
+        myDateformatter.dateFormat = "YYYY년 MM월 dd일"
+        let updateDate = myDateformatter.string(from: currentTime)
+    
         
         for location in self.locationList {
             
@@ -97,6 +101,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
             uploadChild.child("commentList").setValue(commentList)
             uploadChild.child("latitudes").setValue(latitudes)
             uploadChild.child("longitudes").setValue(longitude)
+            uploadChild.child("uploadDate").setValue(updateDate)
             
            
             

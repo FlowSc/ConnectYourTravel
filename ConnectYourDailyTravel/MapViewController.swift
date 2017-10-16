@@ -69,7 +69,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         locationManager.requestAlwaysAuthorization()
         myMapView.showsUserLocation = true
-        myMapView.showsCompass = true
+//        myMapView.showsCompass = true
         myMapView.delegate = self
         
         getMultipleLocationRoute()
