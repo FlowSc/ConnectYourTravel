@@ -75,10 +75,12 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let data = sortedArray[indexPath.row]
         
-        cell.textLb.text = data.0
+        cell.textLb.text = (data.1)["title"].stringValue
         cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지"
         cell.thumnailImage.kf.setImage(with: URL.init(string: (data.1)["images"][0].stringValue))
         cell.timeLb.text = "\(((data.1)["timeList"].array?.first?.stringValue)!) 부터 " + "\(((data.1)["timeList"].array?.last?.stringValue)!) 까지"
+        cell.uploadTimeLb.text = (data.1)["uploadDate"].stringValue
+        
         cell.tag = indexPath.row
         
         return cell

@@ -10,6 +10,7 @@ import UIKit
 
 class SHTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var uploadTimeLb: UILabel!
     @IBOutlet weak var timeLb: UILabel!
     @IBOutlet weak var routeLb: UILabel!
     @IBOutlet weak var thumnailImage: UIImageView!

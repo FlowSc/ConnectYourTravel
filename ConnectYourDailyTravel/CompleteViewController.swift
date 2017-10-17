@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import SwiftyJSON
+import SnapKit
 
 class CompleteViewController: UIViewController {
+    
+    var timeString:String!
+    var userUid:String!
+    
+    @IBOutlet weak var scTextField: UITextField!
+    
+    @IBOutlet weak var hashTagTf: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,6 +33,15 @@ class CompleteViewController: UIViewController {
     }
     
     @IBAction func backToMainViewTouched(_ sender: UIButton) {
+        let uploadChild = Database.database().reference().child("users").child(userUid).child("travelList").child(timeString)
+        
+        if scTextField.text != nil {
+         uploadChild.child("title").setValue(scTextField.text)
+        }
+       
+        if hashTagTf.text != nil {
+        uploadChild.child("hashtag").setValue(hashTagTf.text)
+        }
         
         let mvc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
         

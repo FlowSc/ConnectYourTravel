@@ -44,13 +44,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OC4-pc-WRs">
+                        <rect key="frame" x="172.5" y="122.5" width="216.5" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="DVg-o2-Nmc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="QE5-95-mLB" secondAttribute="bottom" id="42r-6O-rl8"/>
+                    <constraint firstItem="OC4-pc-WRs" firstAttribute="leading" secondItem="QE5-95-mLB" secondAttribute="trailing" constant="10" id="DC3-5f-zpU"/>
                     <constraint firstItem="QE5-95-mLB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DpL-3z-WeT"/>
+                    <constraint firstAttribute="bottom" secondItem="OC4-pc-WRs" secondAttribute="bottom" constant="10" id="Etr-vD-LLF"/>
                     <constraint firstItem="HgA-Ib-52G" firstAttribute="trailing" secondItem="RDp-qX-Bwh" secondAttribute="trailing" id="FSH-5A-DSi"/>
                     <constraint firstAttribute="trailing" secondItem="RDp-qX-Bwh" secondAttribute="trailing" id="H7a-K3-cQz"/>
                     <constraint firstItem="yK0-Xt-8eG" firstAttribute="width" secondItem="HgA-Ib-52G" secondAttribute="width" id="M0J-XU-msT"/>
+                    <constraint firstAttribute="trailing" secondItem="OC4-pc-WRs" secondAttribute="trailing" constant="10" id="QA1-wA-MVP"/>
                     <constraint firstItem="RDp-qX-Bwh" firstAttribute="leading" secondItem="QE5-95-mLB" secondAttribute="trailing" constant="10" id="Vz1-aG-07l"/>
                     <constraint firstItem="QE5-95-mLB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Wxo-ik-DqW"/>
                     <constraint firstItem="HgA-Ib-52G" firstAttribute="top" secondItem="RDp-qX-Bwh" secondAttribute="bottom" constant="10" id="XRi-TW-0NB"/>
@@ -66,6 +78,7 @@
                 <outlet property="textLb" destination="RDp-qX-Bwh" id="Vx8-xU-wZT"/>
                 <outlet property="thumnailImage" destination="QE5-95-mLB" id="Hu5-0t-Rrc"/>
                 <outlet property="timeLb" destination="yK0-Xt-8eG" id="LsN-Ef-OTB"/>
+                <outlet property="uploadTimeLb" destination="OC4-pc-WRs" id="BB7-K1-gKX"/>
             </connections>
             <point key="canvasLocation" x="99.5" y="208.5"/>
         </tableViewCell>

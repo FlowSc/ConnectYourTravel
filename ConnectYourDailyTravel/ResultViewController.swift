@@ -78,6 +78,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         let myDateformatter = DateFormatter()
         scDateformatter.dateFormat = "YYYYMMddHHmm"
         let timeString = scDateformatter.string(from: currentTime)
+//        self.timeString = timeString
         let userUid:String = (loginUser?.uid)!
         var latitudes:[Double] = []
         var longitude:[Double] = []
@@ -110,15 +111,13 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
                 self.uploadIndicator.stopAnimating()
             
             let mvc = self.storyboard?.instantiateViewController(withIdentifier: "CompleteViewController") as! CompleteViewController
+//
+                mvc.timeString = timeString
+                mvc.userUid = userUid
             
             self.present(mvc, animated: true, completion: nil)
 //
             }
-//            for url in urlArray {
-//
-//                print(url)
-//                Database.database().reference().child("users").child(userUid).child("travelList").child(timeString).child("\((urlArray.count - 1))").setValue(url)
-//            }
         }
     }
     

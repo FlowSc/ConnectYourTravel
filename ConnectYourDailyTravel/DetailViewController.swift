@@ -56,12 +56,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         myTableVIew.dataSource = self
 //        myTableVIew.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         myTableVIew.register(UINib.init(nibName: "DetailShowTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        button1.frame = view.frame
-        scMapView.frame = view.frame
+        scMapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
         myTableVIew.tableFooterView = scMapView
-        
-        button1.setTitle("지도보기", for: UIControlState.normal)
-        button1.addTarget(self, action: #selector(moveToDetailMap), for: UIControlEvents.touchUpInside)
         
         view.addSubview(myTableVIew)
         
@@ -76,7 +72,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         print(detail)
         
-        self.navigationItem.title = detail.0
+        self.navigationItem.title = (detail.1)["title"].stringValue
         
         source = detail.1
         
@@ -130,10 +126,6 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 300
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
