@@ -29,3 +29,9 @@ extension UIButton {
         
     }
 }
+
+extension UIFont {
+    class func cnnTextStyleFont() -> UIFont? {
+        return UIFont(name: ".SFNSDisplay", size: 20.0)
+    }
+}

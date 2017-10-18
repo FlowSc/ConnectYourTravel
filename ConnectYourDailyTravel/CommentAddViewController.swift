@@ -20,8 +20,6 @@ class CommentAddViewController: UIViewController, UITextViewDelegate {
         commentTv.resignFirstResponder()
     }
     
-    @IBOutlet weak var addressLb: UILabel!
-    @IBOutlet weak var timeLb: UILabel!
     @IBOutlet weak var commentTv: UITextView!
     @IBOutlet weak var myImageView: UIImageView!
     var myImage:UIImage?
@@ -35,8 +33,6 @@ class CommentAddViewController: UIViewController, UITextViewDelegate {
         cancelOutlet.setAzure()
         
         myImageView.image = myImage
-        timeLb.text = timeString
-        addressLb.text = addressString
         
         commentTv.delegate = self
         commentTv.placeholder = "여행을 기록하세요"

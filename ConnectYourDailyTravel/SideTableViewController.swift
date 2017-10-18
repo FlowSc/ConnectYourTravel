@@ -87,6 +87,14 @@ class SideTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            
+            let mvc = storyboard?.instantiateViewController(withIdentifier: "InfoModifiedViewController") as! InfoModifiedViewController
+            
+            self.navigationController?.pushViewController(mvc, animated: true)
+            
+        }
+        
         if indexPath.row == 4 {
             
             let fireBaseAuth = Auth.auth()
