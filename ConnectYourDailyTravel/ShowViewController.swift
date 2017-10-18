@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Firebase
 import SwiftyJSON
+import EmptyKit
 
 class ShowViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -21,9 +22,12 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "모아보기"
+        
         let myTableView = UITableView()
         myTableView.delegate = self
         myTableView.dataSource = self
+        myTableView.ept.dataSource = self
         
         myTableView.register(UINib.init(nibName: "SHTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
@@ -118,4 +122,30 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+}
+
+extension ShowViewController: EmptyDataSource {
+    
+//    func imageForEmpty(in view: UIView) -> UIImage? {
+//        return  #imageLiteral(resourceName: "YeogiBackground.png")
+//    }
+    
+    func titleForEmpty(in view: UIView) -> NSAttributedString? {
+        let title = "아직 데이터가 없네용!"
+        let font = UIFont.systemFont(ofSize: 14)
+        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: font]
+        return NSAttributedString(string: title, attributes: attributes)
+    }
+    
+//    func buttonTitleForEmpty(forState state: UIControlState, in view: UIView) -> NSAttributedString? {
+//        let title = "click me"
+//        let font = UIFont.systemFont(ofSize: 17)
+//        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: font]
+//        return NSAttributedString(string: title, attributes: attributes)
+//    }
+    
+    func buttonBackgroundColorForEmpty(in view: UIView) -> UIColor {
+        return UIColor.blue
+    }
+    
 }

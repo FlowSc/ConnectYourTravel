@@ -12,6 +12,8 @@ var commentList:[String] = []
 
 class CommentAddViewController: UIViewController, UITextViewDelegate {
     
+    @IBOutlet weak var cancelOutlet: UIButton!
+    @IBOutlet weak var saveOutlet: UIButton!
     var commentIndex:Int?
 
     @IBAction func ScreenTouched(_ sender: UITapGestureRecognizer) {
@@ -28,6 +30,9 @@ class CommentAddViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        saveOutlet.setAzure()
+        cancelOutlet.setAzure()
         
         myImageView.image = myImage
         timeLb.text = timeString

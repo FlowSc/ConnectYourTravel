@@ -21,6 +21,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    @IBOutlet weak var imageSelectButtonOutlet: UIButton!
     @IBOutlet weak var buttonOutlet: UIButton!
     var imageList:[UIImage] = []
     var addressList:[String] = []
@@ -78,12 +79,8 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         commentList = []
         actualTime = []
         
-        let filterDate1 = selectedDate.addingTimeInterval(-86400)
-        let filterDate2 = selectedDate.addingTimeInterval(86400)
-        let filterPridicate = NSPredicate(format: "creationDate > %@ && creationDate < %@", filterDate1 as CVarArg, filterDate2 as CVarArg)
         let pickerController = DKImagePickerController()
         
-//        pickerController.imageFetchPredicate = filterPridicate
         pickerController.assetType = .allPhotos
         pickerController.didSelectAssets = {[unowned self](assets: [DKAsset]) in
             
@@ -134,6 +131,9 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        imageSelectButtonOutlet.setAzure()
+        buttonOutlet.setAzure()
         
         if selectedDate == nil {
             selectedDate = Date()
@@ -231,7 +231,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
         }
 
-    
         self.present(mvc, animated: true, completion: nil)
         
     }

@@ -15,6 +15,7 @@ import MapKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var uploadOutlet: UIButton!
     @IBOutlet weak var uploadIndicator: UIActivityIndicatorView!
     
     var timeList:[String] = []
@@ -26,6 +27,8 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        uploadOutlet.setAzure()
         
         uploadIndicator.isHidden = true
         myTableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
@@ -62,6 +65,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         uploadIndicator.isHidden = false
         uploadIndicator.startAnimating()
         myTableView.isHidden = true
+        uploadOutlet.isHidden = true
         
         savedImages(imagrArray: uiImageList)
         

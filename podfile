@@ -21,5 +21,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod "PromiseKit", "~> 4.4"
+pod 'EmptyKit', '~> 3.1.2'
 
 end

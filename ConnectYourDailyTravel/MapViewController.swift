@@ -33,8 +33,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var locationManager = CLLocationManager()
     
     
+    @IBOutlet weak var mapButtonOutlet: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapButtonOutlet.setAzure()
         
         tossList = dkAssetsList
 
@@ -84,7 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let myLineRenderer = MKPolylineRenderer(polyline: (myRoute?.polyline)!)
-        myLineRenderer.strokeColor = UIColor.blue
+        myLineRenderer.strokeColor = UIColor.cnnAzul
         myLineRenderer.lineWidth = 2
         return myLineRenderer
     }

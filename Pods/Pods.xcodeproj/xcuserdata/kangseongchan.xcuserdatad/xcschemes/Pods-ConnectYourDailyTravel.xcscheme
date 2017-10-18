@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C1E0617492833DA86A5181353A24CB62"
+               BlueprintIdentifier = "8D99358778F22958611242E95F411FBB"
                BuildableName = "Pods_ConnectYourDailyTravel.framework"
                BlueprintName = "Pods-ConnectYourDailyTravel"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C1E0617492833DA86A5181353A24CB62"
+            BlueprintIdentifier = "8D99358778F22958611242E95F411FBB"
             BuildableName = "Pods_ConnectYourDailyTravel.framework"
             BlueprintName = "Pods-ConnectYourDailyTravel"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -12,7 +12,7 @@ import SwiftyJSON
 import SnapKit
 
 class CompleteViewController: UIViewController {
-    
+        
     var timeString:String!
     var userUid:String!
     

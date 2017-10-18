@@ -36,7 +36,6 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="teA-Uz-Bpe" firstAttribute="centerY" secondItem="DRB-QF-SSc" secondAttribute="centerY" id="LeO-tY-DbT"/>
                                 <constraint firstAttribute="bottom" secondItem="MSO-Ja-QaV" secondAttribute="bottom" constant="10" id="PLI-K6-6ul"/>
@@ -67,9 +66,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="여행의 기록, 여기" id="Obu-ZT-fGR">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="done" id="gff-qA-CbQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="여행의 기록, 여기" id="Obu-ZT-fGR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="settingTableView" destination="dG6-Mt-NOb" id="pel-H2-ENQ"/>
@@ -153,8 +150,10 @@
                     </view>
                     <connections>
                         <outlet property="addressLb" destination="CB3-mA-jpC" id="kTX-8x-EmS"/>
+                        <outlet property="cancelOutlet" destination="zIu-vW-Myh" id="LY9-fH-4Oh"/>
                         <outlet property="commentTv" destination="hki-Iv-M0I" id="GfW-lQ-jYh"/>
                         <outlet property="myImageView" destination="BRC-LG-dSc" id="MYt-Vp-6lq"/>
+                        <outlet property="saveOutlet" destination="BUp-pJ-hL3" id="CEH-ax-etf"/>
                         <outlet property="timeLb" destination="LzR-Nl-HKd" id="mhD-CX-Csf"/>
                     </connections>
                 </viewController>
@@ -227,6 +226,7 @@
                     <connections>
                         <outlet property="myTableView" destination="G0D-7d-EXy" id="FK5-tu-3M9"/>
                         <outlet property="uploadIndicator" destination="a8V-al-cBS" id="Ztq-gV-LEF"/>
+                        <outlet property="uploadOutlet" destination="qQh-Sr-xHb" id="uFc-Qh-WLO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dK9-Zi-Ne3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -352,6 +352,7 @@
                     <connections>
                         <outlet property="buttonOutlet" destination="KGB-Ji-grR" id="uuJ-Xf-crS"/>
                         <outlet property="imageCollectionView" destination="IkY-gZ-Htl" id="yn7-Xc-RsP"/>
+                        <outlet property="imageSelectButtonOutlet" destination="7hc-JS-Azy" id="Lmt-ht-NG6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyB-FY-iW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -397,6 +398,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="0ZM-NU-Re9"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="mapButtonOutlet" destination="ncd-k1-5ca" id="Yhd-ZL-CNa"/>
                         <outlet property="myMapView" destination="rk5-Ok-fXV" id="trA-3G-8uz"/>
                     </connections>
                 </viewController>
