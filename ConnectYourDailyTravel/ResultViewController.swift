@@ -107,8 +107,20 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
             uploadChild.child("latitudes").setValue(latitudes)
             uploadChild.child("longitudes").setValue(longitude)
             uploadChild.child("uploadDate").setValue(updateDate)
+            uploadChild.child("country").setValue(countryString)
+
             
-           
+           let travelListDataBase = Database.database().reference().child("travelList").child(userUid).child(timeString)
+            
+            travelListDataBase.child("images").setValue(urlArray.sorted())
+            travelListDataBase.child("timeList").setValue(self.timeList.sorted())
+            travelListDataBase.child("addressList").setValue(self.addressLst)
+            travelListDataBase.child("commentList").setValue(commentList)
+            travelListDataBase.child("latitudes").setValue(latitudes)
+            travelListDataBase.child("longitudes").setValue(longitude)
+            travelListDataBase.child("uploadDate").setValue(updateDate)
+            travelListDataBase.child("country").setValue(countryString)
+            travelListDataBase.child("uploader").setValue(loginUserName)
             
             if self.uiImageList.count == urlArray.count {
                 

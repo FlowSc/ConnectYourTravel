@@ -18,6 +18,7 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     var showingData:[JSON] = []
     var uploadTimeList:[String] = []
     var tupleArray:[(String,JSON)] = []
+    var loginuserName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +38,12 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         ref = Database.database().reference()
         let userId = Auth.auth().currentUser?.uid
         
-  
         ref.child("users").child(userId!).child("travelList").observe(DataEventType.value, with: { (snapshot) in
 //            print(snapshot)
             
             let jsonData = JSON(snapshot.value)
             
-            print(jsonData.count)
+//            print(jsonData.count)
             
             for i in jsonData {
                 
@@ -79,8 +79,10 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let data = sortedArray[indexPath.row]
         
+        print((data.0))
+        
         cell.textLb.text = (data.1)["title"].stringValue
-        cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지"
+        cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지" + "\n" + "\((data.1)["country"].stringValue)"
         cell.thumnailImage.kf.setImage(with: URL.init(string: (data.1)["images"][0].stringValue))
         cell.timeLb.text = "\(((data.1)["timeList"].array?.first?.stringValue)!) 부터 " + "\(((data.1)["timeList"].array?.last?.stringValue)!) 까지"
         cell.uploadTimeLb.text = (data.1)["uploadDate"].stringValue
@@ -111,17 +113,6 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.pushViewController(mvc, animated: true)
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ShowViewController: EmptyDataSource {

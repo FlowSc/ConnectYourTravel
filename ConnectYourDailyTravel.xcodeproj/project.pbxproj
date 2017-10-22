@@ -44,13 +44,15 @@
 		7564AE881F948FFE00EF085C /* DetailShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564AE861F948FFE00EF085C /* DetailShowTableViewCell.swift */; };
 		7564AE891F948FFE00EF085C /* DetailShowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7564AE871F948FFE00EF085C /* DetailShowTableViewCell.xib */; };
 		7564AE8B1F9718A800EF085C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564AE8A1F9718A800EF085C /* Extension.swift */; };
-		7564AE8D1F971DF800EF085C /* CustomsNavItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564AE8C1F971DF800EF085C /* CustomsNavItem.swift */; };
 		7564AE8F1F9726F500EF085C /* InfoModifiedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7564AE8E1F9726F500EF085C /* InfoModifiedViewController.swift */; };
 		7582359C1F8314BE00ACB064 /* CommentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */; };
 		7582359E1F83BE0A00ACB064 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7582359D1F83BE0A00ACB064 /* ResultViewController.swift */; };
 		75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AB34731F8925320065DA69 /* ShowViewController.swift */; };
 		75CC744C1F9210DE0063690A /* SHTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CC744A1F9210DE0063690A /* SHTableViewCell.swift */; };
 		75CC744D1F9210DE0063690A /* SHTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75CC744B1F9210DE0063690A /* SHTableViewCell.xib */; };
+		75F8545E1F9C635000891A07 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8545D1F9C635000891A07 /* ShareViewController.swift */; };
+		75F854611F9C64D800891A07 /* ShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F8545F1F9C64D800891A07 /* ShareTableViewCell.swift */; };
+		75F854621F9C64D800891A07 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75F854601F9C64D800891A07 /* ShareTableViewCell.xib */; };
 		A166C674F1FDCD4AB72DB8F9 /* Pods_ConnectYourDailyTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,13 +97,15 @@
 		7564AE861F948FFE00EF085C /* DetailShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailShowTableViewCell.swift; sourceTree = "<group>"; };
 		7564AE871F948FFE00EF085C /* DetailShowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailShowTableViewCell.xib; sourceTree = "<group>"; };
 		7564AE8A1F9718A800EF085C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		7564AE8C1F971DF800EF085C /* CustomsNavItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomsNavItem.swift; sourceTree = "<group>"; };
 		7564AE8E1F9726F500EF085C /* InfoModifiedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModifiedViewController.swift; sourceTree = "<group>"; };
 		7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAddViewController.swift; sourceTree = "<group>"; };
 		7582359D1F83BE0A00ACB064 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		75AB34731F8925320065DA69 /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		75CC744A1F9210DE0063690A /* SHTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTableViewCell.swift; sourceTree = "<group>"; };
 		75CC744B1F9210DE0063690A /* SHTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SHTableViewCell.xib; sourceTree = "<group>"; };
+		75F8545D1F9C635000891A07 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		75F8545F1F9C64D800891A07 /* ShareTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTableViewCell.swift; sourceTree = "<group>"; };
+		75F854601F9C64D800891A07 /* ShareTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareTableViewCell.xib; sourceTree = "<group>"; };
 		7E4CE0590C637764B1C15E48 /* Pods_ConnectYourDailyTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectYourDailyTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADDF3E4FFE8BD69E0422638 /* Pods-ConnectYourDailyTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,8 +155,10 @@
 				7549D6821F696E5900EEA8E6 /* AppDelegate.swift */,
 				7549D69C1F69773500EEA8E6 /* ChooseViewController.swift */,
 				7549D6861F696E5900EEA8E6 /* Main.storyboard */,
+				75F8545D1F9C635000891A07 /* ShareViewController.swift */,
+				75F8545F1F9C64D800891A07 /* ShareTableViewCell.swift */,
+				75F854601F9C64D800891A07 /* ShareTableViewCell.xib */,
 				7564AE8E1F9726F500EF085C /* InfoModifiedViewController.swift */,
-				7564AE8C1F971DF800EF085C /* CustomsNavItem.swift */,
 				7564AE861F948FFE00EF085C /* DetailShowTableViewCell.swift */,
 				7564AE871F948FFE00EF085C /* DetailShowTableViewCell.xib */,
 				7564AE641F938ED300EF085C /* DetailViewController.swift */,
@@ -281,6 +287,7 @@
 				7549D6C31F6F34CA00EEA8E6 /* GoogleService-Info.plist in Resources */,
 				7549D6B91F6F2C6F00EEA8E6 /* Screen.jpeg in Resources */,
 				755334701F700A6B00796FAC /* default-user-image.png in Resources */,
+				75F854621F9C64D800891A07 /* ShareTableViewCell.xib in Resources */,
 				7549D6881F696E5900EEA8E6 /* Main.storyboard in Resources */,
 				7563236A1F8A13E60024DCA7 /* ResultTableViewCell.xib in Resources */,
 			);
@@ -350,6 +357,7 @@
 				7528B1B61F7FC91F00893EC5 /* ThumnailSelectViewController.swift in Sources */,
 				752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */,
 				7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */,
+				75F854611F9C64D800891A07 /* ShareTableViewCell.swift in Sources */,
 				7528B1D61F8284CD00893EC5 /* UITextViewPlaceholder.swift in Sources */,
 				7582359C1F8314BE00ACB064 /* CommentAddViewController.swift in Sources */,
 				7549D69D1F69773500EEA8E6 /* ChooseViewController.swift in Sources */,
@@ -358,12 +366,12 @@
 				7549D6AA1F6AE8AC00EEA8E6 /* TimeTableViewCell.swift in Sources */,
 				7549D6AD1F6ECCB800EEA8E6 /* TimeLineCollectionViewController.swift in Sources */,
 				75CC744C1F9210DE0063690A /* SHTableViewCell.swift in Sources */,
+				75F8545E1F9C635000891A07 /* ShareViewController.swift in Sources */,
 				752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */,
 				75AB34741F8925320065DA69 /* ShowViewController.swift in Sources */,
 				7564AE8B1F9718A800EF085C /* Extension.swift in Sources */,
 				7549D6D71F6FEAEF00EEA8E6 /* SignUpViewController.swift in Sources */,
 				7549D6BD1F6F2EE900EEA8E6 /* LaunchViewController.swift in Sources */,
-				7564AE8D1F971DF800EF085C /* CustomsNavItem.swift in Sources */,
 				7549D6A71F69CC9B00EEA8E6 /* TimelineViewController.swift in Sources */,
 				7563236C1F8FBDF60024DCA7 /* CompleteViewController.swift in Sources */,
 				7549D69F1F6979A000EEA8E6 /* MapViewController.swift in Sources */,

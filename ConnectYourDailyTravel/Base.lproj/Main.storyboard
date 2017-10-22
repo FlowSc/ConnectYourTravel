@@ -286,37 +286,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wa-bh-mE1">
-                                <rect key="frame" x="184" y="353" width="46" height="91"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wa-bh-mE1">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="pqc-H0-FyO"/>
+                                </constraints>
+                                <state key="normal" title="메인 화면으로 돌아가기"/>
                                 <connections>
                                     <action selector="backToMainViewTouched:" destination="94M-fd-Xor" eventType="touchUpInside" id="hqL-rq-9qp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6AS-86-5jo">
-                                <rect key="frame" x="67" y="204" width="274" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6AS-86-5jo">
+                                <rect key="frame" x="70" y="125" width="274" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="274" id="4TI-d4-Vm1"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WlE-iC-Z0g">
-                                <rect key="frame" x="67" y="282" width="274" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yax-F9-Q5f">
+                                <rect key="frame" x="70" y="304" width="274" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="72P-VB-Afg"/>
+                                    <constraint firstAttribute="width" constant="274" id="Rsb-3N-0pa"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="yax-F9-Q5f" firstAttribute="centerY" secondItem="dDA-Mx-cAF" secondAttribute="centerY" id="7yb-86-RWI"/>
+                            <constraint firstItem="yax-F9-Q5f" firstAttribute="centerX" secondItem="dDA-Mx-cAF" secondAttribute="centerX" id="BXm-1K-jZc"/>
+                            <constraint firstItem="yax-F9-Q5f" firstAttribute="top" secondItem="6AS-86-5jo" secondAttribute="bottom" constant="149" id="Iwa-L4-EaS"/>
+                            <constraint firstItem="6AS-86-5jo" firstAttribute="centerX" secondItem="dDA-Mx-cAF" secondAttribute="centerX" id="Qko-Kw-NaS"/>
+                            <constraint firstItem="0kR-kW-eVN" firstAttribute="top" secondItem="6wa-bh-mE1" secondAttribute="bottom" id="Uoq-dY-NBV"/>
+                            <constraint firstAttribute="trailing" secondItem="6wa-bh-mE1" secondAttribute="trailing" id="a7s-5p-71P"/>
+                            <constraint firstItem="6wa-bh-mE1" firstAttribute="leading" secondItem="dDA-Mx-cAF" secondAttribute="leading" id="jBN-lz-iMi"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="xzm-CB-hpK" appends="YES" id="Kay-Li-muv"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="hashTagTf" destination="WlE-iC-Z0g" id="Rjo-hk-Fkw"/>
+                        <outlet property="backToMainOutlet" destination="6wa-bh-mE1" id="d1W-jf-W3y"/>
+                        <outlet property="hasTagTv" destination="yax-F9-Q5f" id="SRH-qb-bp6"/>
                         <outlet property="scTextField" destination="6AS-86-5jo" id="5HD-nD-YUJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYo-Cy-IP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="xzm-CB-hpK">
+                    <connections>
+                        <action selector="keyboardDisappear:" destination="94M-fd-Xor" id="4R2-CF-cNm"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4150.7246376811599" y="1039.4021739130435"/>
         </scene>
@@ -333,7 +359,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IkY-gZ-Htl">
-                                <rect key="frame" x="0.0" y="64" width="414" height="493"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2Kw-Cv-x1a">
                                     <size key="itemSize" width="416" height="439"/>
@@ -343,7 +369,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="j4O-3r-dcK">
-                                        <rect key="frame" x="0.0" y="27" width="416" height="439"/>
+                                        <rect key="frame" x="0.0" y="26.666666666666668" width="416" height="439"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="416" height="439"/>
@@ -352,41 +378,57 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hc-JS-Azy">
-                                <rect key="frame" x="0.0" y="567" width="414" height="60"/>
-                                <color key="backgroundColor" red="0.96497545259999995" green="1" blue="0.83467156639999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="1MW-Gt-C9O">
+                                <rect key="frame" x="0.0" y="566" width="414" height="121"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7hc-JS-Azy">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                        <color key="backgroundColor" red="0.96497545259999995" green="1" blue="0.83467156639999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Q3K-b3-qqx"/>
+                                        </constraints>
+                                        <state key="normal" title="Choose your memory"/>
+                                        <connections>
+                                            <action selector="imageSelectButton:" destination="uS2-Vs-IEt" eventType="touchUpInside" id="bOs-s0-SQW"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5PG-uG-sTr">
+                                        <rect key="frame" x="174" y="60" width="240" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="4vH-js-raj"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-Ji-grR">
+                                        <rect key="frame" x="0.0" y="61" width="414" height="60"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="pQ5-3u-W6U"/>
+                                        </constraints>
+                                        <state key="normal" title="Remind Your Trip"/>
+                                        <connections>
+                                            <action selector="moveToMapView:" destination="uS2-Vs-IEt" eventType="touchUpInside" id="PUP-rE-Rx8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Q3K-b3-qqx"/>
+                                    <constraint firstItem="7hc-JS-Azy" firstAttribute="width" secondItem="1MW-Gt-C9O" secondAttribute="width" id="391-ZL-30X"/>
+                                    <constraint firstItem="KGB-Ji-grR" firstAttribute="width" secondItem="7hc-JS-Azy" secondAttribute="width" id="y99-fD-3jG"/>
                                 </constraints>
-                                <state key="normal" title="Choose your memory"/>
-                                <connections>
-                                    <action selector="imageSelectButton:" destination="uS2-Vs-IEt" eventType="touchUpInside" id="bOs-s0-SQW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-Ji-grR">
-                                <rect key="frame" x="0.0" y="627" width="414" height="60"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="pQ5-3u-W6U"/>
-                                </constraints>
-                                <state key="normal" title="Remind Your Trip"/>
-                                <connections>
-                                    <action selector="moveToMapView:" destination="uS2-Vs-IEt" eventType="touchUpInside" id="PUP-rE-Rx8"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KGB-Ji-grR" secondAttribute="trailing" id="6cc-D8-qST"/>
+                            <constraint firstItem="IkY-gZ-Htl" firstAttribute="top" secondItem="cwk-ol-Qdm" secondAttribute="bottom" id="0bo-EU-jFf"/>
+                            <constraint firstAttribute="trailing" secondItem="1MW-Gt-C9O" secondAttribute="trailing" id="142-ma-8tF"/>
+                            <constraint firstItem="yEm-al-wIe" firstAttribute="top" secondItem="1MW-Gt-C9O" secondAttribute="bottom" id="7Zb-6x-gKS"/>
                             <constraint firstItem="IkY-gZ-Htl" firstAttribute="top" secondItem="cwk-ol-Qdm" secondAttribute="bottom" id="Fgm-Qb-fVy"/>
-                            <constraint firstItem="7hc-JS-Azy" firstAttribute="top" secondItem="IkY-gZ-Htl" secondAttribute="bottom" constant="10" id="HNB-8K-Wi7"/>
-                            <constraint firstAttribute="trailing" secondItem="7hc-JS-Azy" secondAttribute="trailing" id="RZB-jv-MEd"/>
-                            <constraint firstItem="yEm-al-wIe" firstAttribute="top" secondItem="KGB-Ji-grR" secondAttribute="bottom" id="ZEj-rx-YwE"/>
-                            <constraint firstItem="KGB-Ji-grR" firstAttribute="top" secondItem="7hc-JS-Azy" secondAttribute="bottom" id="cp6-b9-vVI"/>
-                            <constraint firstItem="7hc-JS-Azy" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="dtc-tc-9Db"/>
+                            <constraint firstItem="1MW-Gt-C9O" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="c9y-ap-Y4F"/>
                             <constraint firstItem="IkY-gZ-Htl" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="fWY-wo-0UZ"/>
+                            <constraint firstItem="IkY-gZ-Htl" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="gqU-mT-JyE"/>
                             <constraint firstAttribute="trailing" secondItem="IkY-gZ-Htl" secondAttribute="trailing" id="iGA-oT-fVB"/>
-                            <constraint firstItem="KGB-Ji-grR" firstAttribute="leading" secondItem="CbM-1w-cWd" secondAttribute="leading" id="sNM-Pp-DMg"/>
+                            <constraint firstAttribute="trailing" secondItem="IkY-gZ-Htl" secondAttribute="trailing" id="nwx-bY-GRh"/>
+                            <constraint firstItem="1MW-Gt-C9O" firstAttribute="top" secondItem="IkY-gZ-Htl" secondAttribute="bottom" constant="10" id="qqZ-a8-3pd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="사진을 선택하세요" id="UNh-lc-bkC"/>
@@ -398,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyB-FY-iW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2414" y="219"/>
+            <point key="canvasLocation" x="2413.04347826087" y="218.47826086956525"/>
         </scene>
         <!--Item-->
         <scene sceneID="QvP-F3-2rk">
@@ -1065,6 +1107,7 @@
                         <segue destination="5K5-cB-vIO" kind="relationship" relationship="viewControllers" id="Qax-Gj-1Cb"/>
                         <segue destination="8cp-F2-AVi" kind="relationship" relationship="viewControllers" id="C3m-gK-NEK"/>
                         <segue destination="mg8-pn-4hq" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
+                        <segue destination="vP8-bf-tUE" kind="relationship" relationship="viewControllers" id="eO0-vU-GRY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTx-JH-WfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1090,6 +1133,25 @@
             </objects>
             <point key="canvasLocation" x="672.46376811594212" y="1050.8152173913045"/>
         </scene>
+        <!--Share View Controller-->
+        <scene sceneID="iC2-0E-8XH">
+            <objects>
+                <viewController storyboardIdentifier="ShareViewController" id="65W-zE-iB0" customClass="ShareViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nKA-iN-Qyn"/>
+                        <viewControllerLayoutGuide type="bottom" id="vn4-I8-s6I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wum-sl-YIz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z28-p2-cIr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kJM-cy-mac" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1541" y="-1207"/>
+        </scene>
         <!--모아보기-->
         <scene sceneID="BbI-7O-z3s">
             <objects>
@@ -1108,6 +1170,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acQ-ex-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="669.56521739130437" y="-515.21739130434787"/>
+        </scene>
+        <!--공유-->
+        <scene sceneID="9h5-dI-NAR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vP8-bf-tUE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="공유" id="eeb-3F-t0W"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5lv-cU-ded">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="65W-zE-iB0" kind="relationship" relationship="rootViewController" id="Uce-sS-tIL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Och-Aw-6fL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634.78260869565224" y="-1207.3369565217392"/>
         </scene>
     </scenes>
     <resources>

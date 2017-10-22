@@ -7,11 +7,29 @@
 //
 
 import UIKit
+import Firebase
+import SwiftyJSON
+
+var loginUserName:String = ""
 
 class MyTabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+       let ref = Database.database().reference()
+        
+        ref.child("users").child((Auth.auth().currentUser?.uid)!).observe(.value, with: { snapshot in
+          
+            
+            let jsonData = JSON(snapshot.value)
+            
+            loginUserName = jsonData["userName"].stringValue
+            print("~~~~")
+            print(loginUserName)
+            print("~~~~")
+        })
         
         self.tabBar.barTintColor = UIColor.cnnAzul
         self.tabBar.tintColor = UIColor.cnnWhite

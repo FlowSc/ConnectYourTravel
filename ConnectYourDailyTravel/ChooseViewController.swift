@@ -16,6 +16,7 @@ import FirebaseDatabase
 import Photos
 
 let loginUser = Auth.auth().currentUser
+var countryString:String = ""
 
 class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
 
@@ -71,6 +72,7 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     @IBAction func imageSelectButton(_ sender: UIButton) {
         
+        secondTimeList = []
         imageList = []
         addressList = []
         dkAssetsList = []
@@ -177,9 +179,10 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             let realTime = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             let realAddress = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
             let recogTime = timeFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
+            countryString = placemark?.country ?? ""
             
             print(realAddress)
-            
+            print(countryString)
             
             cell.timeLb.text = realTime
             cell.addressLb.text = realAddress
@@ -193,17 +196,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
                 self.secondTimeList.append(recogTime)
 
             }
-            
-//            while self.dkAssetsList.count == self.actualTime.count {
-//
-//            }
-            
-            print("XXXXXX")
-            print(self.addressList)
-            print(self.actualTime)
-            print(self.addressList.count)
-            print("VVVVVV")
-
           
         }
         

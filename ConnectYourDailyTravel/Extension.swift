@@ -24,7 +24,7 @@ extension UIButton {
         
         self.backgroundColor = UIColor.cnnAzul
         self.setTitleColor(UIColor.cnnWhite, for: UIControlState.normal)
-        self.layer.borderWidth = 1
+//        self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.cnnWhite.cgColor
         
     }
