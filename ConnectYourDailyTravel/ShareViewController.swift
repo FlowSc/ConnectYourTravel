@@ -14,7 +14,12 @@ import SnapKit
 
 class ShareViewController: UIViewController {
     
+    var userUidArray:[String] = []
+    let ref = Database.database().reference()
+    var allTupleArray:[(String,JSON)] = []
+
     var myTableView:UITableView = {
+        
         
         var tv:UITableView = UITableView()
         
@@ -29,24 +34,38 @@ class ShareViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
-        let ref = Database.database().reference()
-        let userId = Auth.auth().currentUser?.uid
-        
-        ref.child("travelList").observe(DataEventType.value, with: { (snapshot) in
-            //            print(snapshot.value)
-            let jsonData = JSON(snapshot.value)
-            
-            print(jsonData)
-            
-        })
+    
+        Server.getAllId { (isSuccess, allUserId) in
+            if isSuccess {
+                
+                for userId in allUserId {
+                    self.ref.child("users").child(userId).child("travelList").observe(DataEventType.value, with: { (snapshot) in
+                        
+                        let jsonData = JSON(snapshot.value)
+                        
+                        for i in jsonData {
+                            
+                            self.allTupleArray.append(i)
+                            
+                        }
+                        
+                        print(self.allTupleArray)
+                        self.myTableView.reloadData()
+                    })
+                    
+                }
+
+            }
+        }
         
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.register(UINib.init(nibName: "ShareTableViewCell", bundle: nil), forCellReuseIdentifier: "ShareTableViewCell")
         
         view.addSubview(myTableView)
+        
         
         myTableView.snp.makeConstraints { (make) in
             make.size.equalToSuperview()
@@ -60,7 +79,7 @@ class ShareViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
+    
 }
 
 extension ShareViewController:UITableViewDelegate, UITableViewDataSource {
@@ -78,5 +97,6 @@ extension ShareViewController:UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
     
 }

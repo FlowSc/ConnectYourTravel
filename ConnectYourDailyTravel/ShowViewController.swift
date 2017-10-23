@@ -39,17 +39,15 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userId = Auth.auth().currentUser?.uid
         
         ref.child("users").child(userId!).child("travelList").observe(DataEventType.value, with: { (snapshot) in
-//            print(snapshot)
             
             let jsonData = JSON(snapshot.value)
-            
-//            print(jsonData.count)
             
             for i in jsonData {
                 
                 self.tupleArray.append(i)
 
             }
+            
             myTableView.reloadData()
         })
         

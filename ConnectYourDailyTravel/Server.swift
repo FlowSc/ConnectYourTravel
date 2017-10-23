@@ -11,6 +11,7 @@ import SwiftyJSON
 import Alamofire
 import MapKit
 import DKImagePickerController
+import Firebase
 
 class Server {
     
@@ -18,6 +19,7 @@ class Server {
     static var serverAdressList:[String] = []
     static var dkAddressList:[DKAsset] = []
     static var cellAddress:String = ""
+    static var allUserUid:[String] = []
     
     static func getAddressData(_ urlString:String, completion: @escaping (Bool, [String]) -> Void) {
         
@@ -110,6 +112,52 @@ class Server {
             }
         }
     }
+    
+    static func getAllId(completionHandler:@escaping(Bool, [String]) -> Void) {
+        
+        let ref = Database.database().reference()
+    
+        ref.child("travelList").observe(DataEventType.value, with: { (snapshot) in
+            let jsonData = JSON(snapshot.value)
+            
+            let nsDic = jsonData.dictionary as! NSDictionary
+            
+
+            allUserUid = nsDic.allKeys as! [String]
+            
+            DispatchQueue.main.async {
+                // 순서 3.
+                completionHandler(true, allUserUid)
+            }
+            
+        })
+        
+//        print(allUserUid)
+        
+    }
 }
 
-
+//
+//getAllData { (userUidArray, true) in
+//
+//    self.getAllUserUid()
+//
+//    for myUid in userUidArray {
+//
+//        self.ref.child("users").child(myUid).child("travelList").observe(DataEventType.value, with: { (snapshot) in
+//
+//            let jsonData = JSON(snapshot.value)
+//
+//            for i in jsonData {
+//
+//                self.allTupleArray.append(i)
+//
+//            }
+//            print(self.allTupleArray)
+//
+//            self.myTableView.reloadData()
+//        })
+//    }
+//}
+//
+//
