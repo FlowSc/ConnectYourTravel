@@ -440,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DyB-FY-iW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2413.04347826087" y="218.47826086956525"/>
+            <point key="canvasLocation" x="2370" y="201"/>
         </scene>
         <!--Item-->
         <scene sceneID="QvP-F3-2rk">
@@ -1106,8 +1106,8 @@
                     <connections>
                         <segue destination="5K5-cB-vIO" kind="relationship" relationship="viewControllers" id="Qax-Gj-1Cb"/>
                         <segue destination="8cp-F2-AVi" kind="relationship" relationship="viewControllers" id="C3m-gK-NEK"/>
-                        <segue destination="mg8-pn-4hq" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
                         <segue destination="vP8-bf-tUE" kind="relationship" relationship="viewControllers" id="eO0-vU-GRY"/>
+                        <segue destination="mg8-pn-4hq" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTx-JH-WfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1169,7 +1169,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acQ-ex-AFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669.56521739130437" y="-515.21739130434787"/>
+            <point key="canvasLocation" x="635" y="-515"/>
         </scene>
         <!--공유-->
         <scene sceneID="9h5-dI-NAR">

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SwiftyJSON
 import SnapKit
+import Kingfisher
 
 
 class ShareViewController: UIViewController {
@@ -38,20 +39,25 @@ class ShareViewController: UIViewController {
         super.viewDidLoad()
     
         Server.getAllId { (isSuccess, allUserId) in
+            
+            var allArray:[(String, JSON)] = []
             if isSuccess {
                 
                 for userId in allUserId {
-                    self.ref.child("users").child(userId).child("travelList").observe(DataEventType.value, with: { (snapshot) in
+                    self.ref.child("travelList").child(userId).observe(DataEventType.value, with: { (snapshot) in
                         
                         let jsonData = JSON(snapshot.value)
                         
                         for i in jsonData {
                             
-                            self.allTupleArray.append(i)
+                            allArray.append(i)
                             
                         }
                         
-                        print(self.allTupleArray)
+                        self.allTupleArray = allArray.sorted(by: { (aa, bb) -> Bool in
+                            return aa.0 > bb.0
+                        })
+                
                         self.myTableView.reloadData()
                     })
                     
@@ -64,6 +70,7 @@ class ShareViewController: UIViewController {
         myTableView.dataSource = self
         myTableView.register(UINib.init(nibName: "ShareTableViewCell", bundle: nil), forCellReuseIdentifier: "ShareTableViewCell")
         
+        
         view.addSubview(myTableView)
         
         
@@ -71,6 +78,8 @@ class ShareViewController: UIViewController {
             make.size.equalToSuperview()
             make.center.equalToSuperview()
         }
+        
+        myTableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
@@ -85,18 +94,52 @@ class ShareViewController: UIViewController {
 extension ShareViewController:UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return allTupleArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 250
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShareTableViewCell", for: indexPath) as! ShareTableViewCell
         
+        let cellData = allTupleArray[indexPath.row].1
+        
+
+        print("~~~~")
+        let thumnailImage:String = cellData["images"][0].stringValue
+        let thumnailUrl:URL = URL(string: thumnailImage)!
+        print(thumnailUrl)
+        print("~~~~")
+        
+        cell.thumnailImageView.kf.setImage(with: thumnailUrl)
+        
+
+        cell.uploaderLb.text = "작성자 \(cellData["uploader"].stringValue)"
+        cell.uploadDateLb.text = "작성일 \(cellData["uploadDate"].stringValue)"
+        cell.travelLocationLb.text = cellData["addressList"][0].stringValue
+        cell.travelTimeLb.text = cellData["timeList"][0].stringValue
+        cell.hashtagLb.text = cellData["hashtag"].stringValue
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sortedArray = allTupleArray.sorted { (a, b) -> Bool in
+            a.0 > b.0
+        }
+        let data = sortedArray[indexPath.row]
+        
+        print(data)
+        
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        mvc.detailData = data
+        
+        self.navigationController?.pushViewController(mvc, animated: true)
+    }
+    
     
     
 }

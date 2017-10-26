@@ -38,7 +38,7 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         ref = Database.database().reference()
         let userId = Auth.auth().currentUser?.uid
         
-        ref.child("users").child(userId!).child("travelList").observe(DataEventType.value, with: { (snapshot) in
+        ref.child("travelList").child(userId!).observe(DataEventType.value, with: { (snapshot) in
             
             let jsonData = JSON(snapshot.value)
             
@@ -91,7 +91,7 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 250
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -115,23 +115,12 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 extension ShowViewController: EmptyDataSource {
     
-//    func imageForEmpty(in view: UIView) -> UIImage? {
-//        return  #imageLiteral(resourceName: "YeogiBackground.png")
-//    }
-    
     func titleForEmpty(in view: UIView) -> NSAttributedString? {
         let title = "아직 데이터가 없네용!"
         let font = UIFont.systemFont(ofSize: 14)
         let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: font]
         return NSAttributedString(string: title, attributes: attributes)
     }
-    
-//    func buttonTitleForEmpty(forState state: UIControlState, in view: UIView) -> NSAttributedString? {
-//        let title = "click me"
-//        let font = UIFont.systemFont(ofSize: 17)
-//        let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: font]
-//        return NSAttributedString(string: title, attributes: attributes)
-//    }
     
     func buttonBackgroundColorForEmpty(in view: UIView) -> UIColor {
         return UIColor.blue

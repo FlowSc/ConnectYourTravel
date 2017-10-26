@@ -18,6 +18,13 @@ class ShareTableViewCell: UITableViewCell {
     @IBOutlet weak var uploaderLb: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        uploaderLb.numberOfLines = 0
+        hashtagLb.numberOfLines = 0
+        travelLocationLb.numberOfLines = 0
+        travelTimeLb.numberOfLines = 0
+        uploadDateLb.numberOfLines = 0
+        
         // Initialization code
     }
 

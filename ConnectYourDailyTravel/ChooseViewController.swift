@@ -133,13 +133,12 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         imageSelectButtonOutlet.setAzure()
         buttonOutlet.setAzure()
         imageSelectButtonOutlet.setTitle("사진을 선택해주세요", for: UIControlState.normal)
         buttonOutlet.setTitle("여행길을 확인하세요", for: UIControlState.normal)
         imageSelectButtonOutlet.titleLabel!.font = UIFont.cnnTextStyleFont()
-        buttonOutlet.titleLabel!.font = UIFont.cnnTextStyleFont()
+//        buttonOutlet.titleLabel!.font = UIFont.cnnTextStyleFont()
         
         if selectedDate == nil {
             selectedDate = Date()

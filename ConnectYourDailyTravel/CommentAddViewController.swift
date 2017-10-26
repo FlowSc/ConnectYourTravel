@@ -35,7 +35,13 @@ class CommentAddViewController: UIViewController, UITextViewDelegate {
         myImageView.image = myImage
         
         commentTv.delegate = self
+        
+        if commentList[commentIndex!] == "" {
+        
         commentTv.placeholder = "여행을 기록하세요"
+        }else{
+            commentTv.text = commentList[commentIndex!]
+        }
         print(commentList)
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

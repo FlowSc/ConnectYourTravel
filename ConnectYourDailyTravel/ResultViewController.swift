@@ -98,16 +98,16 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
 
         uploadMyImage(userUid: userUid, imageArray: imagrArray) { (urlArray) in
             
-            let uploadChild = Database.database().reference().child("users").child(userUid).child("travelList").child(timeString)
-            
-            uploadChild.child("images").setValue(urlArray.sorted())
-            uploadChild.child("timeList").setValue(self.timeList.sorted())
-            uploadChild.child("addressList").setValue(self.addressLst)
-            uploadChild.child("commentList").setValue(commentList)
-            uploadChild.child("latitudes").setValue(latitudes)
-            uploadChild.child("longitudes").setValue(longitude)
-            uploadChild.child("uploadDate").setValue(updateDate)
-            uploadChild.child("country").setValue(countryString)
+//            let uploadChild = Database.database().reference().child("users").child(userUid).child("travelList").child(timeString)
+//
+//            uploadChild.child("images").setValue(urlArray.sorted())
+//            uploadChild.child("timeList").setValue(self.timeList.sorted())
+//            uploadChild.child("addressList").setValue(self.addressLst)
+//            uploadChild.child("commentList").setValue(commentList)
+//            uploadChild.child("latitudes").setValue(latitudes)
+//            uploadChild.child("longitudes").setValue(longitude)
+//            uploadChild.child("uploadDate").setValue(updateDate)
+//            uploadChild.child("country").setValue(countryString)
 
             
            let travelListDataBase = Database.database().reference().child("travelList").child(userUid).child(timeString)
