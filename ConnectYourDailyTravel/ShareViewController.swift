@@ -98,7 +98,7 @@ extension ShareViewController:UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 450
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,11 +116,13 @@ extension ShareViewController:UITableViewDelegate, UITableViewDataSource {
         cell.thumnailImageView.kf.setImage(with: thumnailUrl)
         
 
-        cell.uploaderLb.text = "작성자 \(cellData["uploader"].stringValue)"
-        cell.uploadDateLb.text = "작성일 \(cellData["uploadDate"].stringValue)"
-        cell.travelLocationLb.text = cellData["addressList"][0].stringValue
-        cell.travelTimeLb.text = cellData["timeList"][0].stringValue
+        cell.uploaderLb.text = "\(cellData["uploader"].stringValue)"
+        cell.uploadDateLb.text = "\(cellData["uploadDate"].stringValue)"
+//        cell.travelLocationLb.text = cellData["addressList"][0].stringValue
+//        cell.travelTimeLb.text = cellData["timeList"][0].stringValue
         cell.hashtagLb.text = cellData["hashtag"].stringValue
+        cell.titleLb.text = cellData["title"].stringValue
+        cell.countryLb.text = cellData["country"].stringValue
         
         return cell
     }

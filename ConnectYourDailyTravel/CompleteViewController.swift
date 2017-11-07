@@ -37,25 +37,25 @@ class CompleteViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
     
     @IBAction func backToMainViewTouched(_ sender: UIButton) {
-        let uploadChild = Database.database().reference().child("users").child(userUid).child("travelList").child(timeString)
              let travelListDataBase = Database.database().reference().child("travelList").child(userUid).child(timeString)
         
-        if scTextField.text != nil {
-         uploadChild.child("title").setValue(scTextField.text)
-            travelListDataBase.child("title").setValue(scTextField.text)
-
-        }
-       
-        if hasTagTv.text != nil {
-        uploadChild.child("hashtag").setValue(hasTagTv.text)
-            travelListDataBase.child("title").setValue(scTextField.text)
-
+        if scTextField.text == "" {
+            let alert = UIAlertController.init(title: "제목을 입력해주세요!", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            let alertAction = UIAlertAction.init(title: "확인", style: UIAlertActionStyle.cancel, handler: nil)
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
         }
         
-
-        let mvc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
+        if hasTagTv.text != "" {
+            travelListDataBase.child("hashtag").setValue(hasTagTv.text)
+        }
+    
+        if scTextField.text != "" {
+            travelListDataBase.child("title").setValue(scTextField.text)
+            let mvc = self.storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
+            self.present(mvc, animated: true, completion: nil)
+        }
         
-        self.present(mvc, animated: true, completion: nil)
     }
 
     @IBAction func keyboardDisappear(_ sender: UITapGestureRecognizer) {

@@ -140,10 +140,10 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         imageSelectButtonOutlet.titleLabel!.font = UIFont.cnnTextStyleFont()
 //        buttonOutlet.titleLabel!.font = UIFont.cnnTextStyleFont()
         
-        if selectedDate == nil {
-            selectedDate = Date()
-        }
-        
+//        if selectedDate == nil {
+//            selectedDate = Date()
+//        }
+//
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         self.imageCollectionView.register(UINib.init(nibName: "ThumnailImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
@@ -169,14 +169,17 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
         print(cellItem)
         print("~~~~~~")
         
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일 HH 시 mm 분"
+        dateFormatter.dateFormat = "yyyy.MM.dd. HH 시 mm 분"
         timeFormatter.dateFormat = "yyyyMMddHHmmss"
         dateFormatter.timeZone = TimeZone.current
         
         Server.cellLocation(myLocation: (cellItem.originalAsset?.location)!) {(placemark) in
             
             let realTime = dateFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
-            let realAddress = "\((placemark?.locality) ?? "") \((placemark?.name) ?? "")"
+            let realAddress = "\((placemark?.name) ?? "")"
+            
+            //\((placemark?.locality) ?? "")
+            
             let recogTime = timeFormatter.string(from: (cellItem.originalAsset?.creationDate)!)
             countryString = placemark?.country ?? ""
             
@@ -185,7 +188,6 @@ class ChooseViewController: UIViewController, UICollectionViewDelegate, UICollec
             
             cell.timeLb.text = realTime
             cell.addressLb.text = realAddress
-            
             
             print(self.secondTimeList)
             

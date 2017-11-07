@@ -11,9 +11,11 @@ import UIKit
 class ShareTableViewCell: UITableViewCell {
     @IBOutlet weak var thumnailImageView: UIImageView!
     
+    @IBOutlet weak var countryLb: UILabel!
+    @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var hashtagLb: UILabel!
-    @IBOutlet weak var travelLocationLb: UILabel!
-    @IBOutlet weak var travelTimeLb: UILabel!
+//    @IBOutlet weak var travelLocationLb: UILabel!
+//    @IBOutlet weak var travelTimeLb: UILabel!
     @IBOutlet weak var uploadDateLb: UILabel!
     @IBOutlet weak var uploaderLb: UILabel!
     override func awakeFromNib() {
@@ -21,8 +23,8 @@ class ShareTableViewCell: UITableViewCell {
         
         uploaderLb.numberOfLines = 0
         hashtagLb.numberOfLines = 0
-        travelLocationLb.numberOfLines = 0
-        travelTimeLb.numberOfLines = 0
+//        travelLocationLb.numberOfLines = 0
+//        travelTimeLb.numberOfLines = 0
         uploadDateLb.numberOfLines = 0
         
         // Initialization code

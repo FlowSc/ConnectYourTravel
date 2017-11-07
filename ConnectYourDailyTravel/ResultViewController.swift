@@ -86,7 +86,7 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         let userUid:String = (loginUser?.uid)!
         var latitudes:[Double] = []
         var longitude:[Double] = []
-        myDateformatter.dateFormat = "YYYY년 MM월 dd일"
+        myDateformatter.dateFormat = "YYYY.MM.dd"
         let updateDate = myDateformatter.string(from: currentTime)
     
         

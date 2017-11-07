@@ -10,10 +10,13 @@ import UIKit
 import SnapKit
 import MapKit
 import SwiftyJSON
+import SwiftIcons
+import Firebase
 
 
 class DetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    var ref: DatabaseReference!
     let myTableVIew = UITableView()
     var source:JSON!
     var rowCount:Int?
@@ -23,6 +26,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var myMapView = MKMapView()
     var currentIndex:Int = 0
     var myRoute:MKRoute!
+    let userId = Auth.auth().currentUser?.uid
     
     let button1:UIButton = {
         
@@ -39,8 +43,31 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         
     }()
     
+    func removeData(){
+        print("remove")
+        ref.child("travelList").child(userId!).child(detailData!.0).removeValue()
+        
+        let mvc = storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
+        
+        let alert = UIAlertController.init(title: "삭제 확인", message: "정말 삭제하시겠어요?", preferredStyle: UIAlertControllerStyle.alert)
+        let alertAc = UIAlertAction.init(title: "네, 삭제할게요", style: UIAlertActionStyle.default) { (action) in
+            self.present(mvc, animated: true, completion: nil)
+        }
+        let cancelAc = UIAlertAction.init(title: "다시 생각해볼게요", style: UIAlertActionStyle.cancel, handler: nil)
+        alert.addAction(alertAc)
+        alert.addAction(cancelAc)
+        
+        self.present(alert, animated: true, completion: nil)
+        
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+        let removeIcon:UIBarButtonItem = UIBarButtonItem(image: nil, landscapeImagePhone: nil, style: UIBarButtonItemStyle.plain, target: self, action: #selector(removeData))
+        removeIcon.setIcon(icon: FontType.googleMaterialDesign(GoogleMaterialDesignType.removeCircle), iconSize: 25)
+        self.navigationItem.rightBarButtonItem = removeIcon
         
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -55,7 +82,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         myTableVIew.dataSource = self
 //        myTableVIew.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         myTableVIew.register(UINib.init(nibName: "DetailShowTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        scMapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
+        scMapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
         myTableVIew.tableFooterView = scMapView
         
         view.addSubview(myTableVIew)
@@ -88,6 +115,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
             print(myLocation)
             
             let point = MKPointAnnotation()
+            point.title = "\(myIndex + 1) 번째 장소"
+            point.subtitle = source["addressList"][myIndex].stringValue
             
             point.coordinate = myLocation
             
@@ -135,32 +164,32 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         return myLineRenderer
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.isKind(of: MKUserLocation.self) {  //Handle user location annotation..
-            return nil  //Default is to let the system handle it.
-        }
-        
-        if !annotation.isKind(of: CustomAnnotation.self) {  //Handle non-ImageAnnotations..
-            var pinAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "DefaultPinView")
-            if pinAnnotationView == nil {
-                pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DefaultPinView")
-            }
-            return pinAnnotationView
-        }
-        
-        //Handle ImageAnnotations..
-        var view: ImageAnnotationView? = scMapView.dequeueReusableAnnotationView(withIdentifier: "imageAnnotation") as? ImageAnnotationView
-        if view == nil {
-            view = ImageAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
-            view?.canShowCallout = false
-        }
-        
-        let annotation = annotation as! CustomAnnotation
-        view?.image = annotation.image
-        view?.annotation = annotation
-        
-        return view
-    }
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        if annotation.isKind(of: MKUserLocation.self) {  //Handle user location annotation..
+//            return nil  //Default is to let the system handle it.
+//        }
+//
+//        if !annotation.isKind(of: CustomAnnotation.self) {  //Handle non-ImageAnnotations..
+//            var pinAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "DefaultPinView")
+//            if pinAnnotationView == nil {
+//                pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "DefaultPinView")
+//            }
+//            return pinAnnotationView
+//        }
+//
+//        //Handle ImageAnnotations..
+//        var view: ImageAnnotationView? = scMapView.dequeueReusableAnnotationView(withIdentifier: "imageAnnotation") as? ImageAnnotationView
+//        if view == nil {
+//            view = ImageAnnotationView(annotation: annotation, reuseIdentifier: "imageAnnotation")
+//            view?.canShowCallout = false
+//        }
+//
+//        let annotation = annotation as! CustomAnnotation
+//        view?.image = annotation.image
+//        view?.annotation = annotation
+//
+//        return view
+//    }
     
     func getMultipleLocationRoute(){
         
@@ -204,6 +233,13 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.navigationController?.pushViewController(mvc, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 
     /*
     // MARK: - Navigation

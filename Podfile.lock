@@ -90,6 +90,7 @@ PODS:
     - PromiseKit/CorePromise
   - SideMenu (2.3.4)
   - SnapKit (3.2.0)
+  - SwiftIcons (1.5.1)
   - SwiftyJSON (3.1.4)
   - TimelineTableViewCell (1.1)
 
@@ -108,6 +109,7 @@ DEPENDENCIES:
   - PromiseKit (~> 4.4)
   - SideMenu (~> 2.3)
   - SnapKit (~> 3.2.0)
+  - SwiftIcons (~> 1.5)
   - SwiftyJSON
   - TimelineTableViewCell
 
@@ -136,9 +138,10 @@ SPEC CHECKSUMS:
   PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   SideMenu: 2ea1a015d14ffb96110af43fe3232d995943e726
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftIcons: 287593643898af5a9ef16be4b1f9cf91a436cbc7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   TimelineTableViewCell: aac657b7e7b576a2806404a7f0ba9c56ecd5af76
 
-PODFILE CHECKSUM: 3e524d19c41ccc2ad83fd8b42c276583054459ed
+PODFILE CHECKSUM: 48de8c2e00a66df627cdd19b2beb2f2fc90a0e13
 
 COCOAPODS: 1.2.1

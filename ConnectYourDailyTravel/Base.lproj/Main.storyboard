@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -454,8 +454,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rk5-Ok-fXV">
-                                <rect key="frame" x="0.0" y="20" width="414" height="607"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rk5-Ok-fXV">
+                                <rect key="frame" x="0.0" y="20" width="414" height="538"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncd-k1-5ca">
                                 <rect key="frame" x="0.0" y="627" width="414" height="60"/>
@@ -624,33 +624,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YeogiLaunch.png" translatesAutoresizingMaskIntoConstraints="NO" id="kvS-H2-E7W">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmP-tv-Npb">
-                                <rect key="frame" x="138" y="336" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="이메일 계정으로 로그인">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="emailLoginTouched:" destination="mBk-wM-aCG" eventType="touchUpInside" id="3zm-Oz-SZa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vza-db-OXi">
-                                <rect key="frame" x="111" y="288" width="192" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="페이스북으로 로그인">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="facebookLoginTouched:" destination="mBk-wM-aCG" eventType="touchUpInside" id="MtD-kN-64c"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qX8-mv-0VX">
+                                <rect key="frame" x="131" y="293" width="153" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vza-db-OXi">
+                                        <rect key="frame" x="0.0" y="0.0" width="153" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="페이스북으로 로그인">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="facebookLoginTouched:" destination="mBk-wM-aCG" eventType="touchUpInside" id="MtD-kN-64c"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmP-tv-Npb">
+                                        <rect key="frame" x="7.6666666666666572" y="35" width="138" height="35"/>
+                                        <state key="normal" title="이메일 계정으로 로그인">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailLoginTouched:" destination="mBk-wM-aCG" eventType="touchUpInside" id="3zm-Oz-SZa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kvS-H2-E7W" firstAttribute="centerX" secondItem="foB-gD-hJy" secondAttribute="centerX" id="7yz-VK-8aY"/>
                             <constraint firstItem="kvS-H2-E7W" firstAttribute="centerY" secondItem="foB-gD-hJy" secondAttribute="centerY" id="9ry-Qm-h9n"/>
+                            <constraint firstItem="qX8-mv-0VX" firstAttribute="centerY" secondItem="kvS-H2-E7W" secondAttribute="centerY" constant="-40" id="X5s-v4-HCY"/>
                             <constraint firstItem="kvS-H2-E7W" firstAttribute="width" secondItem="foB-gD-hJy" secondAttribute="width" id="b05-cv-Qzh"/>
+                            <constraint firstItem="qX8-mv-0VX" firstAttribute="centerX" secondItem="kvS-H2-E7W" secondAttribute="centerX" id="hCX-NE-atd"/>
                             <constraint firstItem="kvS-H2-E7W" firstAttribute="height" secondItem="foB-gD-hJy" secondAttribute="height" id="tjX-1P-kIP"/>
                         </constraints>
                     </view>
@@ -1013,71 +1018,11 @@
             </objects>
             <point key="canvasLocation" x="3281" y="-515"/>
         </scene>
-        <!--Thumnail Select View Controller-->
-        <scene sceneID="Sg9-W0-7We">
-            <objects>
-                <viewController id="hrp-9G-gJJ" customClass="ThumnailSelectViewController" customModule="ConnectYourDailyTravel" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="O7B-WW-I55"/>
-                        <viewControllerLayoutGuide type="bottom" id="78c-3d-i2b"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Es5-Bc-vod">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzO-TA-BGf">
-                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.32448619090000003" blue="0.42025007120000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="7bh-uM-Kf0"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="moveToSelectTouched:" destination="hrp-9G-gJJ" eventType="touchUpInside" id="FnY-UN-xUa"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1St-lw-ew1">
-                                <rect key="frame" x="73" y="415" width="296" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="운전"/>
-                                    <segment title="도보"/>
-                                    <segment title="대중교통"/>
-                                </segments>
-                                <connections>
-                                    <action selector="selectWayToMoveSegment:" destination="hrp-9G-gJJ" eventType="valueChanged" id="ot6-6W-J5y"/>
-                                </connections>
-                            </segmentedControl>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="asJ-BG-Maq">
-                                <rect key="frame" x="20" y="136" width="374" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="528642641.605349">
-                                    <!--2017-10-02 13:10:41 +0000-->
-                                </date>
-                                <locale key="locale" localeIdentifier="ko_KR"/>
-                                <connections>
-                                    <action selector="datePickerChanged:" destination="hrp-9G-gJJ" eventType="valueChanged" id="bl7-WG-vdu"/>
-                                </connections>
-                            </datePicker>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="PzO-TA-BGf" firstAttribute="leading" secondItem="Es5-Bc-vod" secondAttribute="leading" id="WWZ-96-4J6"/>
-                            <constraint firstItem="78c-3d-i2b" firstAttribute="top" secondItem="PzO-TA-BGf" secondAttribute="bottom" id="xE3-vk-9Mu"/>
-                            <constraint firstAttribute="trailing" secondItem="PzO-TA-BGf" secondAttribute="trailing" id="zix-QK-CLu"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="65D-lz-fj2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bmC-R1-ZwF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1540.5797101449277" y="217.66304347826087"/>
-        </scene>
-        <!--여기-->
+        <!--여기에 기록하세요-->
         <scene sceneID="LoP-0c-vMG">
             <objects>
                 <navigationController storyboardIdentifier="FirstNavController" automaticallyAdjustsScrollViewInsets="NO" id="8cp-F2-AVi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="여기" id="lg1-US-pFP"/>
+                    <tabBarItem key="tabBarItem" title="여기에 기록하세요" id="lg1-US-pFP"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bZ8-Fj-Vr7">
@@ -1106,7 +1051,6 @@
                     <connections>
                         <segue destination="5K5-cB-vIO" kind="relationship" relationship="viewControllers" id="Qax-Gj-1Cb"/>
                         <segue destination="8cp-F2-AVi" kind="relationship" relationship="viewControllers" id="C3m-gK-NEK"/>
-                        <segue destination="vP8-bf-tUE" kind="relationship" relationship="viewControllers" id="eO0-vU-GRY"/>
                         <segue destination="mg8-pn-4hq" kind="relationship" relationship="viewControllers" id="9kf-8b-RfH"/>
                     </connections>
                 </tabBarController>
@@ -1152,11 +1096,11 @@
             </objects>
             <point key="canvasLocation" x="1541" y="-1207"/>
         </scene>
-        <!--모아보기-->
+        <!--나만의 여기-->
         <scene sceneID="BbI-7O-z3s">
             <objects>
                 <navigationController storyboardIdentifier="ShowNavViewController" automaticallyAdjustsScrollViewInsets="NO" id="5K5-cB-vIO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="모아보기" id="4KP-gn-n2f"/>
+                    <tabBarItem key="tabBarItem" title="나만의 여기" id="4KP-gn-n2f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dY8-lz-8Oz">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1171,11 +1115,11 @@
             </objects>
             <point key="canvasLocation" x="635" y="-515"/>
         </scene>
-        <!--공유-->
+        <!--모두의 여기-->
         <scene sceneID="9h5-dI-NAR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vP8-bf-tUE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="공유" id="eeb-3F-t0W"/>
+                    <tabBarItem key="tabBarItem" title="모두의 여기" id="eeb-3F-t0W"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5lv-cU-ded">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>

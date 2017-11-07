@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5DE50BFA78BDF0F33AFBF143F7D62EFB'
-               BlueprintName = 'TimelineTableViewCell-TimelineTableViewCell'
+               BlueprintIdentifier = '3D99E9AADB3FCC5AD94473CBF0317B6E'
+               BlueprintName = 'SwiftIcons'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TimelineTableViewCell.bundle'>
+               BuildableName = 'SwiftIcons.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

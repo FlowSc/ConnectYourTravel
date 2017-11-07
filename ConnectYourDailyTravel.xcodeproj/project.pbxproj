@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752880411F7F917F0071F089 /* Tabbar1ViewController.swift */; };
 		752880441F7F92C20071F089 /* MyTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752880431F7F92C20071F089 /* MyTabbarViewController.swift */; };
-		7528B1B61F7FC91F00893EC5 /* ThumnailSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */; };
 		7528B1D61F8284CD00893EC5 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7528B1D51F8284CC00893EC5 /* UITextViewPlaceholder.swift */; };
 		7549D6831F696E5900EEA8E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549D6821F696E5900EEA8E6 /* AppDelegate.swift */; };
 		7549D6881F696E5900EEA8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7549D6861F696E5900EEA8E6 /* Main.storyboard */; };
@@ -60,7 +59,6 @@
 		36F61F984D4B6560CED05ABA /* Pods-ConnectYourDailyTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectYourDailyTravel.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectYourDailyTravel/Pods-ConnectYourDailyTravel.release.xcconfig"; sourceTree = "<group>"; };
 		752880411F7F917F0071F089 /* Tabbar1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar1ViewController.swift; sourceTree = "<group>"; };
 		752880431F7F92C20071F089 /* MyTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabbarViewController.swift; sourceTree = "<group>"; };
-		7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumnailSelectViewController.swift; sourceTree = "<group>"; };
 		7528B1D51F8284CC00893EC5 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		7549D67F1F696E5900EEA8E6 /* ConnectYourDailyTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectYourDailyTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7549D6821F696E5900EEA8E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				75CC744B1F9210DE0063690A /* SHTableViewCell.xib */,
 				7582359D1F83BE0A00ACB064 /* ResultViewController.swift */,
 				7582359B1F8314BE00ACB064 /* CommentAddViewController.swift */,
-				7528B1B51F7FC91F00893EC5 /* ThumnailSelectViewController.swift */,
 				752880431F7F92C20071F089 /* MyTabbarViewController.swift */,
 				752880411F7F917F0071F089 /* Tabbar1ViewController.swift */,
 				7549D6D61F6FEAEF00EEA8E6 /* SignUpViewController.swift */,
@@ -354,7 +351,6 @@
 				7549D6D11F6F9FCD00EEA8E6 /* EmailLoginViewController.swift in Sources */,
 				7564AE881F948FFE00EF085C /* DetailShowTableViewCell.swift in Sources */,
 				7582359E1F83BE0A00ACB064 /* ResultViewController.swift in Sources */,
-				7528B1B61F7FC91F00893EC5 /* ThumnailSelectViewController.swift in Sources */,
 				752880421F7F917F0071F089 /* Tabbar1ViewController.swift in Sources */,
 				7549D6C11F6F308E00EEA8E6 /* SideTableViewController.swift in Sources */,
 				75F854611F9C64D800891A07 /* ShareTableViewCell.swift in Sources */,

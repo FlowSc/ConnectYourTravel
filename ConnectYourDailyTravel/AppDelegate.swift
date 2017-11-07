@@ -21,9 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         FBSDKApplicationDelegate .sharedInstance() .application(application, didFinishLaunchingWithOptions: launchOptions)
-        UINavigationBar.appearance().barTintColor = .cnnAzul
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+//        UINavigationBar.appearance().barTintColor = UIColor.lightGray
+//        UINavigationBar.appearance().tintColor = .lightGray
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.gray]
         UINavigationBar.appearance().isTranslucent = false
         
         

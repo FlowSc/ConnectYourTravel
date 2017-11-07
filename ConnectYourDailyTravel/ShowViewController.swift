@@ -19,13 +19,22 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     var uploadTimeList:[String] = []
     var tupleArray:[(String,JSON)] = []
     var loginuserName:String!
+    var sortedArray:[(String,JSON)] = []
+    let userId = Auth.auth().currentUser?.uid
+    let myTableView = UITableView()
+    var showArray:[(String, JSON)] = []
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "모아보기"
+        self.navigationItem.title = "나의 여기"
         
-        let myTableView = UITableView()
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.ept.dataSource = self
@@ -34,9 +43,9 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         view.addSubview(myTableView)
         
-        myTableView.reloadData()
+        
         ref = Database.database().reference()
-        let userId = Auth.auth().currentUser?.uid
+        
         
         ref.child("travelList").child(userId!).observe(DataEventType.value, with: { (snapshot) in
             
@@ -45,11 +54,21 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
             for i in jsonData {
                 
                 self.tupleArray.append(i)
-
+                
             }
             
-            myTableView.reloadData()
+            self.sortedArray = self.tupleArray.sorted { (a, b) -> Bool in
+                a.0 > b.0
+            }
+            
+            self.showArray = self.sortedArray
+            self.myTableView.reloadData()
         })
+        
+        print(sortedArray)
+        
+        myTableView.reloadData()
+        
         
         myTableView.snp.makeConstraints { (con) in
             con.width.equalToSuperview()
@@ -57,6 +76,7 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
             con.centerX.equalToSuperview()
             con.centerY.equalToSuperview()
         }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -66,41 +86,37 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tupleArray.count
+        return showArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SHTableViewCell
         
-        let sortedArray = tupleArray.sorted { (a, b) -> Bool in
-            a.0 > b.0
-        }
+        if showArray.count != 0 {
         
-        let data = sortedArray[indexPath.row]
+        let data = showArray[indexPath.row]
         
         print((data.0))
         
         cell.textLb.text = (data.1)["title"].stringValue
-        cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지" + "\n" + "\((data.1)["country"].stringValue)"
+        cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\n" + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지"
         cell.thumnailImage.kf.setImage(with: URL.init(string: (data.1)["images"][0].stringValue))
-        cell.timeLb.text = "\(((data.1)["timeList"].array?.first?.stringValue)!) 부터 " + "\(((data.1)["timeList"].array?.last?.stringValue)!) 까지"
+        cell.timeLb.text = "\(((data.1)["timeList"].array?.first?.stringValue)!)" + " ~ " + "\(((data.1)["timeList"].array?.last?.stringValue)!)"
         cell.uploadTimeLb.text = (data.1)["uploadDate"].stringValue
         
         cell.tag = indexPath.row
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 350
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sortedArray = tupleArray.sorted { (a, b) -> Bool in
-            a.0 > b.0
-        }
         
-        let data = sortedArray[indexPath.row]
+        let data = showArray[indexPath.row]
         
         print(data)
         
@@ -111,19 +127,41 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.pushViewController(mvc, animated: true)
         
     }
+    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//
+//
+//        if editingStyle == .delete{
+//
+//            
+//            print("~~~~~~")
+////            print(showArray[indexPath.row].0)
+////            print(indexPath.row)
+//            print(showArray.count)
+//            ref.child("travelList").child(userId!).child(showArray[indexPath.row].0).removeValue()
+//            showArray.remove(at: indexPath.row)
+//            tableView.reloadData()
+//            tableView.reloadInputViews()
+//
+//            print("~~~~")
+//
+//
+//        }
+//    }
+    
 }
 
 extension ShowViewController: EmptyDataSource {
     
     func titleForEmpty(in view: UIView) -> NSAttributedString? {
-        let title = "아직 데이터가 없네용!"
-        let font = UIFont.systemFont(ofSize: 14)
+        let title = "당신의 여행을 기록하세요"
+        let font = UIFont.systemFont(ofSize: 25)
         let attributes: [String : Any] = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: font]
         return NSAttributedString(string: title, attributes: attributes)
     }
-    
-    func buttonBackgroundColorForEmpty(in view: UIView) -> UIColor {
-        return UIColor.blue
-    }
-    
+ 
 }
