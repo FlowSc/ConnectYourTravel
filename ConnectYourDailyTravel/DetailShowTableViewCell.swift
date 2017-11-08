@@ -18,6 +18,43 @@ class DetailShowTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    internal var aspectCons:NSLayoutConstraint? {
+        didSet {
+            if oldValue != nil {
+                myImageView.removeConstraint(oldValue!)
+            }
+            if aspectCons != nil {
+                aspectCons?.priority = 999
+                myImageView.addConstraint(aspectCons!)
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        aspectCons = nil
+    }
+    
+    func setMyImage(imageString:String){
+        
+        let url = URL(string: imageString)
+        let data = try? Data(contentsOf: url!)
+        
+        let image = UIImage(data: data!)
+        
+        guard let myImage = image else {return}
+        
+        let aspect = myImage.size.width / myImage.size.height
+        
+        
+        
+        aspectCons = NSLayoutConstraint(item: myImageView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: myImageView, attribute: NSLayoutAttribute.height, multiplier: aspect, constant: 0.0)
+        
+        myImageView.image = myImage
+        
+        
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

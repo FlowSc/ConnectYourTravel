@@ -45,12 +45,22 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     func removeData(){
         print("remove")
-        ref.child("travelList").child(userId!).child(detailData!.0).removeValue()
         
         let mvc = storyboard?.instantiateViewController(withIdentifier: "MainTabbar") as! MyTabbarViewController
+        let scStorage = Storage.storage().reference().child(self.userId!).child("travelList").child(self.detailData!.0)
         
         let alert = UIAlertController.init(title: "삭제 확인", message: "정말 삭제하시겠어요?", preferredStyle: UIAlertControllerStyle.alert)
         let alertAc = UIAlertAction.init(title: "네, 삭제할게요", style: UIAlertActionStyle.default) { (action) in
+            self.ref.child("travelList").child(self.userId!).child(self.detailData!.0).removeValue()
+            scStorage.delete(completion: { (error) in
+                if error != nil {
+                    print(error)
+                }else{
+                    print("delete OK!")
+                }
+            })
+            
+
             self.present(mvc, animated: true, completion: nil)
         }
         let cancelAc = UIAlertAction.init(title: "다시 생각해볼게요", style: UIAlertActionStyle.cancel, handler: nil)
@@ -67,7 +77,9 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         ref = Database.database().reference()
         let removeIcon:UIBarButtonItem = UIBarButtonItem(image: nil, landscapeImagePhone: nil, style: UIBarButtonItemStyle.plain, target: self, action: #selector(removeData))
         removeIcon.setIcon(icon: FontType.googleMaterialDesign(GoogleMaterialDesignType.removeCircle), iconSize: 25)
+
         self.navigationItem.rightBarButtonItem = removeIcon
+        
         
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -148,9 +160,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         let time = source["timeList"][indexPath.row]
         
         cell.locationLb.text = address.stringValue
-        cell.myImageView.kf.setImage(with: URL(string: image.stringValue))
+        cell.setMyImage(imageString: image.stringValue)
+//        cell.myImageView.kf.setImage(with: URL(string: image.stringValue))
         cell.commentLb.text = comment.stringValue
         cell.timeLb.text = time.stringValue
+        
         
         
         return cell
