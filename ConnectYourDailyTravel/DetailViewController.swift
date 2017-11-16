@@ -96,6 +96,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         myTableVIew.register(UINib.init(nibName: "DetailShowTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         scMapView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 400)
         myTableVIew.tableFooterView = scMapView
+        myTableVIew.rowHeight = UITableViewAutomaticDimension
         
         view.addSubview(myTableVIew)
         

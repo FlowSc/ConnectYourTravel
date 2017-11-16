@@ -97,12 +97,14 @@ class ShowViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         print((data.0))
         
+            
+        DispatchQueue.main.async {
         cell.textLb.text = (data.1)["title"].stringValue
         cell.routeLb.text = "\(((data.1)["addressList"].array?.first?.stringValue)!) 에서 " + "\n" + "\(((data.1)["addressList"].array?.last?.stringValue)!) 까지"
         cell.thumnailImage.kf.setImage(with: URL.init(string: (data.1)["images"][0].stringValue))
         cell.timeLb.text = "\(((data.1)["timeList"].array?.first?.stringValue)!)" + " ~ " + "\(((data.1)["timeList"].array?.last?.stringValue)!)"
         cell.uploadTimeLb.text = (data.1)["uploadDate"].stringValue
-        
+            }
         cell.tag = indexPath.row
         }
         

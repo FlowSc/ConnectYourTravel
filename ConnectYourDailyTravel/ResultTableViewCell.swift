@@ -12,6 +12,9 @@ class ResultTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        timeLb.numberOfLines = 0
+        commentLb.numberOfLines = 0
         // Initialization code
     }
     @IBOutlet weak var resultImageView: UIImageView!

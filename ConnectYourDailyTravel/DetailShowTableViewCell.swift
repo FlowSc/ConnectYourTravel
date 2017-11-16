@@ -47,11 +47,26 @@ class DetailShowTableViewCell: UITableViewCell {
         
         let aspect = myImage.size.width / myImage.size.height
         
+      
+        
+            self.aspectCons = NSLayoutConstraint(item: self.myImageView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: self.myImageView, attribute: NSLayoutAttribute.height, multiplier: aspect, constant: 0.0)
+            
+                self.myImageView.image = myImage
+ 
+        
+    }
+    
+    func setMyImageUI(_ withUIImage:UIImage){
+        
+        let image = withUIImage
+        
+        let aspect = image.size.width / image.size.height
         
         
-        aspectCons = NSLayoutConstraint(item: myImageView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: myImageView, attribute: NSLayoutAttribute.height, multiplier: aspect, constant: 0.0)
         
-        myImageView.image = myImage
+        self.aspectCons = NSLayoutConstraint(item: self.myImageView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: self.myImageView, attribute: NSLayoutAttribute.height, multiplier: aspect, constant: 0.0)
+        
+        self.myImageView.image = image
         
         
     }

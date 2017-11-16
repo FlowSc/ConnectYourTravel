@@ -27,10 +27,12 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var myTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        myTableView.rowHeight = UITableViewAutomaticDimension
         
         uploadOutlet.setAzure()
         
         uploadIndicator.isHidden = true
+        myTableView.register(UINib.init(nibName: "DetailShowTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         myTableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultTableViewCell")
         myTableView.delegate = self
         myTableView.dataSource = self
@@ -48,13 +50,18 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultTableViewCell", for: indexPath) as! ResultTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DetailShowTableViewCell
         
         let sortedTimeList = timeList.sorted()
-
+        
         cell.timeLb.text = sortedTimeList[indexPath.row]
-        cell.resultImageView.image = uiImageList[indexPath.row]
         cell.commentLb.text = commentList[indexPath.row]
+        cell.setMyImageUI(uiImageList[indexPath.row])
+        cell.locationLb.text = addressLst[indexPath.row]
+
+//        cell.timeLb.text = sortedTimeList[indexPath.row]
+//        cell.resultImageView.image = uiImageList[indexPath.row]
+//        cell.commentLb.text = commentList[indexPath.row]
         
         return cell
     }
@@ -71,8 +78,8 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
     }
     
     func savedImages(imagrArray:[UIImage]){
